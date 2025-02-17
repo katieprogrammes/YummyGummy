@@ -55,6 +55,7 @@ nav a {
 }
 /*Footer Styling*/
 footer {
+    width: 100%;
     background-color: #282566;
     color: #B8C6F4;
     height: 10rem;
@@ -214,4 +215,90 @@ footer {
     font-weight: 700;
     color: #6388EA;
     margin: 3rem;
+}
+/*Shop Styling*/
+.searchgroup {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+#searchbar {
+    width: 50%;
+}
+#shopsearch {
+    border: thin solid #282566;
+    border-radius: 10px 0px 0px 10px;
+}
+#searchbtn {
+    background-color:#10042F;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 10px 10px 0px;
+}
+#searchbtn img {
+    margin-top: 10px;
+}
+.shoporg {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+#filter {
+    background-color: #B8C6F4;
+    color: #282566;
+    border: thin solid #282566;
+    width: 125px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+#sortby {
+    background-color: #B8C6F4;
+    color: #282566;
+    border: thin solid #282566;
+    width: 150px;
+    font-size: 20px;
+    text-align: left;
+}
+#pagedd {
+    background-color: #B8C6F4;
+    color: #282566;
+    border: thin solid #282566;
+    width: 100px;
+    font-size: 20px;
+    text-align: left;
+}
+.prodcard {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0px;
+}
+.cardimg img{
+    object-fit: cover;
+    background-size: 100% 100%;
+    height: 250px;
+    width: 250px;
+}
+.cardtext {
+    background-color: #10042F;
+    color: #B8C6F4;
+    width: 250px;
+    padding: 5px 0px 5px 15px;
+}
+.flavour {
+    font-style: italic;
+}
+.productlink {
+    color: #10042F;
+}
+.pagenumb {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+.pagenav {
+    color: #10042F;
 }

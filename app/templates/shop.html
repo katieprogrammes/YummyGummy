@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1 class="ygtitle">Shop</h1>
+    <div class="row">
+        <div class="col-4">
+            <div class="searchgroup">
+                <div data-mdb-input-init class="form-outline" id="searchbar">
+                    <input type="search" id="shopsearch" class="form-control" placeholder="Search" />
+                </div>
+                <button type="submit" class="btn" id="searchbtn">
+                    <img src="{{ url_for('static', filename='images/searchheart.svg') }}" alt-text="Search" id="navbskticon">
+                </button>
+            </div>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="shoporg">
+                <button type="submit" class="btn" id="pagedd">
+                    Page 1
+                </button>
+                <button type="submit" class="btn" id="sortby">
+                    Sort By
+                </button>
+                <button type="submit" class="btn" id="filter">
+                    Filter By
+                    <img src="{{ url_for('static', filename='images/filter.svg') }}" alt-text="Filter">
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="prodcard">
+                <a href="/" class="productlink">
+                    <div class="cardimg">
+                        <img src="{{ url_for('static', filename='images/yumgum.png') }}"/>
+                    </div>
+                    <div class="cardtext">
+                        <h2>Product Name</h2>
+                        <h3 class="flavour">Flavour</h3>
+                        <h3>£--</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="prodcard">
+                <a href="/" class="productlink">
+                    <div class="cardimg">
+                        <img src="{{ url_for('static', filename='images/yumgum.png') }}"/>
+                    </div>
+                    <div class="cardtext">
+                        <h2>Product Name</h2>
+                        <h3 class="flavour">Flavour</h3>
+                        <h3>£--</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="prodcard">
+                <a href="/" class="productlink">
+                    <div class="cardimg">
+                        <img src="{{ url_for('static', filename='images/yumgum.png') }}"/>
+                    </div>
+                    <div class="cardtext">
+                        <h2>Product Name</h2>
+                        <h3 class="flavour">Flavour</h3>
+                        <h3>£--</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="prodcard">
+                <a href="/" class="productlink">
+                    <div class="cardimg">
+                        <img src="{{ url_for('static', filename='images/yumgum.png') }}"/>
+                    </div>
+                    <div class="cardtext">
+                        <h2>Product Name</h2>
+                        <h3 class="flavour">Flavour</h3>
+                        <h3>£--</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="prodcard">
+                <a href="/" class="productlink">
+                    <div class="cardimg">
+                        <img src="{{ url_for('static', filename='images/yumgum.png') }}"/>
+                    </div>
+                    <div class="cardtext">
+                        <h2>Product Name</h2>
+                        <h3 class="flavour">Flavour</h3>
+                        <h3>£--</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="prodcard">
+                <a href="/" class="productlink">
+                    <div class="cardimg">
+                        <img src="{{ url_for('static', filename='images/yumgum.png') }}"/>
+                    </div>
+                    <div class="cardtext">
+                        <h2>Product Name</h2>
+                        <h3 class="flavour">Flavour</h3>
+                        <h3>£--</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="prodcard">
+                <a href="/" class="productlink">
+                    <div class="cardimg">
+                        <img src="{{ url_for('static', filename='images/yumgum.png') }}"/>
+                    </div>
+                    <div class="cardtext">
+                        <h2>Product Name</h2>
+                        <h3 class="flavour">Flavour</h3>
+                        <h3>£--</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="prodcard">
+                <a href="/" class="productlink">
+                    <div class="cardimg">
+                        <img src="{{ url_for('static', filename='images/yumgum.png') }}"/>
+                    </div>
+                    <div class="cardtext">
+                        <h2>Product Name</h2>
+                        <h3 class="flavour">Flavour</h3>
+                        <h3>£--</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-3">
+            <div class="pagenumb">
+                <h3>Previous</h3> 
+                <h3>1</h3>
+                <h3><a href="{{ url_for('shop') }}" class="pagenav">2</a></h3>
+                <h3><a href="{{ url_for('shop') }}" class="pagenav">3</a></h3>
+                <h3><a href="{{ url_for('shop') }}" class="pagenav">Next</a></h3>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
