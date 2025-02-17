@@ -1,0 +1,51 @@
+{% extends "base.html"%}
+
+{% block body %}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <h1 class="ygtitle">Register:</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.usersname.label }}<br>
+                    {{ form.usersname(size=32) }}<br>
+                    {% for error in form.usersname.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.email.label }}<br>
+                    {{ form.email(size=32) }}<br>
+                    {% for error in form.email.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password(size=32) }}<br>
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password2.label }}<br>
+                    {{ form.password2(size=32) }}<br>
+                    {% for error in form.password2.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <button class="loginbtn">
+                    {{ form.submit() }}
+                </button>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+{% endblock %}

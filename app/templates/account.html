@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <h1 class="ygtitle">All About You!</h1>
+    </div>
+    <div class="col"></div>
+</div>
+<div class="accountinfo">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col">
+            <div class="accountlbl">
+                <h2>
+                    Name:
+                </h2>
+                <h2>
+                    Email:
+                </h2>
+                <h2>
+                    Mobile:
+                </h2>
+                <h2>
+                    Password:
+                </h2>
+                <h2 id="acctaddrlbl">
+                    Addresses:
+                </h2>
+                <h2 id="acctpaylbl">
+                    Payment Methods:
+                </h2>
+            </div>
+        </div>
+        <div class="col">
+            <!--USERS DETAILS-->
+            <div class="accounttxt">
+                <h2>
+                    #USERNAME#
+                    <img src="{{ url_for('static', filename='images/pencil.svg') }}" alt-text="edit pencil">
+                </h2>
+                <h2>
+                    #EMAIL#
+                    <img src="{{ url_for('static', filename='images/pencil.svg') }}" alt-text="edit pencil">
+                </h2>
+                <h2>
+                    #MOBILE#
+                    <img src="{{ url_for('static', filename='images/pencil.svg') }}" alt-text="edit pencil">
+                </h2>
+                <h2>
+                    #PASSWORD#
+                </h2>
+                <h2>
+                    #ADDRESS LINE 1#
+                    <br>
+                    #TOWN#
+                    <br>
+                    #CITY#
+                    <br>
+                    #POSTCODE#
+                    <img src="{{ url_for('static', filename='images/pencil.svg') }}" alt-text="edit pencil">
+                </h2>
+                <h2 id="acctpayinfo">
+                    #Card Number ending in 8903#
+                    <br>
+                    #Card Number ending in 1290#
+                    <img src="{{ url_for('static', filename='images/pencil.svg') }}" alt-text="edit pencil">
+                </h2>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+<!--BUTTONS-->
+<div class="acctbtn">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <a class="btn btn-primary btn-lg" href="#" role="button" id="wishlistbtn">Wishlist</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary btn-lg" href="#" role="button" id="orderhistbtn">Order History</a>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+</div>
+{% endblock %}

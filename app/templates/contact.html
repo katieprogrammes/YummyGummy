@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <h1 class="ygtitle">Contact Us</h1>
+        <h2 class="ygsubtitle">Fancy a Chat?</h2>
+    </div>
+    <div class="col"></div>
+</div>
+<!--CONTACT FORM-->
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <form>
+            <div class="mb-3 mt-3">
+                <label for="email" class="form-label">Where can we get back to you?</label>
+                <input type="email" class="form-control form-control-lg" id="useremail" placeholder="Enter email" name="email" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="mb-3">
+                <label for="oderno" class="form-label">Is it about an order?</label>
+                <input type="text" class="form-control form-control-lg" id="userorderno" placeholder="Order No (optional)" name="ordrno">
+            </div>
+            <div class="mb-3">
+                <label for="usermessage" class="form-label">What would you like to say?</label>
+                <textarea class="form-control form-control-lg" id="usermssg" rows="5" placeholder="Message"></textarea>
+            </div>
+            <!--CONTACT BUTTON-->
+            <button type="submit" class="btn btn-primary btn-lg" id="contactsend">Send</button>
+        </form>  
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}

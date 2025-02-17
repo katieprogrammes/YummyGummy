@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Yummy Gummy</title>
+    {% endif %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<header>
+    <div class="container-fluid">
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="/">Shop</a>    
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/register">FAQ</a>
+        </nav>
+        <nav class="navright">
+            <a class="btn btn-primary" href="/" role="button" id="navbasket">
+                Basket
+                <img src="{{ url_for('static', filename='images/basket.svg') }}" alt-text="basket" id="navbskticon">
+            </a>
+            <a href="{{ url_for('login') }}">
+                <img src="{{ url_for('static', filename='images/person.svg') }}" alt-text="account" id="navacct">
+            </a>
+        </nav>
+        <div class="toplogo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="logo" height="65">
+            </a>
+        </div>
+    </div>
+</header>
+<body>
+    <div class="container-fluid" style="min-height: 100%">
+        {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+
+                {% endif %}
+        {% endwith %}
+
+        {% block body %} {% endblock %}
+
+
+
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+<footer>
+    <div class="container-fluid">
+        <nav class="footleft">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="/">Shop</a>    
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+        <nav class="footright">
+            <a href="/">Terms</a>
+            <a href="/">Privacy</a>
+            <a href="{{ url_for('user', username=current_user.username) }}">Account</a>
+            <a href="/">FAQ</a>
+        </nav>
+        <div class="btmlogo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="logo" height="55">
+            </a>
+        </div>
+        <div class="footsocial">
+            <img src="{{ url_for('static', filename='images/social/twitter.svg') }}" alt-text="twitter logo">
+            <img src="{{ url_for('static', filename='images/social/instagram.svg') }}" alt-text="instagram logo">
+            <img src="{{ url_for('static', filename='images/social/tiktok.svg') }}" alt-text="tiktok logo">
+            <img src="{{ url_for('static', filename='images/social/facebook.svg') }}" alt-text="facebook logo">
+        </div>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col">
+        <div class="hero">
+            <h1>Being healthy has <br> never tasted so <br> good!</h1>
+            <h2>Fed up of constant vitamin deficiencies? Is swallowing <br> large pills a struggle? Constantly forgetting to take <br> your daily vitamins? Then Yummy Gummy is for you!</h2>
+            <!--SHOP NOW BUTTON-->
+            <a href="/"><button type="submit" class="btn btn-primary btn-lg" id="homeshop">Shop Now</button></a>
+        </div>
+    </div>
+    <div class="col">
+        <img src="{{ url_for('static', filename='images/hometemp.png') }}" alt-text="collection of vitamin bottles">
+    </div>
+    <div class="col-1"></div>
+</div>
+<h1 class="socialtitle">See what our customers have to say!</h1>
+        <div class="row">
+            <div class="col">
+                <div class="socialproof">
+                    <h5>"Yummy Gummy has helped <br>me stabilise my vitamin levels <br> and are so delicious!"</h5>
+                    <h4> - Yvonne G</h4>
+                </div>
+            </div>
+            <div class="col">
+                <div class="socialproof">
+                    <h5>"Having to take large pills <br> every morning made me <br> miserable but now I <br> look forward to taking my vitamins!"</h5>
+                    <h4> - Sarah T</h4>
+                </div>
+            </div>
+            <div class="col">
+                <div class="socialproof">
+                    <h5>"I never forget to take my vitamins <br> anymore which makes my deficiencies <br> a lot easier to handle."</h5>
+                    <h4> - Caleb M</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col">
+                <h1 class="newstitle">Fancy a yummy 20% off? <br> Come join our newsletter! </h1>
+            </div>
+            <div class="col">
+                <!--Newsletter Form-->
+                <h1>&nbsp;&nbsp;&nbsp;N E W S L E T T E R &nbsp; F O R M</h1>
+            </div>
+            <div class="col-1"></div>
+        </div>
+{% endblock %}
+	
+
+
+</html>

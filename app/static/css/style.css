@@ -1,0 +1,217 @@
+body {
+    font-family: Zain;
+    background-color:#EFE8FB;
+    padding-top: 8rem;
+}
+/*Header Styling*/
+header {
+    width: 100%;
+    background-color: #282566;
+    height: 5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+nav a {
+    float: left;
+    text-align: center;
+    padding: 25px 16px;
+    text-decoration: none;
+    font-weight: 400;
+    color: #B8C6F4;
+    font-size: 1.5rem;
+}
+.toplogo img {
+    float: none;
+    position: relative;
+    left: 370px;
+    top: 10px;
+}
+.navright a {
+    float: right;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-weight: 400;
+    color: #B8C6F4;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+#navacct {
+    margin-top: 0.5rem;
+}
+#navbasket {
+    background-color: #B8C6F4;
+    color: #282566;
+    width: 8rem;
+    height: 3rem;
+    text-align: left;
+    margin-top: 1rem;
+    font-weight: 700;
+}
+#navbskticon {
+    margin-bottom: 8px;
+    float: right;
+}
+/*Footer Styling*/
+footer {
+    background-color: #282566;
+    color: #B8C6F4;
+    height: 10rem;
+}
+.footleft {
+    padding-left: 225px;
+}
+.footleft a {
+    float: left;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-left: 2.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+}
+.footright {
+    padding-right: 225px;
+}
+.footright a {
+   float: right;
+   text-align: center;
+   margin-top: 1.5rem;
+   padding-right: 2.5rem;
+   text-decoration: none;
+   font-weight: 700;
+   color: #B8C6F4;
+   font-size: 20px;
+}
+.btmlogo img {
+   margin-top: 75px;
+   margin-left: 150px;
+}
+/*Homepage Styling*/
+.hero {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;   
+    align-items: center;
+}
+.hero h1 {
+    font-weight: 800;
+    color: #10042F;
+    text-align: center;
+    font-size: 4rem;
+}
+.hero h2 {
+    text-align: center;
+    color: #282566;
+}
+.hero button {
+    text-align: center;
+    background-color: #10042F;
+    color: #6388EA;
+    width: 250px;
+    height: 75px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+.socialtitle {
+    text-align: center;
+    color: #282566;
+    font-weight: 600;
+    padding-top: 3rem;
+}
+.socialproof {
+    color: #282566;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem;
+}
+.socialproof h5 {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+.socialproof h4 {
+    font-weight: 700;
+    margin-bottom: 5rem;
+}
+.newstitle {
+    font-weight: 800;
+    color: #10042F;
+    text-align: right;
+    margin-bottom: 8rem;
+}
+.ygtitle {
+    text-align: center;
+    color:#10042F;
+    font-weight: 700;
+    font-size: 3rem;
+}
+/*Account Page Styling*/
+.accountinfo {
+    padding-top: 2rem;
+}
+.accountlbl h2 {
+    padding: 1rem 0rem;
+    text-align: center;
+    color: #10042F;
+}
+#acctaddrlbl {
+    padding: 1rem 0rem 6rem 0rem;
+}
+#acctpaylbl {
+    padding: 4rem 0rem 6rem 0rem;
+}
+.accounttxt h2 {
+    text-align: center;
+    color:#282566;
+    padding: 1rem 0rem;
+}
+.acctbtn {
+    margin-bottom: 4rem;
+}
+#wishlistbtn {
+    background-color:#10042F;
+    width: 15rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #6388EA;
+    float: left;
+    margin-left: 3rem;
+}
+#orderhistbtn {
+    background-color:#10042F;
+    width: 15rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #6388EA;
+    float: right;
+}
+/*CONTACT STYLING*/
+
+.ygsubtitle {
+    text-align: center;
+    color:#10042F;
+    font-weight: 500;
+    font-size: 2rem;
+}
+#contactsend {
+    background-color:#10042F;
+    width: 15rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #6388EA;
+    margin-left: 10rem;
+    margin-bottom: 2rem;
+}
+.loginbtn {
+    background-color:#10042F;
+    border: none;
+    border-radius: 10px;
+    width: 12rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #6388EA;
+    margin: 3rem;
+}
