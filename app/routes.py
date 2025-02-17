@@ -26,8 +26,7 @@ def account():
         form.lastname.data = current_user.lastname
         form.firstname.data = current_user.firstname
         form.email.data = current_user.email
-    return render_template('account.html', title='Account',
-                           form=form)
+    return render_template('account.html', title='Account', form=form)
     
 @app.route('/logout')
 def logout():

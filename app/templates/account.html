@@ -13,7 +13,13 @@
         <div class="col">
             <div class="accountlbl">
                 <h2>
-                    Name:
+                    First Name:
+                </h2>
+                <h2>
+                    Last Name:
+                </h2>
+                <h2>
+                    Email:
                 </h2>
             </div>
         </div>
@@ -22,6 +28,12 @@
             <div class="accounttxt">
                 <h2>
                     {{ current_user.firstname }}
+                </h2>
+                <h2>
+                    {{ current_user.lastname }}
+                </h2>
+                <h2>
+                    {{ current_user.email }}
                 </h2>
             </div>
         </div>
