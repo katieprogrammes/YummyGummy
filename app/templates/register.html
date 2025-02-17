@@ -13,13 +13,34 @@
         <div class="col">
             <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
-                <p>
-                    {{ form.usersname.label }}<br>
-                    {{ form.usersname(size=32) }}<br>
-                    {% for error in form.usersname.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}
-                </p>
+                <div class="form-group">
+                    {{ form.firstname.label(class="form-control-label") }}
+
+                    {% if form.firstname.errors %}
+                        {{ form.firstname(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.firstname.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.firstname(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.lastname.label(class="form-control-label") }}
+
+                    {% if form.lastname.errors %}
+                        {{ form.lastname(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.lastname.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.lastname(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
                 <p>
                     {{ form.email.label }}<br>
                     {{ form.email(size=32) }}<br>

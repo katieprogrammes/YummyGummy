@@ -1,23 +1,34 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, abort
 from app import app
-from app.forms import LoginForm
-from flask_login import current_user, login_user
+from app.forms import LoginForm, RegistrationForm, UpdateAccountForm
+from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
 from app.models import User
-from app.forms import RegistrationForm
-from flask_login import logout_user, login_required
 from urllib.parse import urlsplit
 
 @app.route('/')
 def home():
     return render_template('main.html', title='Home')
 
-@app.route('/account')
+@app.route('/account', methods=['GET', 'POST'])
+@login_required
 def account():
-    return render_template('account.html', title='My Account')
-
-
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        current_user.lastname = form.lastname.data
+        current_user.firstname = form.firstname.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Your account has been updated!', 'success')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.lastname.data = current_user.lastname
+        form.firstname.data = current_user.firstname
+        form.email.data = current_user.email
+    return render_template('account.html', title='Account',
+                           form=form)
+    
 @app.route('/logout')
 def logout():
     logout_user()
@@ -26,7 +37,7 @@ def logout():
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('user'))
+        return redirect(url_for('account'))
     form = LoginForm()
     if form.validate_on_submit():
         user = db.session.scalar(
@@ -35,6 +46,7 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
+        flash('You are logged in!')
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('home')
@@ -47,21 +59,10 @@ def register():
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(nameofuser=form.nameofuser.data, email=form.email.data)
+        user = User(lastname=form.lastname.data,firstname=form.firstname.data, email=form.email.data)
         user.set_password(form.password.data)
         db.session.add(user)
-        db.session.flush()
-        user.set_username()
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
-
-@app.route('/user/<username>')
-@login_required
-def user(username):
-    user = db.first_or_404(sa.select(User).where(User.username == username))
-    userinfo = [
-        {'name': user, 'body': 'Testing'}
-    ]
-    return render_template('user.html', title='My Account', user=user, userinfo=userinfo)

@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 import sqlalchemy as sa
 from app import db
 from app.models import User
@@ -13,11 +13,18 @@ class LoginForm(FlaskForm):
 
 
 class RegistrationForm(FlaskForm):
-    nameofuser = StringField('Name', validators=[DataRequired()])
+    firstname = StringField('First Name', validators=[DataRequired(), Length(min=2, max=20)])
+    lastname = StringField('Last Name', validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    password2 = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
+
+class UpdateAccountForm(FlaskForm):
+    firstname = StringField('First Name',validators=[DataRequired(), Length(min=2, max=20)])
+    lastname = StringField('Last Name',validators=[DataRequired(), Length(min=2, max=20)])
+    email = StringField('Email',validators=[DataRequired(), Email()])
+    submit = SubmitField('Update')
 
 def validate_email(self, email):
     user = db.session.scalar(sa.select(User).where(

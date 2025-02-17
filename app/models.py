@@ -8,28 +8,20 @@ from app import login
 
 class User(UserMixin, db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    nameofuser: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=False)
-    email: so.Mapped[str] = so.mapped_column(sa.String(120), index=True, unique=True)
-    password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256))
-    username: so.Mapped[str] = so.mapped_column(sa.String(128), unique=True, nullable=False)
+    firstname: so.Mapped[str] = so.mapped_column(sa.String(64), nullable=False)
+    lastname: so.Mapped[str] = so.mapped_column(sa.String(64), nullable=False)
+    email: so.Mapped[str] = so.mapped_column(sa.String(120), unique=True, nullable=False)
+    password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256), nullable=False)
 
-    def set_username(self):
-        if self.id and not self.username:  
-            self.username = f"{self.nameofuser}{self.id}"
-
-    @sa.orm.validates("nameofuser")
-    def validate_nameofuser(self, key, value):
-        self.username = f"{value}{self.id}" if self.id else value
-        return value
-
-    def __repr__(self):
-        return '<User {}>'.format(self.email)
     
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+    def __repr__(self):
+        return f"User('{self.firstname}','{self.lastname}', '{self.email}','{self.id}')"
 
 @login.user_loader
 def load_user(id):
