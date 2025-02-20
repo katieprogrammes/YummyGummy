@@ -288,6 +288,9 @@ footer {
     width: 250px;
     padding: 5px 0px 5px 15px;
 }
+.vitamin {
+    font-weight: 550;
+}
 .flavour {
     font-style: italic;
 }
@@ -301,4 +304,109 @@ footer {
 }
 .pagenav {
     color: #10042F;
+}
+#prodtitle {
+    text-align: left;
+    color:#10042F;
+    font-weight: 700;
+    font-size: 3rem;
+}
+.prodinfo {
+    color: #282566;
+    font-weight: 550;
+}
+.prodmininfo {
+    color: #282566;
+}
+
+#proddesc {
+    height: 17rem;
+}
+#proddesc h5 {
+    font-weight: 700;
+}
+#prodhealth {
+    height: 8rem;
+}
+#prodquant {
+    background-color: #EFE8FB;
+    border: solid #282566;
+    color: #282566;
+    padding: 0px 10px;
+    padding-top: 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 4px;
+    border-radius: 20px;
+    width: 10rem;
+    height: 3rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+#quantminus {
+    text-decoration: none;
+    color: #282566;
+    background-color:transparent;
+    float: left;
+    margin-top: 10px;
+    height: 30px;
+    width: 45px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#quantminus h1 {
+    font-weight: 600;
+}
+#quantplus {
+    color: #282566;
+    border: none;
+    background-color:transparent;
+    float: right;
+    margin-top: 8px;
+    height: 40px;
+    width: 40px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#quantplus h1 {
+    font-weight: 500;
+    font-size: 3.5rem;
+}
+#prodbotbut {
+    display: flex;
+    justify-content: flex-start;
+}
+#prodbasket {
+    background-color:#10042F;
+    width: 17rem;
+    height: 3.5rem;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #6388EA;
+    margin: 2rem 0rem;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+#prodwishadd {
+    background-color:#10042F;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #6388EA;
+    margin: 2rem 1rem;
+}
+#prodwish {
+    font-weight: 600;
+}
+#prodimg {
+    width: 750px;
+    margin-bottom: 3rem;
 }

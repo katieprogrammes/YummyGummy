@@ -4,7 +4,7 @@ from app.forms import LoginForm, RegistrationForm, UpdateAccountForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
-from app.models import User
+from app.models import User, Product
 from urllib.parse import urlsplit
 
 @app.route('/')
@@ -68,4 +68,12 @@ def register():
 
 @app.route('/shop')
 def shop():
-    return render_template('shop.html', title='Shop')
+    page = request.args.get("page", 1, type=int)
+    per_page = 8  # Display 8 products per page
+    products = Product.query.paginate(page=page, per_page=per_page, error_out=False)
+    return render_template("shop.html", title="Shop", products=products.items, pagination=products)
+
+@app.route("/product/<int:product_id>")
+def product_detail(product_id):
+    product = Product.query.get_or_404(product_id)  # Fetch product or show 404
+    return render_template("product.html", product=product)

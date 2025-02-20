@@ -35,6 +35,7 @@ class Product(db.Model):
     vitamin: so.Mapped[str] = so.mapped_column(sa.String(255), nullable=False)
     flavour: so.Mapped[str] = so.mapped_column(sa.String(50), index=True, nullable=True)
     price: so.Mapped[float] = so.mapped_column(sa.Numeric(10, 2), nullable=False)
+    description: so.Mapped[str] = so.mapped_column(sa.String(1000), nullable=True)
 
 
 
