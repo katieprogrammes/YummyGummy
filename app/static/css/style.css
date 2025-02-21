@@ -290,9 +290,11 @@ footer {
 }
 .vitamin {
     font-weight: 550;
+    color: #282566;
 }
 .flavour {
     font-style: italic;
+    color: #282566;
 }
 .productlink {
     color: #10042F;
@@ -362,6 +364,7 @@ footer {
     font-weight: 600;
 }
 #quantplus {
+    text-decoration: none;
     color: #282566;
     border: none;
     background-color:transparent;
@@ -383,23 +386,26 @@ footer {
     justify-content: flex-start;
 }
 #prodbasket {
-    background-color:#10042F;
-    width: 17rem;
-    height: 3.5rem;
-    font-size: 2rem;
-    font-weight: 800;
+    text-decoration: none;
     color: #6388EA;
+    background-color:#10042F;
+    border-radius: 5px;
+    width: 18rem;
+    height: 4rem;
     margin: 2rem 0rem;
-    text-align: left;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+#prodbasket h1 {
+    font-weight: 700;
 }
 #prodwishadd {
     background-color:#10042F;
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 2rem;
-    font-weight: 800;
+    width: 4rem;
+    height: 4rem;
+    
     color: #6388EA;
     margin: 2rem 1rem;
 }
@@ -409,4 +415,79 @@ footer {
 #prodimg {
     width: 750px;
     margin-bottom: 3rem;
+}
+/*Cart Styling*/
+.padd {
+    margin: 2rem;
+}
+.cartquantitybutton {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.cartminus {
+    background-color: #282566;
+    color:#B8C6F4;
+    border: none;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.cartplus {
+    background-color: #282566;
+    color:#B8C6F4;
+    border: none;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.cartminustxt {
+    padding-top: 10px;
+}
+.cartplustxt {
+    padding-top: 15px;
+}
+.price {
+    font-weight: 600;
+    color: #282566;
+    margin-top: 2.5rem;
+}
+.remove {
+    color: #282566;
+    background-color: #EFE8FB;
+    border: none;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+}
+.checkout {
+   color:#B8C6F4;
+   background-color: #10042F;
+   border: none;
+   border-radius: 10px;
+   width: 15rem;
+   height: 4rem;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   padding-top: 12px;
+    margin: 5rem 0;
+}
+.checkout h1 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.productnm {
+    color: #282566;
+    font-weight: 700;
 }

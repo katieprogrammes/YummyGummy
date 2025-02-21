@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1 class="ygtitle">Your Cart</h1>
+    <div class="padd"></div>
+    <!-- Check if there are items in the cart -->
+    {% if cart_items %}
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col">
+                {% for item in cart_items %}
+                    <div class="row cart-item">
+                        <div class="col">
+                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225">
+                        </div>
+                        <div class="col">
+                            <h1 class="productnm">{{ item.product.name }}</h1>
+                            <h3 class="vitamin">{{ item.product.vitamin }}</h3>
+                            <h3 class="flavour">{{ item.product.flavour }}</h3>
+                            <div class="row">
+                                <div class="col-8">
+                                    <h4 class="prodmininfo">Quantity</h4>
+                                    <form action="{{ url_for('update_quantity', item_id=item.id) }}" method="post" class="cartquantitybutton">
+                                        <button type="submit" name="action" value="decrease" class="cartminus">-</button>
+                                        <h2>{{ item.quantity }}</h2>
+                                        <button type="submit" name="action" value="increase" class="cartplus">+</button>
+                                    </form>
+                                </div>
+                                <div class="col"> </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <form action="{{ url_for('remove', item_id=item.id) }}" method="post">
+                                <button type="submit" class="remove">
+                                    <img src="/static/images/trash.svg">
+                                    <h3>Remove</h3>
+                                </button>
+                            </form>
+                            <h1 class="price">£{{ item.product.price * item.quantity }}</h1>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-3"></div>
+        </div>
+        
+        <!-- CHECKOUT SECTION-->
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <h1>Total:</h1>
+                <h1>£{{ cart_items|map(attribute='total_price')|sum }}</h1>
+            </div>
+            <div class="col">
+                <form action="{{ url_for('home') }}" method="post"> <!--CHANGE IN FINAL VERSION-->
+                    <button class="checkout">
+                        <h1>Checkout</h1>
+                        <img src="/static/images/bag.svg">
+                    </button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <p>Your cart is currently empty.</p>
+        <a href="{{ url_for('shop') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">CONTINUE SHOPPING</a>
+    {% endif %}
+{% endblock %}

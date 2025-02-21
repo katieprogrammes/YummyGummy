@@ -1,11 +1,12 @@
-from flask import render_template, flash, redirect, url_for, request, abort
+from flask import render_template, flash, redirect, url_for, request, jsonify, abort
 from app import app
 from app.forms import LoginForm, RegistrationForm, UpdateAccountForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
-from app.models import User, Product
+from app.models import User, Product, Cart
 from urllib.parse import urlsplit
+
 
 @app.route('/')
 def home():
@@ -77,3 +78,73 @@ def shop():
 def product_detail(product_id):
     product = Product.query.get_or_404(product_id)  # Fetch product or show 404
     return render_template("product.html", product=product)
+
+
+@app.route("/addToCart/<int:product_id>", methods=["POST"])
+@login_required
+def addToCart(product_id):
+    # Get the quantity from the request, default to 1 if not provided
+    quantity = request.form.get("quantity", 1)  # Assuming you have a quantity field in your form
+
+    # Check if product is already in the cart
+    cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
+
+    if cart_item:
+        # If the product is already in the cart, update the quantity
+        cart_item.quantity += int(quantity)
+        db.session.commit()
+        message = f"{quantity} more added to your cart!"
+    else:
+        # If the product is not in the cart, add it with the selected quantity
+        new_cart_item = Cart(user_id=current_user.id, product_id=product_id, quantity=int(quantity))
+        db.session.add(new_cart_item)
+        db.session.commit()
+        message = "Item added to cart!"
+
+    return jsonify({"message": message})
+
+
+@app.route("/cart", methods=["GET", "POST"])
+@login_required
+def cart():
+    # Get the user's cart items
+    cart_items = Cart.query.join(Product).filter(Cart.user_id == current_user.id).all()
+
+    # Calculate the subtotal
+    subtotal = sum(item.product.price * item.quantity for item in cart_items)
+
+    # Handle POST requests for updating quantities (if you have that functionality)
+    if request.method == "POST":
+        qty = request.form.get("qty")
+        product_id = request.form.get("product_id")
+        cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
+
+        if cart_item:
+            cart_item.quantity = qty
+            db.session.commit()
+
+    return render_template('cart.html', cart_items=cart_items, subtotal=subtotal)
+
+@app.route("/cart/update_quantity/<int:item_id>", methods=["POST"])
+@login_required
+def update_quantity(item_id):
+    action = request.form.get("action")
+    cart_item = Cart.query.get(item_id)
+    
+    if action == "increase":
+        cart_item.quantity += 1
+    elif action == "decrease" and cart_item.quantity > 1:
+        cart_item.quantity -= 1
+    
+    db.session.commit()
+    return redirect(url_for('cart'))
+
+@app.route("/cart/remove/<int:item_id>", methods=["POST"])
+@login_required
+def remove(item_id):
+    cart_item = Cart.query.get(item_id)
+    if cart_item and cart_item.user_id == current_user.id:
+        db.session.delete(cart_item)
+        db.session.commit()
+        flash('Item removed from your cart!', 'success')
+    return redirect(url_for('cart'))
