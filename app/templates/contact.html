@@ -9,27 +9,37 @@
     </div>
     <div class="col"></div>
 </div>
-<!--CONTACT FORM-->
+
+<!-- CONTACT FORM -->
 <div class="row">
     <div class="col"></div>
     <div class="col">
-        <form>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
             <div class="mb-3 mt-3">
                 <label for="email" class="form-label">Where can we get back to you?</label>
-                <input type="email" class="form-control form-control-lg" id="useremail" placeholder="Enter email" name="email" required>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please fill out this field.</div>
+                {{ form.email(class="form-control form-control-lg", placeholder="Enter email") }}
+                {% for error in form.email.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
             </div>
+
             <div class="mb-3">
-                <label for="oderno" class="form-label">Is it about an order?</label>
-                <input type="text" class="form-control form-control-lg" id="userorderno" placeholder="Order No (optional)" name="ordrno">
+                <label for="orderno" class="form-label">Is it about an order?</label>
+                {{ form.order_no(class="form-control form-control-lg", placeholder="Order No (optional)") }}
             </div>
+
             <div class="mb-3">
                 <label for="usermessage" class="form-label">What would you like to say?</label>
-                <textarea class="form-control form-control-lg" id="usermssg" rows="5" placeholder="Message"></textarea>
+                {{ form.message(class="form-control form-control-lg", rows="5", placeholder="Message") }}
+                {% for error in form.message.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
             </div>
-            <!--CONTACT BUTTON-->
-            <button type="submit" class="btn btn-primary btn-lg" id="contactsend">Send</button>
+
+            <!-- CONTACT BUTTON -->
+            {{ form.submit(class="btn btn-primary btn-lg") }}
         </form>  
     </div>
     <div class="col"></div>

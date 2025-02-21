@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length, Optional
 import sqlalchemy as sa
 from app import db
 from app.models import User
@@ -31,3 +31,9 @@ def validate_email(self, email):
         User.email  == email.data))
     if user is not None:
         raise ValidationError('This email is already registered. Please login')
+    
+class ContactForm(FlaskForm):
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    order_no = StringField("Order No (Optional)", validators=[Optional()])
+    message = TextAreaField("Message", validators=[DataRequired()])
+    submit = SubmitField("Send")

@@ -72,22 +72,51 @@
 
         // When clicking "Add to Basket", send an AJAX request
         document.getElementById("prodbasket").addEventListener("click", function (event) {
-            event.preventDefault();
+    event.preventDefault();
+
+    const productId = this.getAttribute("data-product-id");
+    const quantity = document.getElementById("quantity").textContent;
+
+    // Send AJAX request
+    fetch(`/addToCart/${productId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",  // Ensure this is set
+        },
+        body: JSON.stringify({ quantity: quantity })  // Send the quantity as JSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            // Create and show a custom success message (or display notification)
+            showSuccessMessage(data.message);
+        }
+    })
+    .catch(error => console.error("Error:", error));
+});
+
+// Function to show success message on the page
+function showSuccessMessage(message) {
+    // Create a div for the success message
+    const alertDiv = document.createElement('div');
+    alertDiv.classList.add('alert', 'alert-success', 'alert-dismissible', 'fade', 'show');
+    alertDiv.setAttribute('role', 'alert');
+    alertDiv.innerHTML = `${message} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+
+    // Append the alert message to the body (or any container you'd like)
+    document.body.insertBefore(alertDiv, document.body.firstChild);
+
+    window.scrollTo({
+        top: 0, // Scroll to the top of the page
+        behavior: 'smooth' // Smooth scrolling animation
+    });
     
-            const productId = this.getAttribute("data-product-id");
-            const quantity = document.getElementById("quantity").textContent;
-    
-            fetch(`/addToCart/${productId}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",  // Ensure this is set
-                },
-                body: JSON.stringify({ quantity: quantity })  // Send the quantity as JSON
-            })
-            .then(response => response.json())
-            .then(data => alert(data.message))  // Display message from Flask
-            .catch(error => console.error("Error:", error));
-        });
+    // Optionally, remove the message after a few seconds (for auto-dismiss)
+    setTimeout(() => {
+        alertDiv.classList.remove('show');
+        alertDiv.classList.add('fade');
+    }, 5000);  // Hide after 5 seconds
+}
     </script>
 
 {% endblock %}

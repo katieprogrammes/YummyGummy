@@ -1,8 +1,19 @@
+html {
+    height: 100%;
+}
 body {
     font-family: Zain;
     background-color:#EFE8FB;
-    padding-top: 8rem;
+    margin-top: 5rem;
+    height: 100%;
 }
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+
 /*Header Styling*/
 header {
     width: 100%;
@@ -22,10 +33,9 @@ nav a {
     font-size: 1.5rem;
 }
 .toplogo img {
-    float: none;
-    position: relative;
-    left: 370px;
-    top: 10px;
+    margin-top: 10px;
+    margin-left: 335px;
+
 }
 .navright a {
     float: right;
@@ -41,6 +51,7 @@ nav a {
     margin-top: 0.5rem;
 }
 #navbasket {
+    border: none;
     background-color: #B8C6F4;
     color: #282566;
     width: 8rem;
@@ -59,6 +70,7 @@ footer {
     background-color: #282566;
     color: #B8C6F4;
     height: 10rem;
+    margin-top: auto;
 }
 .footleft {
     padding-left: 225px;
@@ -169,8 +181,26 @@ footer {
     color:#282566;
     padding: 1rem 0rem;
 }
-.acctbtn {
-    margin-bottom: 4rem;
+.acctbtngroup {
+   margin-top: 5rem;
+   display: flex;
+   justify-content: space-around;
+}
+.accbtn {
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    background-color:#10042F;
+    width: 15rem;
+    height: 5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #6388EA;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5rem;
 }
 #wishlistbtn {
     background-color:#10042F;
@@ -206,15 +236,41 @@ footer {
     margin-left: 10rem;
     margin-bottom: 2rem;
 }
+
+/*Login Styling*/
+#remember_me {
+    margin-left: 7rem;
+    width: 20px;
+    height: 20px;
+}
+.loginform {
+    margin-left: 4rem;
+}
+.loginform input {
+    background-color: #B8C6F4;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
 .loginbtn {
+    background-color: transparent;
+    border: none;
+    margin: 0 0 4rem 3rem;
+    height: 6rem;
+}
+.loginbtn input {
+    color: #6388EA;
     background-color:#10042F;
     border: none;
     border-radius: 10px;
     width: 12rem;
     font-size: 2.5rem;
     font-weight: 700;
-    color: #6388EA;
     margin: 3rem;
+}
+.logreg {
+    font-weight: 600;
+    margin: 0 0 3rem 8rem;
 }
 /*Shop Styling*/
 .searchgroup {
@@ -288,13 +344,13 @@ footer {
     width: 250px;
     padding: 5px 0px 5px 15px;
 }
-.vitamin {
+.shopvit {
     font-weight: 550;
-    color: #282566;
+    color: #B8C6F4; 
 }
-.flavour {
+.shopflavour {
     font-style: italic;
-    color: #282566;
+    color: #B8C6F4; 
 }
 .productlink {
     color: #10042F;
@@ -307,6 +363,7 @@ footer {
 .pagenav {
     color: #10042F;
 }
+/*Product Page Styling*/
 #prodtitle {
     text-align: left;
     color:#10042F;
@@ -420,6 +477,14 @@ footer {
 .padd {
     margin: 2rem;
 }
+.vitamin {
+    font-weight: 550;
+    color: #282566;
+}
+.flavour {
+    font-style: italic;
+    color: #282566;
+}
 .cartquantitybutton {
     display: flex;
     flex-direction: row;
@@ -481,7 +546,7 @@ footer {
    flex-direction: row;
    justify-content: space-around;
    padding-top: 12px;
-    margin: 5rem 0;
+   margin: 7rem 0 2rem 0;
 }
 .checkout h1 {
     font-weight: 700;
@@ -490,4 +555,58 @@ footer {
 .productnm {
     color: #282566;
     font-weight: 700;
+}
+.carttotal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 45%;
+}
+.carttotal h1 {
+    font-weight: 800;
+    color: #10042F;
+    font-size: 3rem;
+    margin-top: 8rem;
+}
+.backtoshop {
+    display: flex;
+    justify-content: center;
+}
+#emptycart {
+    color:#B8C6F4;
+    background-color: #10042F;
+    border: none;
+    border-radius: 10px;
+    width: 15rem;
+    height: 6rem;
+    padding-top: 12px;
+    margin-top: 7rem;
+}
+#emptycart h2 {
+    font-weight: 700;
+}
+/*Registration Styling*/
+.form-control-label {
+    margin-top: 2rem;
+    font-size: 1.75rem;
+    color: #10042F;
+}
+.form-control {
+    background-color: #B8C6F4;
+    color: #282566;
+}
+.registerbtn {
+    background-color: transparent;
+    border: none;
+    margin-left: 7rem;
+}
+.registerbtn input {
+    color: #6388EA;
+    background-color:#10042F;
+    border: none;
+    border-radius: 10px;
+    width: 12rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 3rem;
 }

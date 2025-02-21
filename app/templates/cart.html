@@ -48,8 +48,10 @@
         <div class="row">
             <div class="col"></div>
             <div class="col">
-                <h1>Total:</h1>
-                <h1>£{{ cart_items|map(attribute='total_price')|sum }}</h1>
+                <div class="carttotal">
+                    <h1>Total:</h1>
+                    <h1>£{{ cart_items|map(attribute='total_price')|sum }}</h1>
+                </div>
             </div>
             <div class="col">
                 <form action="{{ url_for('home') }}" method="post"> <!--CHANGE IN FINAL VERSION-->
@@ -61,7 +63,11 @@
             </div>
         </div>
     {% else %}
-        <p>Your cart is currently empty.</p>
-        <a href="{{ url_for('shop') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">CONTINUE SHOPPING</a>
+        <h2 class="ygsubtitle">Your cart is currently empty.</h2>
+        <div class="backtoshop">
+            <a href="{{ url_for('shop') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" id="emptycart">
+                <h2>Continue Shopping</h2>
+            </a>
+        </div>
     {% endif %}
 {% endblock %}

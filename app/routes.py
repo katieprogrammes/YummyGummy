@@ -1,11 +1,15 @@
-from flask import render_template, flash, redirect, url_for, request, jsonify, abort
+from flask import render_template, flash, redirect, url_for, request, jsonify, abort, make_response
 from app import app
-from app.forms import LoginForm, RegistrationForm, UpdateAccountForm
+from app.forms import LoginForm, RegistrationForm, UpdateAccountForm, ContactForm
 from flask_login import current_user, login_user, logout_user, login_required
 import sqlalchemy as sa
 from app import db
 from app.models import User, Product, Cart
 from urllib.parse import urlsplit
+from flask_mail import Mail, Message
+
+
+mail = Mail(app)
 
 
 @app.route('/')
@@ -84,7 +88,8 @@ def product_detail(product_id):
 @login_required
 def addToCart(product_id):
     # Get the quantity from the request, default to 1 if not provided
-    quantity = request.form.get("quantity", 1)  # Assuming you have a quantity field in your form
+    data = request.get_json()
+    quantity = data.get("quantity", 1)
 
     # Check if product is already in the cart
     cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
@@ -101,8 +106,7 @@ def addToCart(product_id):
         db.session.commit()
         message = "Item added to cart!"
 
-    return jsonify({"message": message})
-
+    return jsonify({'status': 'success', 'message': message})
 
 @app.route("/cart", methods=["GET", "POST"])
 @login_required
@@ -148,3 +152,15 @@ def remove(item_id):
         db.session.commit()
         flash('Item removed from your cart!', 'success')
     return redirect(url_for('cart'))
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        order_no = form.order_no.data
+        message = form.message.data
+        flash("Message sent successfully!", "success")
+        return redirect(url_for("contact"))
+
+    return render_template("contact.html", form=form)
