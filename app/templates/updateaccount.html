@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <h1 class="ygtitle">All About You!</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col">
+            <!--USERS DETAILS-->
+            <div class="accounttxt">
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="form-group">
+                        {{ form.firstname.label(class="form-control-label") }}
+                        {% if form.firstname.errors %}
+                            {{ form.firstname(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.firstname.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.firstname(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+    
+                    <div class="form-group">
+                        {{ form.lastname.label(class="form-control-label") }}
+                        {% if form.lastname.errors %}
+                            {{ form.lastname(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.lastname.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.lastname(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+    
+                    <div class="form-group">
+                        {{ form.email.label(class="form-control-label") }}
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <button class="registerbtn">
+                        {{ form.submit() }}
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+{% endblock %}

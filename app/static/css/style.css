@@ -191,14 +191,14 @@ footer {
     text-align: center;
     border-radius: 10px;
     background-color:#10042F;
-    width: 15rem;
+    width: 12rem;
     height: 5rem;
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     font-weight: 700;
     color: #6388EA;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin: 0 5rem;
 }
@@ -227,14 +227,20 @@ footer {
     font-weight: 500;
     font-size: 2rem;
 }
-#contactsend {
+.contactlabel {
+    font-size: 1.4rem;
+    color:#10042F;
+    font-weight: 550;
+}
+.contactsend {
+    border: none;
+    border-radius: 10px;
     background-color:#10042F;
     width: 15rem;
     font-size: 2.5rem;
     font-weight: 700;
     color: #6388EA;
-    margin-left: 10rem;
-    margin-bottom: 2rem;
+    margin: 2rem 0 2rem 10rem;
 }
 
 /*Login Styling*/

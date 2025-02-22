@@ -27,7 +27,7 @@
             <!--USERS DETAILS-->
             <div class="accounttxt">
                 <h2>
-                    {{ current_user.firstname }}
+                    {{ current_user.firstname }} 
                 </h2>
                 <h2>
                     {{ current_user.lastname }}
@@ -49,7 +49,12 @@
                 <div class="col">
                     <a class="accbtn" role="button">Order History</a>
                 </div>
-                <div class="col"></div>
+                <div class="col">
+                    <a class="accbtn" role="button" href="{{ url_for('editaccount') }}">
+                        Edit Profile
+                        <img src="{{ url_for('static', filename='images/pencil.svg') }}" alt-text="pencil">
+                    </a>
+                </div>
             </div>
         </div>
     </div>

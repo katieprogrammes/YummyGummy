@@ -18,7 +18,7 @@
             {{ form.hidden_tag() }}
 
             <div class="mb-3 mt-3">
-                <label for="email" class="form-label">Where can we get back to you?</label>
+                <label for="email" class="contactlabel">Where can we get back to you?</label>
                 {{ form.email(class="form-control form-control-lg", placeholder="Enter email") }}
                 {% for error in form.email.errors %}
                     <div class="text-danger">{{ error }}</div>
@@ -26,12 +26,12 @@
             </div>
 
             <div class="mb-3">
-                <label for="orderno" class="form-label">Is it about an order?</label>
+                <label for="orderno" class="contactlabel">Is it about an order?</label>
                 {{ form.order_no(class="form-control form-control-lg", placeholder="Order No (optional)") }}
             </div>
 
             <div class="mb-3">
-                <label for="usermessage" class="form-label">What would you like to say?</label>
+                <label for="usermessage" class="contactlabel">What would you like to say?</label>
                 {{ form.message(class="form-control form-control-lg", rows="5", placeholder="Message") }}
                 {% for error in form.message.errors %}
                     <div class="text-danger">{{ error }}</div>
@@ -39,7 +39,7 @@
             </div>
 
             <!-- CONTACT BUTTON -->
-            {{ form.submit(class="btn btn-primary btn-lg") }}
+            {{ form.submit(class="contactsend") }}
         </form>  
     </div>
     <div class="col"></div>

@@ -16,22 +16,36 @@ mail = Mail(app)
 def home():
     return render_template('main.html', title='Home')
 
-@app.route('/account', methods=['GET', 'POST'])
+@app.route('/account')
 @login_required
 def account():
+    return render_template('account.html', title='Account')
+
+
+@app.route('/editaccount', methods=['GET', 'POST'])
+@login_required
+def editaccount():
     form = UpdateAccountForm()
+
     if form.validate_on_submit():
-        current_user.lastname = form.lastname.data
-        current_user.firstname = form.firstname.data
-        current_user.email = form.email.data
-        db.session.commit()
-        flash('Your account has been updated!', 'success')
-        return redirect(url_for('account'))
+        # Check if the email is already in use by another user
+        existing_user = User.query.filter_by(email=form.email.data).first()
+        if existing_user and existing_user.id != current_user.id:
+            flash('Email is already in use. Please choose a different one.', 'danger')
+        else:
+            current_user.firstname = form.firstname.data
+            current_user.lastname = form.lastname.data
+            current_user.email = form.email.data
+            db.session.commit()
+            flash('Your account has been updated!', 'success')
+            return redirect(url_for('account'))
+    
     elif request.method == 'GET':
-        form.lastname.data = current_user.lastname
         form.firstname.data = current_user.firstname
+        form.lastname.data = current_user.lastname
         form.email.data = current_user.email
-    return render_template('account.html', title='Account', form=form)
+        
+    return render_template('updateaccount.html', title='Edit Account', form=form)
     
 @app.route('/logout')
 def logout():
