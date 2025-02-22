@@ -279,13 +279,10 @@ footer {
     margin: 0 0 3rem 8rem;
 }
 /*Shop Styling*/
-.searchgroup {
+.searchbar {
     display: flex;
-    justify-content: flex-start;
-    margin-left: 10px;
-}
-#searchbar {
-    width: 50%;
+    align-items: center;
+    width: 70%;
 }
 #shopsearch {
     border: thin solid #282566;
@@ -299,9 +296,6 @@ footer {
     justify-content: center;
     align-items: center;
     border-radius: 0px 10px 10px 0px;
-}
-#searchbtn img {
-    margin-top: 10px;
 }
 .shoporg {
     display: flex;

@@ -44,7 +44,7 @@ def editaccount():
         form.firstname.data = current_user.firstname
         form.lastname.data = current_user.lastname
         form.email.data = current_user.email
-        
+
     return render_template('updateaccount.html', title='Edit Account', form=form)
     
 @app.route('/logout')
@@ -178,3 +178,79 @@ def contact():
         return redirect(url_for("contact"))
 
     return render_template("contact.html", form=form)
+
+@app.route('/search')
+def search():
+    query = request.args.get('q', '').strip()
+    
+    if query:
+        results = Product.query.filter(
+            db.or_(
+                Product.name.ilike(f"%{query}%"),
+                Product.vitamin.ilike(f"%{query}%"),
+                Product.flavour.ilike(f"%{query}%")
+            )
+        ).all()
+    else:
+        results = []
+
+    return render_template('search_results.html', results=results, query=query)
+
+@app.route('/filter-sort', methods=['GET'])
+def filter_sort():
+    sort_by = request.args.get('sort_by', 'name_asc')
+    filter_vitamin = request.args.get('vitamin', '')
+    filter_flavour = request.args.get('flavour', '')
+    filter_price_min = request.args.get('price_min', None)
+    filter_price_max = request.args.get('price_max', None)
+    query = request.args.get('q', '').strip() 
+    page = request.args.get('page', 1, type=int)
+    per_page = 8
+
+    # Base query for filtering and sorting
+    products_query = Product.query
+
+    # If a search query exists, filter by that query as well
+    if query:
+        products_query = products_query.filter(
+            db.or_(
+                Product.name.ilike(f"%{query}%"),
+                Product.vitamin.ilike(f"%{query}%"),
+                Product.flavour.ilike(f"%{query}%")
+            )
+        )
+
+    # Apply filters
+    if filter_vitamin:
+        products_query = products_query.filter(Product.vitamin.ilike(f"%{filter_vitamin}%"))
+    if filter_flavour:
+        products_query = products_query.filter(Product.flavour.ilike(f"%{filter_flavour}%"))
+    if filter_price_min:
+        products_query = products_query.filter(Product.price >= float(filter_price_min))
+    if filter_price_max:
+        products_query = products_query.filter(Product.price <= float(filter_price_max))
+
+    # Apply sorting
+    if sort_by == 'name_asc':
+        products_query = products_query.order_by(Product.name.asc())
+    elif sort_by == 'name_desc':
+        products_query = products_query.order_by(Product.name.desc())
+    elif sort_by == 'price_asc':
+        products_query = products_query.order_by(Product.price.asc())
+    elif sort_by == 'price_desc':
+        products_query = products_query.order_by(Product.price.desc())
+
+
+    pagination = products_query.paginate(page=page, per_page=per_page, error_out=False)
+    results = pagination.items
+
+
+    return render_template('filter_sort_results.html', 
+                           results=results,
+                           pagination=pagination,
+                           query=query,  
+                           sort_by=sort_by,
+                           filter_vitamin=filter_vitamin,
+                           filter_flavour=filter_flavour,
+                           filter_price_min=filter_price_min,
+                           filter_price_max=filter_price_max)

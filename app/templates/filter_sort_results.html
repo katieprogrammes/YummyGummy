@@ -3,20 +3,36 @@
 {% block body %}
 <h1 class="ygtitle">Shop</h1>
 <div class="row">
+    <!-- Search Bar Section -->
     <div class="col-4">
         <form action="{{ url_for('search') }}" method="get">
             <div class="searchbar">
-                <input type="search" id="shopsearch" name="q" class="form-control" placeholder="Search" required/>
+                <input type="search" id="shopsearch" name="q" class="form-control" placeholder="Search" value="{{ query }}" required />
                 <button type="submit" class="btn" id="searchbtn">
                     <img src="{{ url_for('static', filename='images/searchheart.svg') }}" alt="Search">
                 </button>
             </div>
         </form>
+        <form action="{{ url_for('shop') }}" method="get" class="d-inline">
+            <button type="submit" class="btn" id="clear-search">
+                Clear Search
+            </button>
+        </form>
     </div>
+
+    <!-- Empty Column -->
     <div class="col-4"></div>
+
+    <!-- Filter and Sort Section -->
     <div class="col-4">
         <div class="shoporg">
             <!-- Sorting Dropdown -->
+            <form action="{{ url_for('shop') }}" method="get" class="d-inline">
+                <input type="hidden" name="q" value="{{ query }}">
+                <button type="submit" class="btn" id="clear-sort">
+                    Clear Sort
+                </button>
+            </form>
             <form action="{{ url_for('filter_sort') }}" method="get" class="d-flex">
                 <input type="hidden" name="q" value="{{ query }}">
                 <select name="sort_by" id="sortby-dropdown" class="form-control">
@@ -42,7 +58,7 @@
 
 <!-- Product Grid -->
 <div class="row">
-    {% for product in products %}
+    {% for product in results %}
     <div class="col-3">
         <div class="prodcard">
             <a href="{{ url_for('product_detail', product_id=product.id) }}" class="productlink">
@@ -67,19 +83,19 @@
     <div class="col-3">
         <div class="pagenumb">
             {% if pagination.has_prev %}
-                <h3><a href="{{ url_for('shop', page=pagination.prev_num) }}" class="pagenav">Previous</a></h3>
+                <h3><a href="{{ url_for('filter_sort', page=pagination.prev_num, q=query) }}" class="pagenav">Previous</a></h3>
             {% endif %}
             {% for page_num in pagination.iter_pages() %}
                 {% if page_num %}
                     <h3>
-                        <a href="{{ url_for('shop', page=page_num) }}" class="pagenav">{{ page_num }}</a>
+                        <a href="{{ url_for('filter_sort', page=page_num, q=query) }}" class="pagenav">{{ page_num }}</a>
                     </h3>
                 {% else %}
                     <h3>...</h3>
                 {% endif %}
             {% endfor %}
             {% if pagination.has_next %}
-                <h3><a href="{{ url_for('shop', page=pagination.next_num) }}" class="pagenav">Next</a></h3>
+                <h3><a href="{{ url_for('filter_sort', page=pagination.next_num, q=query) }}" class="pagenav">Next</a></h3>
             {% endif %}
         </div>
     </div>
