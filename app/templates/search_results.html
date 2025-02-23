@@ -2,6 +2,7 @@
 
 {% block body %}
 <h1 class="ygtitle">Search Results</h1>
+<div class="padd"></div>
 <div class="row">
     <div class="col-4">
         <form action="{{ url_for('search') }}" method="get">
@@ -18,25 +19,59 @@
             </button>
         </form>
     </div>
-    <div class="col-4"></div>
-    <div class="col-4">
+    <div class="col">
         <div class="shoporg">
             <!-- Sorting Dropdown -->
             <form action="{{ url_for('filter_sort') }}" method="get" class="d-flex">
                 <input type="hidden" name="q" value="{{ query }}">
-                <select name="sort_by" id="sortby-dropdown" class="form-control">
-                    <option value="name_asc" {% if sort_by == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
-                    <option value="name_desc" {% if sort_by == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
-                    <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}>Price (Low-High)</option>
-                    <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}>Price (High-Low)</option>
-                </select>
-                <button type="submit" class="btn" id="sortby">Sort</button>
+                <input type="hidden" name="sort_by" id="selected-sort" value="">
+                <div class="sortmenu">
+                    <h3>Sort:</h3>
+                    <button class="btn btn-light dropdown-toggle custom-dropdown" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ "Select sorting..." if not sort_by else 
+                            ("Name (A-Z)" if sort_by == "name_asc" else 
+                            "Name (Z-A)" if sort_by == "name_desc" else 
+                            "Price (Low-High)" if sort_by == "price_asc" else 
+                            "Price (High-Low)" if sort_by == "price_desc" else "Select sorting...") }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#" data-value="name_asc">Name (A-Z)</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="name_desc">Name (Z-A)</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="price_asc">Price (Low-High)</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="price_desc">Price (High-Low)</a></li>
+                    </ul>
+                    <button type="submit" class="btn btn-primary ms-2" id="sortbutton">Sort</button>
+                </div>
             </form>
-            <!-- Filter -->
-            <button type="submit" class="btn" id="filter">
-                Filter By
-                <img src="{{ url_for('static', filename='images/filter.svg') }}" alt="Filter">
-            </button>
+
+            <!-- Filter Form (Vitamin & Flavour) -->
+            <div class="filtersection">
+                <h3>Filters:</h3>
+                <form action="{{ url_for('filter_sort') }}" method="get" class="d-flex mt-2">
+                    <input type="hidden" name="q" value="{{ query }}">
+                    <input type="hidden" name="sort_by" value="{{ sort_by }}">
+
+                    <!-- Vitamin Filter Dropdown -->
+                    <select name="vitamin" id="vitaminDropdown" class="form-control">
+                        <option value="" {% if not filter_vitamin %}selected{% endif %}>Select Vitamin</option>
+                        <option value="Vitamin C" {% if filter_vitamin == 'Vitamin C' %}selected{% endif %}>Vitamin C</option>
+                        <option value="Vitamin D" {% if filter_vitamin == 'Vitamin D' %}selected{% endif %}>Vitamin D</option>
+                        <option value="Vitamin B" {% if filter_vitamin == 'Vitamin B' %}selected{% endif %}>Vitamin B</option>
+                        <!-- Add more options here -->
+                    </select>
+
+                    <!-- Flavour Filter Dropdown -->
+                    <select name="flavour" id="flavourDropdown" class="form-control ms-3">
+                        <option value="" {% if not filter_flavour %}selected{% endif %}>Select Flavour</option>
+                        <option value="Strawberry" {% if filter_flavour == 'Strawberry' %}selected{% endif %}>Strawberry</option>
+                        <option value="Orange" {% if filter_flavour == 'Orange' %}selected{% endif %}>Orange</option>
+                        <option value="Mango" {% if filter_flavour == 'Mango' %}selected{% endif %}>Mango</option>
+                        <!-- Add more options here -->
+                    </select>
+
+                    <button type="submit" class="btn btn-primary ms-2" id="apply-filters">Apply</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

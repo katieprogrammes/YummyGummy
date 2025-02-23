@@ -96,7 +96,7 @@ def shop():
 @app.route("/product/<int:product_id>")
 def product_detail(product_id):
     product = Product.query.get_or_404(product_id)  # Fetch product or show 404
-    return render_template("product.html", product=product)
+    return render_template("product.html", product=product, title=product.name)
 
 
 @app.route("/addToCart/<int:product_id>", methods=["POST"])
@@ -142,7 +142,7 @@ def cart():
             cart_item.quantity = qty
             db.session.commit()
 
-    return render_template('cart.html', cart_items=cart_items, subtotal=subtotal)
+    return render_template('cart.html', cart_items=cart_items, subtotal=subtotal, title="Cart")
 
 @app.route("/cart/update_quantity/<int:item_id>", methods=["POST"])
 @login_required
@@ -178,7 +178,7 @@ def contact():
         flash("Message sent successfully!", "success")
         return redirect(url_for("contact"))
 
-    return render_template("contact.html", form=form)
+    return render_template("contact.html", form=form, title="Contact Us")
 
 @app.route('/search')
 def search():
@@ -195,7 +195,7 @@ def search():
     else:
         results = []
 
-    return render_template('search_results.html', results=results, query=query)
+    return render_template('search_results.html', results=results, query=query, title="Shop")
 
 @app.route('/filter-sort', methods=['GET'])
 def filter_sort():
@@ -258,4 +258,5 @@ def filter_sort():
                            filter_vitamin=filter_vitamin,
                            filter_flavour=filter_flavour,
                            filter_price_min=filter_price_min,
-                           filter_price_max=filter_price_max)
+                           filter_price_max=filter_price_max,
+                            title="Shop")
