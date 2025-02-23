@@ -22,6 +22,11 @@ def home():
 def account():
     return render_template('account.html', title='Account')
 
+@app.route('/faq')
+@login_required
+def faq():
+    return render_template('faq.html', title='FAQ')
+
 
 @app.route('/editaccount', methods=['GET', 'POST'])
 @login_required
