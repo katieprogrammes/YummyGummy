@@ -51,23 +51,8 @@
                     <input type="hidden" name="q" value="{{ query }}">
                     <input type="hidden" name="sort_by" value="{{ sort_by }}">
 
-                    <!-- Vitamin Filter Dropdown -->
-                    <select name="vitamin" id="vitaminDropdown" class="form-control">
-                        <option value="" {% if not filter_vitamin %}selected{% endif %}>Select Vitamin</option>
-                        <option value="Vitamin C" {% if filter_vitamin == 'Vitamin C' %}selected{% endif %}>Vitamin C</option>
-                        <option value="Vitamin D" {% if filter_vitamin == 'Vitamin D' %}selected{% endif %}>Vitamin D</option>
-                        <option value="Vitamin B" {% if filter_vitamin == 'Vitamin B' %}selected{% endif %}>Vitamin B</option>
-                        <!-- Add more options here -->
-                    </select>
-
-                    <!-- Flavour Filter Dropdown -->
-                    <select name="flavour" id="flavourDropdown" class="form-control ms-3">
-                        <option value="" {% if not filter_flavour %}selected{% endif %}>Select Flavour</option>
-                        <option value="Strawberry" {% if filter_flavour == 'Strawberry' %}selected{% endif %}>Strawberry</option>
-                        <option value="Orange" {% if filter_flavour == 'Orange' %}selected{% endif %}>Orange</option>
-                        <option value="Mango" {% if filter_flavour == 'Mango' %}selected{% endif %}>Mango</option>
-                        <!-- Add more options here -->
-                    </select>
+                    {% include "shopvitaminfilt.html" %}
+                    {% include "shopflavourfilt.html" %}
 
                     <button type="submit" class="btn btn-primary ms-2" id="apply-filters">Apply</button>
                 </form>

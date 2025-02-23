@@ -1,0 +1,15 @@
+<select name="vitamin" id="vitaminDropdown" class="form-control">
+    <option value="" {% if not filter_vitamin %}selected{% endif %}>Select Vitamin</option>
+    <option value="Vitamin A" {% if filter_vitamin == 'Vitamin A' %}selected{% endif %}>Vitamin A</option>
+    <option value="Vitamin B" {% if filter_vitamin == 'Vitamin B' %}selected{% endif %}>Vitamin B</option>
+    <option value="Vitamin C" {% if filter_vitamin == 'Vitamin C' %}selected{% endif %}>Vitamin C</option>
+    <option value="Vitamin D" {% if filter_vitamin == 'Vitamin D' %}selected{% endif %}>Vitamin D</option>
+    <option value="Vitamin E" {% if filter_vitamin == 'Vitamin E' %}selected{% endif %}>Vitamin E</option>
+    <option value="Vitamin K" {% if filter_vitamin == 'Vitamin K' %}selected{% endif %}>Vitamin K</option>
+    <option value="B12 and Iron" {% if filter_vitamin == 'B12 and Iron' %}selected{% endif %}>B12 and Iron</option>
+    <option value="Calcium" {% if filter_vitamin == 'Calcium' %}selected{% endif %}>Calcium</option>
+    <option value="Magnesium" {% if filter_vitamin == 'Magnesium' %}selected{% endif %}>Magnesium</option>
+    <option value="Multivitamin" {% if filter_vitamin == 'Multivitamin' %}selected{% endif %}>Multivitamin</option>
+    <option value="Iron" {% if filter_vitamin == 'Iron' %}selected{% endif %}>Iron</option>
+    <option value="A C D E K" {% if filter_vitamin == 'A C D E K' %}selected{% endif %}>A C D E K</option>
+</select>

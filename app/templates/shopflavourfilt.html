@@ -1,0 +1,15 @@
+<select name="flavour" id="flavourDropdown" class="form-control ms-3">
+    <option value="" {% if not filter_flavour %}selected{% endif %}>Select Flavour</option>
+    <option value="Apple" {% if filter_flavour == 'Apple' %}selected{% endif %}>Apple</option>
+    <option value="Banana" {% if filter_flavour == 'Banana' %}selected{% endif %}>Banana</option>
+    <option value="Blueberry" {% if filter_flavour == 'Blueberry' %}selected{% endif %}>Blueberry</option>
+    <option value="Kiwi" {% if filter_flavour == 'Kiwi' %}selected{% endif %}>Kiwi</option>
+    <option value="Mango" {% if filter_flavour == 'Mango' %}selected{% endif %}>Mango</option>
+    <option value="Multiple" {% if filter_flavour == 'Multiple' %}selected{% endif %}>Multiple</option>
+    <option value="Orange" {% if filter_flavour == 'Orange' %}selected{% endif %}>Orange</option>
+    <option value="Peach" {% if filter_flavour == 'Peach' %}selected{% endif %}>Peach</option>
+    <option value="Strawberry" {% if filter_flavour == 'Strawberry' %}selected{% endif %}>Strawberry</option>
+    <option value="Tropical" {% if filter_flavour == 'Tropical' %}selected{% endif %}>Tropical</option>
+    <option value="Vanilla" {% if filter_flavour == 'Vanilla' %}selected{% endif %}>Vanilla</option>
+    <option value="Watermelon" {% if filter_flavour == 'Watermelon' %}selected{% endif %}>Watermelon</option>
+</select>
