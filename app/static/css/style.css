@@ -780,3 +780,19 @@ footer {
     color: #282566;
     font-weight: 600;
 }
+/*Error handling styling*/
+.ygerrortext {
+    text-align: center;
+    margin: 4rem 0;
+}
+.ygerrortext a {
+    color: #282566;
+    font-weight: 800;
+}
+.ygerrtitle {
+    text-align: center;
+    color:#282566;
+    font-weight: 700;
+    font-size: 5rem;
+    margin-bottom: 4rem;
+}

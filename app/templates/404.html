@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1 class="ygerrtitle">Oops!</h1>
+    <h2 class="ygsubtitle">Something seems to have gone wrong</h2>
+    <div class="padd"></div>
+    <a href="{{ url_for('home') }}"><h3 class="ygerrortext">Click here to go back to the homepage</a></h3>
+    <h5 class="ygerrortext">Sorry about that!</h5>
+{% endblock %}
