@@ -20,37 +20,60 @@
         </form>
     </div>
 
-    <!-- Empty Column -->
-    <div class="col-4"></div>
 
     <!-- Filter and Sort Section -->
-    <div class="col-4">
+    <div class="col">
         <div class="shoporg">
             <!-- Sorting Dropdown -->
-            <form action="{{ url_for('shop') }}" method="get" class="d-inline">
-                <input type="hidden" name="q" value="{{ query }}">
-                <button type="submit" class="btn" id="clear-sort">
-                    Clear Sort
-                </button>
-            </form>
             <form action="{{ url_for('filter_sort') }}" method="get" class="d-flex">
                 <input type="hidden" name="q" value="{{ query }}">
-                <select name="sort_by" id="sortby-dropdown" class="form-control">
-                    <option value="name_asc" {% if sort_by == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
-                    <option value="name_desc" {% if sort_by == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
-                    <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}>Price (Low-High)</option>
-                    <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}>Price (High-Low)</option>
+                <input type="hidden" name="sort_by" id="selected-sort" value="">
+                <div class="searchmenu">
+                    <button class="btn btn-light dropdown-toggle custom-dropdown" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select sorting...
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#" data-value="name_asc">Name (A-Z)</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="name_desc">Name (Z-A)</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="price_asc">Price (Low-High)</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="price_desc">Price (High-Low)</a></li>
+                    </ul>
+                </div>
+                <button type="submit" class="btn btn-primary ms-2" id="sortbutton">Sort</button>
+            </form>
+            
+            <!-- Vitamin Filter Dropdown -->
+            <form action="{{ url_for('filter_sort') }}" method="get" class="d-flex">
+                <input type="hidden" name="q" value="{{ query }}">
+                <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                <select name="vitamin" id="vitaminDropdown" class="form-control">
+                    <option value="" {% if not filter_vitamin %}selected{% endif %}>Select Vitamin</option>
+                    <option value="Vitamin C" {% if filter_vitamin == 'Vitamin C' %}selected{% endif %}>Vitamin C</option>
+                    <option value="Vitamin D" {% if filter_vitamin == 'Vitamin D' %}selected{% endif %}>Vitamin D</option>
+                    <option value="Vitamin B" {% if filter_vitamin == 'Vitamin B' %}selected{% endif %}>Vitamin B</option>
+                    <!-- Add more options here -->
                 </select>
-                <button type="submit" class="btn" id="sortby">Sort</button>
+                <button type="submit" class="btn" id="vitamin-filter">Apply Vitamin Filter</button>
             </form>
 
-            <!-- Filter Button -->
+            <!-- Flavour Filter Dropdown -->
             <form action="{{ url_for('filter_sort') }}" method="get" class="d-flex mt-2">
                 <input type="hidden" name="q" value="{{ query }}">
-                <button type="submit" class="btn" id="filter">
-                    Filter By
-                    <img src="{{ url_for('static', filename='images/filter.svg') }}" alt="Filter">
-                </button>
+                <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                <select name="flavour" id="flavourDropdown" class="form-control">
+                    <option value="" {% if not filter_flavour %}selected{% endif %}>Select Flavour</option>
+                    <option value="Strawberry" {% if filter_flavour == 'Strawberry' %}selected{% endif %}>Strawberry</option>
+                    <option value="Orange" {% if filter_flavour == 'Orange' %}selected{% endif %}>Orange</option>
+                    <option value="Mango" {% if filter_flavour == 'Mango' %}selected{% endif %}>Mango</option>
+                    <!-- Add more options here -->
+                </select>
+                <button type="submit" class="btn" id="flavour-filter">Apply Flavour Filter</button>
+            </form>
+            <!-- Clear Filter Button -->
+            <form action="{{ url_for('filter_sort') }}" method="get" class="d-inline mt-2">
+                <input type="hidden" name="q" value="{{ query }}">
+                <input type="hidden" name="sort_by" value="{{ sort_by }}">
+                <button type="submit" class="btn btn-secondary" id="clearfilter">Clear Filters</button>
             </form>
         </div>
     </div>
@@ -103,3 +126,27 @@
 </div>
 
 {% endblock %}
+<script>
+    // Clear Search Button Logic
+    document.getElementById("clear-search").addEventListener("click", function(e) {
+        e.preventDefault();
+        window.location.href = "{{ url_for('shop') }}"; // Redirect to shop without search parameters
+    });
+
+    // Clear Sort Button Logic
+    document.getElementById("clear-sort").addEventListener("click", function(e) {
+        e.preventDefault();
+        window.location.href = "{{ url_for('shop') }}"; // Redirect to shop without sorting parameters
+    });
+
+    // Clear Filter Button Logic
+    document.getElementById("clearfilter").addEventListener("click", function(e) {
+        e.preventDefault();
+        const url = new URL(window.location.href);
+        url.searchParams.delete("vitamin");
+        url.searchParams.delete("flavour");
+        url.searchParams.delete("price_min");
+        url.searchParams.delete("price_max");
+        window.location.href = url.toString(); // Redirect to filtered URL without filters
+    });
+</script>

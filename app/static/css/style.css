@@ -311,13 +311,99 @@ footer {
     display: flex;
     justify-content: space-between;
 }
-#sortby {
-    background-color: #B8C6F4;
-    color: #282566;
-    border: thin solid #282566;
+
+/*Dropdown Button Styling */
+
+.custom-dropdown {
     width: 150px;
-    font-size: 20px;
-    text-align: left;
+    height: 45px;
+    background-color: #B8C6F4;
+    border: 1px solid #10042F;
+    color: #10042F;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.custom-dropdown:hover {
+    background-color: #282566 !important;
+    color: #EFE8FB !important;
+}
+.custom-dropdown.show{
+    background-color: #6388EA !important;
+    color: #EFE8FB !important;
+}
+.dropdown-menu {
+    background-color: #B8C6F4;
+    color: #10042F;
+}
+
+.dropdown-item {
+    position: relative;
+    font-size: 1.25rem;  
+}
+.dropdown-item:hover {
+    background-color: #282566;
+    color: #EFE8FB !important;
+}
+.dropdown-item:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+#sortbutton {
+    background-color: #282566;
+    color: #B8C6F4;
+    height: 45px;
+    border: none;
+    width: 70px;
+    font-size: 1.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filtersection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 50%;
+}
+.filtersection h2 {
+    font-weight: 600;
+    color: #282566;
+}
+#vitaminDropdown {
+    width: 150px;
+    height: 45px;
+    background-color: #B8C6F4;
+    border: 1px solid #10042F;
+    color: #10042F;
+    font-size: 1.25rem;
+}
+#flavourDropdown {
+    width: 150px;
+    height: 45px;
+    background-color: #B8C6F4;
+    border: 1px solid #10042F;
+    color: #10042F;
+    font-size: 1.25rem;
+}
+#apply-filters {
+    background-color: #282566;
+    color: #B8C6F4;
+    height: 45px;
+    border: none;
+    width: 90px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #pagedd {
     background-color: #B8C6F4;

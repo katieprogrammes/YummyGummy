@@ -2,6 +2,7 @@ from flask import render_template, flash, redirect, url_for, request, jsonify, a
 from app import app
 from app.forms import LoginForm, RegistrationForm, UpdateAccountForm, ContactForm
 from flask_login import current_user, login_user, logout_user, login_required
+from sqlalchemy import or_, and_
 import sqlalchemy as sa
 from app import db
 from app.models import User, Product, Cart
@@ -199,10 +200,10 @@ def search():
 @app.route('/filter-sort', methods=['GET'])
 def filter_sort():
     sort_by = request.args.get('sort_by', 'name_asc')
-    filter_vitamin = request.args.get('vitamin', '')
-    filter_flavour = request.args.get('flavour', '')
-    filter_price_min = request.args.get('price_min', None)
-    filter_price_max = request.args.get('price_max', None)
+    filter_vitamin = request.args.get('vitamin', '').strip()
+    filter_flavour = request.args.get('flavour', '').strip()
+    filter_price_min = request.args.get('price_min', type=float)
+    filter_price_max = request.args.get('price_max', type=float)
     query = request.args.get('q', '').strip() 
     page = request.args.get('page', 1, type=int)
     per_page = 8
@@ -216,7 +217,8 @@ def filter_sort():
             db.or_(
                 Product.name.ilike(f"%{query}%"),
                 Product.vitamin.ilike(f"%{query}%"),
-                Product.flavour.ilike(f"%{query}%")
+                Product.flavour.ilike(f"%{query}%"),
+                Product.description.ilike(f"%{query}%")
             )
         )
 
@@ -225,10 +227,13 @@ def filter_sort():
         products_query = products_query.filter(Product.vitamin.ilike(f"%{filter_vitamin}%"))
     if filter_flavour:
         products_query = products_query.filter(Product.flavour.ilike(f"%{filter_flavour}%"))
-    if filter_price_min:
-        products_query = products_query.filter(Product.price >= float(filter_price_min))
-    if filter_price_max:
-        products_query = products_query.filter(Product.price <= float(filter_price_max))
+    if filter_price_min is not None:
+        products_query = products_query.filter(Product.price >= filter_price_min)
+    if filter_price_max is not None:
+        products_query = products_query.filter(Product.price <= filter_price_max)
+
+    
+
 
     # Apply sorting
     if sort_by == 'name_asc':
