@@ -8,7 +8,8 @@ from app import db
 from app.models import User, Product, Cart
 from urllib.parse import urlsplit
 from flask_mail import Mail, Message
-
+import requests
+from config import Config
 
 mail = Mail(app)
 
@@ -104,41 +105,21 @@ def product_detail(product_id):
     return render_template("product.html", product=product, title=product.name)
 
 
-@app.route("/addToCart/<int:product_id>", methods=["POST"])
-@login_required
-def addToCart(product_id):
-    # Get the quantity from the request, default to 1 if not provided
-    data = request.get_json()
-    quantity = data.get("quantity", 1)
-
-    # Check if product is already in the cart
-    cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
-
-    if cart_item:
-        # If the product is already in the cart, update the quantity
-        cart_item.quantity += int(quantity)
-        db.session.commit()
-        message = f"{quantity} more added to your cart!"
-    else:
-        # If the product is not in the cart, add it with the selected quantity
-        new_cart_item = Cart(user_id=current_user.id, product_id=product_id, quantity=int(quantity))
-        db.session.add(new_cart_item)
-        db.session.commit()
-        message = "Item added to cart!"
-
-    return jsonify({'status': 'success', 'message': message})
-
 @app.route("/cart", methods=["GET", "POST"])
 @login_required
 def cart():
-    # Get the user's cart items
-    cart_items = Cart.query.join(Product).filter(Cart.user_id == current_user.id).all()
+    if request.method == "GET":
+        # Get the user's cart items
+        cart_items = Cart.query.join(Product).filter(Cart.user_id == current_user.id).all()
 
-    # Calculate the subtotal
-    subtotal = sum(item.product.price * item.quantity for item in cart_items)
+        # Calculate the subtotal
+        subtotal = sum(item.product.price * item.quantity for item in cart_items)
 
-    # Handle POST requests for updating quantities (if you have that functionality)
-    if request.method == "POST":
+        # Render the cart page template (no API call here for GET)
+        return render_template("cart.html", title="Cart", cart_items=cart_items, subtotal=subtotal)
+
+    # Handle POST requests for updating quantities (API call functionality)
+    elif request.method == "POST":
         qty = request.form.get("qty")
         product_id = request.form.get("product_id")
         cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
@@ -147,30 +128,35 @@ def cart():
             cart_item.quantity = qty
             db.session.commit()
 
-    return render_template('cart.html', cart_items=cart_items, subtotal=subtotal, title="Cart")
+        # You can still return a JSON response to be used by JavaScript
+        return jsonify({'status': 'success', 'message': 'Cart updated!'})
+
 
 @app.route("/cart/update_quantity/<int:item_id>", methods=["POST"])
 @login_required
 def update_quantity(item_id):
     action = request.form.get("action")
-    cart_item = Cart.query.get(item_id)
+    api_url = f"{Config.API_BASE_URL}/cart/update_quantity/{item_id}"
+    response = requests.post(api_url, json={"action": action})
     
-    if action == "increase":
-        cart_item.quantity += 1
-    elif action == "decrease" and cart_item.quantity > 1:
-        cart_item.quantity -= 1
-    
-    db.session.commit()
+    if response.status_code == 200:
+        flash(response.json()["message"], "success")
+    else:
+        flash(response.json().get("error", "An error occurred"), "danger")
+
     return redirect(url_for('cart'))
 
 @app.route("/cart/remove/<int:item_id>", methods=["POST"])
 @login_required
 def remove(item_id):
-    cart_item = Cart.query.get(item_id)
-    if cart_item and cart_item.user_id == current_user.id:
-        db.session.delete(cart_item)
-        db.session.commit()
-        flash('Item removed from your cart!', 'success')
+    api_url = f"{Config.API_BASE_URL}/cart/{item_id}"
+    response = requests.delete(api_url)
+
+    # Handle the response from the API
+    if response.status_code == 200:
+        flash(response.json()["message"], "success")
+    else:
+        flash(response.json().get("error", "An error occurred"), "danger")
     return redirect(url_for('cart'))
 
 @app.route("/contact", methods=["GET", "POST"])

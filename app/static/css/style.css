@@ -796,3 +796,6 @@ footer {
     font-size: 5rem;
     margin-bottom: 4rem;
 }
+.item-price {
+    display: none;
+}

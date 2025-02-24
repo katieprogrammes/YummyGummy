@@ -17,25 +17,25 @@
                             <h1 class="productnm">{{ item.product.name }}</h1>
                             <h3 class="vitamin">{{ item.product.vitamin }}</h3>
                             <h3 class="flavour">{{ item.product.flavour }}</h3>
+                            <h1 class="item-price">£{{ item.product.price }}</h1> <!--Purely for Javascript-->
                             <div class="row">
                                 <div class="col-8">
                                     <h4 class="prodmininfo">Quantity</h4>
-                                    <form action="{{ url_for('update_quantity', item_id=item.id) }}" method="post" class="cartquantitybutton">
-                                        <button type="submit" name="action" value="decrease" class="cartminus">-</button>
-                                        <h2>{{ item.quantity }}</h2>
-                                        <button type="submit" name="action" value="increase" class="cartplus">+</button>
-                                    </form>
+                                    <!-- Cart item quantity buttons -->
+                                        <div class="cartquantitybutton" id="cart-item-{{ item.id }}">
+                                            <button type="button" class="cartminus" data-cart-item-id="{{ item.id }}" data-action="decrease">-</button>
+                                            <h2 id="quantity-{{ item.id }}">{{ item.quantity }}</h2>
+                                            <button type="button" class="cartplus" data-cart-item-id="{{ item.id }}" data-action="increase">+</button>
+                                        </div>
                                 </div>
                                 <div class="col"> </div>
                             </div>
                         </div>
                         <div class="col">
-                            <form action="{{ url_for('remove', item_id=item.id) }}" method="post">
-                                <button type="submit" class="remove">
-                                    <img src="/static/images/trash.svg">
-                                    <h3>Remove</h3>
-                                </button>
-                            </form>
+                            <button type="button" class="remove" data-item-id="{{ item.id }}">
+                                <img src="/static/images/trash.svg">
+                                <h3>Remove</h3>
+                            </button>
                             <h1 class="price">£{{ item.product.price * item.quantity }}</h1>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
             <div class="col">
                 <div class="carttotal">
                     <h1>Total:</h1>
-                    <h1>£{{ cart_items|map(attribute='total_price')|sum }}</h1>
+                    <h1 id="cart-total">£{{ cart_items|map(attribute='total_price')|sum }}</h1>
                 </div>
             </div>
             <div class="col">

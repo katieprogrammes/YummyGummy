@@ -6,11 +6,18 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 
+# Importing and registering existing routes and models
 from app import routes, models
 
+# Registering error handlers
 from errors import errors as errors_bp
 app.register_blueprint(errors_bp)
+
+# Importing and registering the API Blueprint
+from app.api.routes import api_bp
+app.register_blueprint(api_bp, url_prefix="/api") 

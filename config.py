@@ -10,4 +10,5 @@ class Config:
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'yummygummycontact@gmail.com'
+    API_BASE_URL = "http://127.0.0.1:5000/api"
 
