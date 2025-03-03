@@ -17,10 +17,6 @@
                             <h4 class="prodmininfo">Product Description</h4>
                             <h5>{{ product.description }}</h5>
                         </div>
-                        <div id="prodhealth">
-                            <h4 class="prodmininfo">Health Benefits</h4>
-                            <p>{{ product.health_benefits or "No health benefits listed." }}</p>
-                        </div>
                         <h1 class="prodinfo">£{{ "%.2f"|format(product.price) }}</h1>
                         <h2 class="prodmininfo">Quantity</h2>
                         <div id="quantbutt">

@@ -13,36 +13,36 @@
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
-<header>
-    <div class=".container-fluid">
-        <nav>
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('shop') }}">Shop</a>    
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-            <a href="{{ url_for('faq') }}">FAQ</a>
-        </nav>
-        <nav class="navright">
-            <a class="btn btn-primary" href="{{ url_for('cart') }}" role="button" id="navbasket">
-                Basket
-                <img src="{{ url_for('static', filename='images/basket.svg') }}" alt-text="basket" id="navbskticon">
-            </a>
-            <a href="{{ url_for('login') }}">
-                <img src="{{ url_for('static', filename='images/person.svg') }}" alt-text="account" id="navacct">
-            </a>
-        </nav>
-        <div class="toplogo">
-            <a href="{{ url_for('home') }}">
-                <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="logo" height="65">
-            </a>
-        </div>
-    </div>
-</header>
 <body>
+    <header>
+        <div class=".container-fluid">
+            <nav>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('shop') }}">Shop</a>    
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="{{ url_for('faq') }}">FAQ</a>
+            </nav>
+            <nav class="navright">
+                <a class="btn btn-primary" href="{{ url_for('cart') }}" role="button" id="navbasket">
+                    Basket
+                    <img src="{{ url_for('static', filename='images/basket.svg') }}" alt-text="basket" id="navbskticon">
+                </a>
+                <a href="{{ url_for('login') }}">
+                    <img src="{{ url_for('static', filename='images/person.svg') }}" alt-text="account" id="navacct">
+                </a>
+            </nav>
+            <div class="toplogo">
+                <a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="logo" height="65">
+                </a>
+            </div>
+        </div>
+    </header>
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
-            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            <div class="alert alert-{{ category }} custom-alert alert-dismissible fade show" role="alert">
                 {{ message }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -59,15 +59,13 @@
             <div class="container-fluid">
                 <nav class="footleft">
                     <a href="{{ url_for('home') }}">Home</a>
-                    <a href="/">Shop</a>    
+                    <a href="{{ url_for('shop') }}">Shop</a>    
                     <a href="/about">About</a>
-                    <a href="/contact">Contact</a>
                 </nav>
                 <nav class="footright">
-                    <a href="/">Terms</a>
-                    <a href="/">Privacy</a>
+                    <a href="{{ url_for('contact') }}">Contact</a>
                     <a href="{{ url_for('login') }}">Account</a>
-                    <a href="/">FAQ</a>
+                    <a href="{{ url_for('faq') }}">FAQ</a>
                 </nav>
                 <div class="btmlogo">
                     <a href="{{ url_for('home') }}">

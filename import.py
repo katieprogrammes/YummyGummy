@@ -6,7 +6,7 @@ from app.models import Product
 
 def main():
     with app.app_context():  
-        with open("products.csv", newline="") as f:
+        with open("products.csv", newline="", encoding="utf-8-sig") as f:
             reader = csv.reader(f)
             for name, vitamin, flavour, price, description in reader:
                 # Check if the product already exists based on the name (or another unique field)

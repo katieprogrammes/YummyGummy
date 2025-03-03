@@ -24,7 +24,6 @@ def account():
     return render_template('account.html', title='Account')
 
 @app.route('/faq')
-@login_required
 def faq():
     return render_template('faq.html', title='FAQ')
 
@@ -44,7 +43,7 @@ def editaccount():
             current_user.lastname = form.lastname.data
             current_user.email = form.email.data
             db.session.commit()
-            flash('Your account has been updated!', 'success')
+            flash('Your account has been updated!', 'custom-success')
             return redirect(url_for('account'))
     
     elif request.method == 'GET':
@@ -71,7 +70,7 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
-        flash('You are logged in!')
+        flash('You are logged in!', 'custom-success')
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('home')
@@ -88,7 +87,7 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Congratulations, you are now a registered user!')
+        flash('Congratulations, you are now a registered user!', 'custom-success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
@@ -129,7 +128,7 @@ def cart():
             db.session.commit()
 
         # You can still return a JSON response to be used by JavaScript
-        return jsonify({'status': 'success', 'message': 'Cart updated!'})
+        return jsonify({'status': 'custom-success', 'message': 'Cart updated!'})
 
 
 @app.route("/cart/update_quantity/<int:item_id>", methods=["POST"])
@@ -140,7 +139,7 @@ def update_quantity(item_id):
     response = requests.post(api_url, json={"action": action})
     
     if response.status_code == 200:
-        flash(response.json()["message"], "success")
+        flash(response.json()["message"], "custom-success")
     else:
         flash(response.json().get("error", "An error occurred"), "danger")
 
@@ -154,7 +153,7 @@ def remove(item_id):
 
     # Handle the response from the API
     if response.status_code == 200:
-        flash(response.json()["message"], "success")
+        flash(response.json()["message"], "custom-success")
     else:
         flash(response.json().get("error", "An error occurred"), "danger")
     return redirect(url_for('cart'))
@@ -166,7 +165,7 @@ def contact():
         email = form.email.data
         order_no = form.order_no.data
         message = form.message.data
-        flash("Message sent successfully!", "success")
+        flash("Message sent successfully!", "custom-success")
         return redirect(url_for("contact"))
 
     return render_template("contact.html", form=form, title="Contact Us")

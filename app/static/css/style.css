@@ -481,14 +481,12 @@ footer {
 }
 
 #proddesc {
-    height: 17rem;
+    height: 21rem;
 }
 #proddesc h5 {
     font-weight: 700;
 }
-#prodhealth {
-    height: 8rem;
-}
+
 #prodquant {
     background-color: #EFE8FB;
     border: solid #282566;
@@ -798,4 +796,9 @@ footer {
 }
 .item-price {
     display: none;
+}
+.custom-alert.alert-custom-success {
+    color: black;
+    background-color: #B8C6F4;
+    border: 1px solid transparent;
 }
