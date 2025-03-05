@@ -1,6 +1,24 @@
 html {
     height: 100%;
 }
+h1 {
+    font-size: 63px;
+}
+h2 {
+    font-size: 49px;
+}
+h3 {
+    font-size: 39px;
+}
+h4 {
+    font-size: 31px;
+}
+h5 {
+    font-size: 24px;
+}
+p {
+    font-size: 19px;
+}
 body {
     font-family: Zain;
     background-color:#EFE8FB;
@@ -26,80 +44,86 @@ header {
 nav a {
     float: left;
     text-align: center;
-    padding: 25px 16px;
+    padding: 20px;
     text-decoration: none;
     font-weight: 400;
     color: #B8C6F4;
-    font-size: 1.5rem;
 }
-.toplogo img {
+.logo img {
     margin-top: 10px;
-    margin-left: 335px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 .navright a {
     float: right;
-    text-align: center;
-    padding: 10px 16px;
     text-decoration: none;
-    font-weight: 400;
-    color: #B8C6F4;
-    font-size: 1.5rem;
     margin-right: 1rem;
 }
-#navacct {
-    margin-top: 0.5rem;
-}
+
 #navbasket {
     border: none;
     background-color: #B8C6F4;
     color: #282566;
-    width: 8rem;
+    width: 9rem;
     height: 3rem;
     text-align: left;
     margin-top: 1rem;
-    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
 }
-#navbskticon {
-    margin-bottom: 8px;
-    float: right;
+#navacct {
+    border: 1px solid #B8C6F4;
+    background-color: #282566;
+    color: #B8C6F4;
+    width: 9.5rem;
+    height: 3rem;
+    text-align: left;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
 }
+
+.navright h4{
+    font-weight: 600;
+    margin-top: 3px;
+}
+
 /*Footer Styling*/
 footer {
     width: 100%;
     background-color: #282566;
     color: #B8C6F4;
-    height: 10rem;
+    height: 8.5rem;
     margin-top: auto;
 }
-.footleft {
-    padding-left: 225px;
+.footleft,
+.footright {
+    display: flex;
+    justify-content: space-around;
 }
 .footleft a {
     float: left;
     text-align: center;
     margin-top: 1.5rem;
-    padding-left: 2.5rem;
     text-decoration: none;
     font-weight: 700;
-    font-size: 20px;
 }
-.footright {
-    padding-right: 225px;
-}
+
 .footright a {
    float: right;
    text-align: center;
    margin-top: 1.5rem;
-   padding-right: 2.5rem;
    text-decoration: none;
    font-weight: 700;
    color: #B8C6F4;
-   font-size: 20px;
 }
-.btmlogo img {
-   margin-top: 75px;
-   margin-left: 150px;
+#btmlogo img {
+   margin-top: 40px;
+}
+.footsocial {
+    bottom: 0;
 }
 /*Homepage Styling*/
 .hero {
@@ -109,30 +133,35 @@ footer {
     align-items: center;
 }
 .hero h1 {
-    font-weight: 800;
+    font-weight: 700;
     color: #10042F;
     text-align: center;
-    font-size: 4rem;
 }
-.hero h2 {
+.hero h4 {
     text-align: center;
     color: #282566;
 }
-.hero button {
-    text-align: center;
+.hero a {
+    text-decoration: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
     background-color: #10042F;
-    color: #6388EA;
     width: 250px;
     height: 75px;
-    font-size: 2.5rem;
-    font-weight: 600;
     margin-top: 1rem;
+    cursor: pointer;
+    text-align: center;
 }
+#homeshop h2 {
+    color: #6388EA;
+    font-weight: 600;
+}
+
 .socialtitle {
     text-align: center;
     color: #282566;
-    font-weight: 600;
-    padding-top: 3rem;
+    font-weight: 550;
+    padding-top: 4rem;
 }
 .socialproof {
     color: #282566;
@@ -159,7 +188,73 @@ footer {
     text-align: center;
     color:#10042F;
     font-weight: 700;
-    font-size: 3rem;
+}
+
+/*Login Styling*/
+
+#logincont {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loginform input {
+    background-color: #B8C6F4;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+#remember_me {
+    margin-top: 1.5rem;
+    width: 20px;
+    height: 20px;
+}
+.loginbtn {
+    border: none;
+    margin: 2rem 0rem;
+    height: 5rem;
+    background-color:#10042F;
+    border-radius: 10px;
+    width: 14rem;
+}
+.loginbtn input {
+    background-color: transparent;
+    color: #6388EA;
+    border: none;
+    font-weight: 700;
+    font-size: 49px;
+    margin-top: 4px;
+}
+.logreg {
+    font-weight: 600;
+    margin: 0 0 3rem 8rem;
+}
+
+/*Registration Styling*/
+.form-control-label {
+    margin-top: 2rem;
+    color: #10042F;
+}
+.form-control {
+    background-color: #B8C6F4;
+    color: #282566;
+}
+.registerbtn {
+    background-color: transparent;
+    border: none;
+    margin-left: 7rem;
+}
+.registerbtn input {
+    color: #6388EA;
+    background-color:#10042F;
+    border: none;
+    border-radius: 10px;
+    width: 12rem;
+    font-size: 39px;
+    font-weight: 700;
+    margin: 3rem;
+    padding: 5px 0;
 }
 /*Account Page Styling*/
 .accountinfo {
@@ -188,13 +283,10 @@ footer {
 }
 .accbtn {
     text-decoration: none;
-    text-align: center;
     border-radius: 10px;
     background-color:#10042F;
-    width: 12rem;
+    width: 14rem;
     height: 5rem;
-    font-size: 2.25rem;
-    font-weight: 700;
     color: #6388EA;
     display: flex;
     flex-direction: row;
@@ -202,87 +294,44 @@ footer {
     align-items: center;
     margin: 0 5rem;
 }
-#wishlistbtn {
-    background-color:#10042F;
-    width: 15rem;
-    font-size: 2.5rem;
+.accbtn h3 {
     font-weight: 700;
-    color: #6388EA;
-    float: left;
-    margin-left: 3rem;
+    margin-top: 10px;
 }
-#orderhistbtn {
-    background-color:#10042F;
-    width: 15rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #6388EA;
-    float: right;
-}
-/*CONTACT STYLING*/
 
+/*CONTACT STYLING*/
 .ygsubtitle {
     text-align: center;
     color:#10042F;
     font-weight: 500;
-    font-size: 2rem;
 }
-.contactlabel {
-    font-size: 1.4rem;
+.contactform {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.contactlabel h5{
     color:#10042F;
     font-weight: 550;
+    margin-top: 1rem;
 }
 .contactsend {
     border: none;
     border-radius: 10px;
     background-color:#10042F;
-    width: 15rem;
-    font-size: 2.5rem;
+    width: 14rem;
+    font-size: 39px;
     font-weight: 700;
     color: #6388EA;
-    margin: 2rem 0 2rem 10rem;
+    align-self: center;
+    margin: 2rem 0;
+    padding: .5rem 0;
 }
 
-/*Login Styling*/
-#remember_me {
-    margin-left: 7rem;
-    width: 20px;
-    height: 20px;
-}
-.loginform {
-    margin-left: 4rem;
-}
-.loginform input {
-    background-color: #B8C6F4;
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 1.5rem;
-}
-.loginbtn {
-    background-color: transparent;
-    border: none;
-    margin: 0 0 4rem 3rem;
-    height: 6rem;
-}
-.loginbtn input {
-    color: #6388EA;
-    background-color:#10042F;
-    border: none;
-    border-radius: 10px;
-    width: 12rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 3rem;
-}
-.logreg {
-    font-weight: 600;
-    margin: 0 0 3rem 8rem;
-}
 /*Shop Styling*/
 #searchcont {
     display: flex;
     justify-content: flex-start;
-
 }
 .searchbar {
     display: flex;
@@ -294,7 +343,7 @@ footer {
 #shopsearch {
     border: thin solid #282566;
     border-radius: 10px 0px 0px 10px;
-    font-size: 1.25rem;
+    font-size: 19px;
 }
 #searchbtn {
     background-color:#10042F;
@@ -308,14 +357,13 @@ footer {
 #clear-search {
     background-color: #282566;
     color: #EFE8FB;
-    margin-top: 12px;
+    margin-top: 8px;
     margin-left: 12px;
 }
 .shoporg {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 5px;
-
 }
 
 /*Sort Styling */
@@ -324,18 +372,19 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: flex-end;
 }
 .custom-dropdown {
-    width: 150px;
+    width: 175px;
     height: 40px;
     background-color: #B8C6F4;
     border: 1px solid #10042F;
     color: #10042F;
-    font-size: 1.25rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.custom-dropdown h5 {
+    margin: 0;
 }
 .custom-dropdown:hover {
     background-color: #282566 !important;
@@ -350,8 +399,10 @@ footer {
     color: #10042F;
 }
 .dropdown-item {
-    position: relative;
-    font-size: 1.25rem;  
+    position: relative;  
+}
+.dropdown-item h5 {
+    margin: 0;
 }
 .dropdown-item:hover {
     background-color: #282566;
@@ -370,18 +421,16 @@ footer {
     color: #B8C6F4;
     height: 40px;
     border: none;
-    width: 70px;
-    font-size: 1.75rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: 10px;
+    width: 90px;
+    padding-top: 2px;
 }
+
+/*Filter Styling*/
 .filtersection {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: flex-end;
     width: 50%;
     margin-right: 1rem;
 }
@@ -390,15 +439,28 @@ footer {
     font-weight: 500;
     color: #282566;
     margin: 0 10px 0 0;
+    align-self: flex-end;
 }
 #vitaminDropdown,
 #flavourDropdown {
-    width: 125px;
+    width: 150px;
     height: 40px;
     background-color: #B8C6F4;
     border: 1px solid #10042F;
     color: #10042F;
-    font-size: 1.25rem;
+    font-size: 24px;
+    padding: 3px 12px;
+    cursor: pointer;
+}
+#vitaminDropdown:hover,
+#flavourDropdown:hover {
+    background-color: #282566;
+    color: #EFE8FB !important;
+}
+#vitaminDropdown option,
+#flavourDropdown option {
+    background-color: #B8C6F4 !important;
+    color: #10042F !important;
 }
 
 #apply-filters {
@@ -407,11 +469,7 @@ footer {
     height: 40px;
     border: none;
     width: 90px;
-    font-size: 1.5rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding-top: 2px;
 }
 #clearfiltbtn {
     float: right;
@@ -421,13 +479,9 @@ footer {
     background-color: #282566;
     color: #EFE8FB;
 }
-#pagedd {
-    background-color: #B8C6F4;
-    color: #282566;
-    border: thin solid #282566;
-    width: 100px;
-    font-size: 20px;
-    text-align: left;
+#filtwipe,
+#searchwipe {
+    margin: 0;
 }
 .prodcard {
     display: flex;
@@ -465,12 +519,12 @@ footer {
 .pagenav {
     color: #10042F;
 }
+
 /*Product Page Styling*/
 #prodtitle {
     text-align: left;
     color:#10042F;
     font-weight: 700;
-    font-size: 3rem;
 }
 .prodinfo {
     color: #282566;
@@ -478,69 +532,71 @@ footer {
 }
 .prodmininfo {
     color: #282566;
+    margin: 0;
 }
 
 #proddesc {
-    height: 21rem;
+    height: 297px;
 }
 #proddesc h5 {
-    font-weight: 700;
+    font-weight: 600;
 }
-
 #prodquant {
     background-color: #EFE8FB;
-    border: solid #282566;
+    border: 2px solid #282566;
     color: #282566;
-    padding: 0px 10px;
-    padding-top: 2px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    margin: 4px 4px;
     border-radius: 20px;
-    width: 10rem;
-    height: 3rem;
-    font-size: 2rem;
+    width: 160px;
+    height: 48px;
     font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.quantxt {
+    height: 46px;
+    width: 46px;
+}
+#quantity {
+    margin: 8px 0 0 0;
+}
+#quantbutt {
+    width: 160px;
 }
 #quantminus {
     text-decoration: none;
-    color: #282566;
-    background-color:transparent;
-    float: left;
-    margin-top: 10px;
-    height: 30px;
-    width: 45px;
-    padding-right: 20px;
-    padding-bottom: 30px;
+    color: #EFE8FB;
+    background-color:#282566;
+    border-radius: 16px 0 0 16px;
+    height: 46px;
+    width: 50px;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
-#quantminus h1 {
-    font-weight: 600;
+#quantminus h2 {
+    align-self: center;
 }
 #quantplus {
     text-decoration: none;
-    color: #282566;
-    border: none;
-    background-color:transparent;
-    float: right;
-    margin-top: 8px;
-    height: 40px;
-    width: 40px;
-    padding-left: 20px;
+    color: #EFE8FB;
+    background-color:#282566;
+    border-radius: 0 16px 16px 0;
+    height: 46px;
+    width: 50px;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
-#quantplus h1 {
-    font-weight: 500;
-    font-size: 3.5rem;
-}
+
 #prodbotbut {
     display: flex;
     justify-content: flex-start;
+}
+#prodbotbut h3 {
+    font-weight: 600;
+    padding-top: 4px;
 }
 #prodbasket {
     text-decoration: none;
@@ -574,6 +630,9 @@ footer {
     margin-bottom: 3rem;
 }
 /*Cart Styling*/
+.cart-item {
+    margin: 5rem 0;
+}
 .padd {
     margin: 2rem;
 }
@@ -588,42 +647,50 @@ footer {
 .cartquantitybutton {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #282566;
+    border-radius: 20px;
+    width: 160px;
+    height: 48px;
+    color:#282566;
+    background-color: #EFE8FB;
+}
+.cartquantitybutton h3 {
+    margin-top: 15px;
 }
 .cartminus {
     background-color: #282566;
-    color:#B8C6F4;
+    color:#EFE8FB;
+    border-radius: 16px 0 0 16px;
     border: none;
-    border-radius: 50%;
-    height: 30px;
-    width: 30px;
+    height: 46px;
+    width: 50px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+}
+.cartminus h2 {
+    margin-top: 10px;
 }
 .cartplus {
     background-color: #282566;
-    color:#B8C6F4;
+    color:#EFE8FB;
+    border-radius: 0 16px 16px 0;
     border: none;
-    border-radius: 50%;
-    height: 30px;
-    width: 30px;
+    height: 46px;
+    width: 50px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
-.cartminustxt {
-    padding-top: 10px;
-}
-.cartplustxt {
-    padding-top: 15px;
+.cartplus h2 {
+    margin-top: 15px;
 }
 .price {
     font-weight: 600;
     color: #282566;
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
 }
 .remove {
     color: #282566;
@@ -633,24 +700,22 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 4rem;
+    margin: 30px 0;
 }
 .checkout {
    color:#B8C6F4;
    background-color: #10042F;
    border: none;
    border-radius: 10px;
-   width: 15rem;
+   width: 20rem;
    height: 4rem;
    display: flex;
    flex-direction: row;
    justify-content: space-around;
-   padding-top: 12px;
-   margin: 7rem 0 2rem 0;
+   align-items: baseline;
 }
 .checkout h1 {
     font-weight: 700;
-    margin-bottom: 20px;
 }
 .productnm {
     color: #282566;
@@ -660,13 +725,11 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 45%;
+    width: 70%;
 }
 .carttotal h1 {
     font-weight: 800;
     color: #10042F;
-    font-size: 3rem;
-    margin-top: 8rem;
 }
 .backtoshop {
     display: flex;
@@ -685,31 +748,7 @@ footer {
 #emptycart h2 {
     font-weight: 700;
 }
-/*Registration Styling*/
-.form-control-label {
-    margin-top: 2rem;
-    font-size: 1.75rem;
-    color: #10042F;
-}
-.form-control {
-    background-color: #B8C6F4;
-    color: #282566;
-}
-.registerbtn {
-    background-color: transparent;
-    border: none;
-    margin-left: 7rem;
-}
-.registerbtn input {
-    color: #6388EA;
-    background-color:#10042F;
-    border: none;
-    border-radius: 10px;
-    width: 12rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 3rem;
-}
+
 /*FAQ Styling*/
 .faqsubtitle {
     text-align: center;
@@ -748,7 +787,6 @@ footer {
     cursor: pointer;
     border: none;
     outline: none;
-    font-size: 1rem;
     font-weight: bold;
     padding: 1rem;
     background-color: #EFE8FB;
@@ -791,7 +829,6 @@ footer {
     text-align: center;
     color:#282566;
     font-weight: 700;
-    font-size: 5rem;
     margin-bottom: 4rem;
 }
 .item-price {

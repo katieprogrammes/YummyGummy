@@ -5,7 +5,7 @@
     <div class="col"></div>
     <div class="col">
         <h1 class="ygtitle">Contact Us</h1>
-        <h2 class="ygsubtitle">Fancy a Chat?</h2>
+        <h3 class="ygsubtitle">Fancy a Chat?</h3>
     </div>
     <div class="col"></div>
 </div>
@@ -14,11 +14,13 @@
 <div class="row">
     <div class="col"></div>
     <div class="col">
-        <form method="POST">
+        <form method="POST" class="contactform">
             {{ form.hidden_tag() }}
 
             <div class="mb-3 mt-3">
-                <label for="email" class="contactlabel">Where can we get back to you?</label>
+                <label for="email" class="contactlabel">
+                    <h5>Where can we get back to you?</h5>
+                </label>
                 {{ form.email(class="form-control form-control-lg", placeholder="Enter email") }}
                 {% for error in form.email.errors %}
                     <div class="text-danger">{{ error }}</div>
@@ -26,12 +28,16 @@
             </div>
 
             <div class="mb-3">
-                <label for="orderno" class="contactlabel">Is it about an order?</label>
+                <label for="orderno" class="contactlabel">
+                    <h5>Is it about an order?</h5>
+                </label>
                 {{ form.order_no(class="form-control form-control-lg", placeholder="Order No (optional)") }}
             </div>
 
             <div class="mb-3">
-                <label for="usermessage" class="contactlabel">What would you like to say?</label>
+                <label for="usermessage" class="contactlabel">
+                    <h5>What would you like to say?</h5>
+                </label>
                 {{ form.message(class="form-control form-control-lg", rows="5", placeholder="Message") }}
                 {% for error in form.message.errors %}
                     <div class="text-danger">{{ error }}</div>

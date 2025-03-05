@@ -14,21 +14,20 @@
                         <h2 class="prodinfo">{{ product.vitamin }}</h2>
                         <h3 class="prodinfo">{{ product.flavour }}</h3>
                         <div id="proddesc">
-                            <h4 class="prodmininfo">Product Description</h4>
                             <h5>{{ product.description }}</h5>
                         </div>
-                        <h1 class="prodinfo">£{{ "%.2f"|format(product.price) }}</h1>
-                        <h2 class="prodmininfo">Quantity</h2>
+                        <h2 class="prodinfo">£{{ "%.2f"|format(product.price) }}</h2>
+                        <h4 class="prodmininfo">Quantity</h4>
                         <div id="quantbutt">
                             <div id="prodquant">
-                                <a href="#" id="quantminus"><h1 class="quantxt">_</h1></a>
-                                <span id="quantity">1</span>
-                                <a href="#" id="quantplus"><h1 class="quantxt">+</h1></a>
+                                <a href="#" id="quantminus"><h2 class="quantxt">-</h2></a>
+                                <h3  id="quantity">1</h3>
+                                <a href="#" id="quantplus"><h2 class="quantxt">+</h2></a>
                             </div>
                         </div>
                         <div id="prodbotbut">
                             <a href="#" id="prodbasket" data-product-id="{{ product.id }}">
-                                <h1>Add to Basket</h1>
+                                <h3>Add to Basket</h3>
                                 <img src="{{ url_for('static', filename='images/basketcheck.svg') }}" height="45">
                             </a>
                             <button type="submit" class="btn btn-primary btn-lg" id="prodwishadd">

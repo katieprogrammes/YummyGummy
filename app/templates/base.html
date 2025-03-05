@@ -16,26 +16,33 @@
 <body>
     <header>
         <div class=".container-fluid">
-            <nav>
-                <a href="{{ url_for('home') }}">Home</a>
-                <a href="{{ url_for('shop') }}">Shop</a>    
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="{{ url_for('faq') }}">FAQ</a>
-            </nav>
-            <nav class="navright">
-                <a class="btn btn-primary" href="{{ url_for('cart') }}" role="button" id="navbasket">
-                    Basket
-                    <img src="{{ url_for('static', filename='images/basket.svg') }}" alt-text="basket" id="navbskticon">
-                </a>
-                <a href="{{ url_for('login') }}">
-                    <img src="{{ url_for('static', filename='images/person.svg') }}" alt-text="account" id="navacct">
-                </a>
-            </nav>
-            <div class="toplogo">
-                <a href="{{ url_for('home') }}">
-                    <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="logo" height="65">
-                </a>
+            <div class="row">
+                <div class="col-4">
+                    <nav>
+                        <a href="{{ url_for('home') }}"><h4>Home</h4></a>
+                        <a href="{{ url_for('shop') }}"><h4>Shop</h4></a>    
+                        <a href="/about"><h4>About</h4></a>
+                        <a href="/contact"><h4>Contact</h4></a>
+                        <a href="{{ url_for('faq') }}"><h4>FAQ</h4></a>
+                    </nav>
+                </div>
+                <div class="col-4">
+                    <a href="{{ url_for('home') }}" class="logo">
+                        <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="logo" height="65">
+                    </a>
+                </div>
+                <div class="col-4">
+                    <nav class="navright">
+                        <a class="btn btn-primary" href="{{ url_for('cart') }}" role="button" id="navbasket">
+                            <h4>Basket</h4>
+                            <img src="{{ url_for('static', filename='images/basket.svg') }}" alt-text="Shopping Basket">
+                        </a>
+                        <a class="btn btn-primary" href="{{ url_for('login') }}" role="button" id="navacct">
+                            <h4>Account</h4>
+                            <img src="{{ url_for('static', filename='images/person.svg') }}" alt-text="account" id="navperson">
+                        </a>
+                    </nav>
+                </div>
             </div>
         </div>
     </header>
@@ -55,22 +62,29 @@
             {% block body %} {% endblock %}
         </div>
 
-        <footer>
-            <div class="container-fluid">
-                <nav class="footleft">
-                    <a href="{{ url_for('home') }}">Home</a>
-                    <a href="{{ url_for('shop') }}">Shop</a>    
-                    <a href="/about">About</a>
-                </nav>
-                <nav class="footright">
-                    <a href="{{ url_for('contact') }}">Contact</a>
-                    <a href="{{ url_for('login') }}">Account</a>
-                    <a href="{{ url_for('faq') }}">FAQ</a>
-                </nav>
-                <div class="btmlogo">
-                    <a href="{{ url_for('home') }}">
-                        <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="logo" height="55">
-                    </a>
+        <footer class="container-fluid">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col">
+                        <nav class="footleft">
+                            <a href="{{ url_for('home') }}"><h5>Home</h5></a>
+                            <a href="{{ url_for('shop') }}"><h5>Shop</h5></a>    
+                            <a href="/about"><h5>About</h5></a>
+                        </nav>
+                    </div>
+                    <div class="col">
+                        <a href="{{ url_for('home') }}" class="logo" id="btmlogo">
+                            <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="logo" height="65">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <nav class="footright">
+                            <a href="{{ url_for('contact') }}"><h5>Contact</h5></a>
+                            <a href="{{ url_for('faq') }}"><h5>FAQ</h5></a>
+                            <a href="{{ url_for('login') }}"><h5>Account</h5></a>
+                        </nav>
+                    </div>
+                    <div class="col-1"></div>
                 </div>
                 <div class="footsocial">
                     <img src="{{ url_for('static', filename='images/social/twitter.svg') }}" alt-text="twitter logo">
@@ -78,7 +92,6 @@
                     <img src="{{ url_for('static', filename='images/social/tiktok.svg') }}" alt-text="tiktok logo">
                     <img src="{{ url_for('static', filename='images/social/facebook.svg') }}" alt-text="facebook logo">
                 </div>
-            </div>
         </footer>
     </div>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>

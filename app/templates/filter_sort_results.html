@@ -16,7 +16,7 @@
         </form>
         <form action="{{ url_for('shop') }}" method="get" class="d-inline">
             <button type="submit" class="btn" id="clear-search">
-                Clear Search
+                <h5 id="searchwipe">Clear</h5>
             </button>
         </form>
     </div>
@@ -32,19 +32,23 @@
                 <div class="sortmenu">
                     <h3>Sort:</h3>
                     <button class="btn btn-light dropdown-toggle custom-dropdown" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <h5>
                         {{ "Select sorting..." if not sort_by else 
                             ("Name (A-Z)" if sort_by == "name_asc" else 
                             "Name (Z-A)" if sort_by == "name_desc" else 
                             "Price (Low-High)" if sort_by == "price_asc" else 
                             "Price (High-Low)" if sort_by == "price_desc" else "Select sorting...") }}
+                        </h5>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#" data-value="name_asc">Name (A-Z)</a></li>
-                        <li><a class="dropdown-item" href="#" data-value="name_desc">Name (Z-A)</a></li>
-                        <li><a class="dropdown-item" href="#" data-value="price_asc">Price (Low-High)</a></li>
-                        <li><a class="dropdown-item" href="#" data-value="price_desc">Price (High-Low)</a></li>
+                        <li><a class="dropdown-item" href="#" data-value="name_asc"><h5>Name (A-Z)</h5></a></li>
+                        <li><a class="dropdown-item" href="#" data-value="name_desc"><h5>Name (Z-A)</h5></a></li>
+                        <li><a class="dropdown-item" href="#" data-value="price_asc"><h5>Price (Low-High)</h5></a></li>
+                        <li><a class="dropdown-item" href="#" data-value="price_desc"><h5>Price (High-Low)</h5></a></li>
                     </ul>
-                    <button type="submit" class="btn btn-primary ms-2" id="sortbutton">Sort</button>
+                    <button type="submit" class="btn btn-primary ms-2" id="sortbutton">
+                        <h4>Apply</h4>
+                    </button>
                 </div>
             </form>
             
@@ -57,7 +61,9 @@
                     {% include "shopvitaminfilt.html" %}
                     {% include "shopflavourfilt.html" %}
                     
-                    <button type="submit" class="btn btn-primary ms-2" id="apply-filters">Apply</button>
+                    <button type="submit" class="btn btn-primary ms-2" id="apply-filters">
+                        <h4>Apply</h4>
+                    </button>
                 </form>
             </div>
         </div>
@@ -65,7 +71,9 @@
         <form action="{{ url_for('shop') }}" method="get" class="d-inline mt-2" id="clearfiltbtn">
             <input type="hidden" name="q" value="{{ query }}">
             <input type="hidden" name="sort_by" value="{{ sort_by }}">
-            <button type="submit" class="btn btn-secondary" id="clearfilter">Clear Filters</button>
+            <button type="submit" class="btn btn-secondary" id="clearfilter">
+                <h5 id="filtwipe">Clear</h5>
+            </button>
         </form>
     </div>
 </div>
@@ -80,10 +88,10 @@
                     <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ product.name }}" />
                 </div>
                 <div class="cardtext">
-                    <h2>{{ product.name }}</h2>
-                    <h3 class="shopvitamin">{{ product.vitamin }}</h3>
-                    <h3 class="shopflavour">{{ product.flavour }}</h3>
-                    <h3>£{{ "%.2f"|format(product.price) }}</h3>
+                    <h3>{{ product.name }}</h3>
+                    <h4 class="shopvitamin">{{ product.vitamin }}</h4>
+                    <h4 class="shopflavour">{{ product.flavour }}</h4>
+                    <h4>£{{ "%.2f"|format(product.price) }}</h4>
                 </div>
             </a>
         </div>

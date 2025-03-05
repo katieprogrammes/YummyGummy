@@ -15,9 +15,11 @@
                 {{ form.hidden_tag() }}
                 
                 <div class="form-group">
+                    <h4>
                     {{ form.firstname.label(class="form-control-label") }}
                     {% if form.firstname.errors %}
                         {{ form.firstname(class="form-control form-control-lg is-invalid") }}
+                    </h4>
                         <div class="invalid-feedback">
                             {% for error in form.firstname.errors %}
                                 <span>{{ error }}</span>
@@ -29,9 +31,11 @@
                 </div>
 
                 <div class="form-group">
+                    <h4>
                     {{ form.lastname.label(class="form-control-label") }}
                     {% if form.lastname.errors %}
                         {{ form.lastname(class="form-control form-control-lg is-invalid") }}
+                    </h4>
                         <div class="invalid-feedback">
                             {% for error in form.lastname.errors %}
                                 <span>{{ error }}</span>
@@ -43,9 +47,11 @@
                 </div>
 
                 <div class="form-group">
+                    <h4>
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
                         {{ form.email(class="form-control form-control-lg is-invalid") }}
+                    </h4>
                         <div class="invalid-feedback">
                             {% for error in form.email.errors %}
                                 <span>{{ error }}</span>
@@ -57,9 +63,11 @@
                 </div>
 
                 <div class="form-group">
+                    <h4>
                     {{ form.password.label(class="form-control-label") }}
                     {% if form.password.errors %}
                         {{ form.password(class="form-control form-control-lg is-invalid") }}
+                    </h4>
                         <div class="invalid-feedback">
                             {% for error in form.password.errors %}
                                 <span>{{ error }}</span>
@@ -71,9 +79,11 @@
                 </div>
 
                 <div class="form-group">
+                    <h4>
                     {{ form.password2.label(class="form-control-label") }}
                     {% if form.password2.errors %}
                         {{ form.password2(class="form-control form-control-lg is-invalid") }}
+                    </h4>
                         <div class="invalid-feedback">
                             {% for error in form.password2.errors %}
                                 <span>{{ error }}</span>

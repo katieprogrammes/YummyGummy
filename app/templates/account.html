@@ -41,17 +41,23 @@
         <div class="acctbtngroup">
             <div class="row">
                 <div class="col">
-                    <a class="accbtn" role="button" href="{{ url_for('logout') }}">Log Out</a>
+                    <a class="accbtn" role="button" href="{{ url_for('logout') }}">
+                        <h3>Log Out</h3>
+                    </a>
                 </div>
                 <div class="col">
-                    <a class="accbtn" role="button">Wishlist</a>
+                    <a class="accbtn" role="button">
+                        <h3>Wishlist</h3>
+                    </a>
                 </div>
                 <div class="col">
-                    <a class="accbtn" role="button">Order History</a>
+                    <a class="accbtn" role="button">
+                        <h3>Order History</h3>
+                    </a>
                 </div>
                 <div class="col">
                     <a class="accbtn" role="button" href="{{ url_for('editaccount') }}">
-                        Edit Profile
+                        <h3>Edit Profile</h3>
                         <img src="{{ url_for('static', filename='images/pencil.svg') }}" alt-text="pencil">
                     </a>
                 </div>
