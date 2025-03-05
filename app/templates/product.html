@@ -3,6 +3,17 @@
 {% block body %}
     <div class="maincontent">
         <div class="row">
+            <div class="col">
+                <ul class="navcrumb">
+                    <li><h5><a href="{{ url_for('home') }}">Home</a></h5></li>
+                    <li><h5><a href="{{ url_for('shop') }}">Shop</a></h5></li>
+                    <li><h5>{{ product.name }}</h5></li>
+                  </ul>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
             <div class="col"></div>
             <div class="col-9">
                 <div class="row">
@@ -28,10 +39,10 @@
                         <div id="prodbotbut">
                             <a href="#" id="prodbasket" data-product-id="{{ product.id }}">
                                 <h3>Add to Basket</h3>
-                                <img src="{{ url_for('static', filename='images/basketcheck.svg') }}" height="45">
+                                <img src="{{ url_for('static', filename='images/basketcheck.svg') }}" height="45" alt="Shopping basket">
                             </a>
                             <button type="submit" class="btn btn-primary btn-lg" id="prodwishadd">
-                                <img src="{{ url_for('static', filename='images/heart.svg') }}">
+                                <img src="{{ url_for('static', filename='images/heart.svg') }}" alt="Outline of a heart">
                             </button>
                         </div>
                     </div>

@@ -521,6 +521,26 @@ footer {
 }
 
 /*Product Page Styling*/
+.navcrumb {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+.navcrumb li {
+    display: flex;
+    align-items: baseline;
+}
+.navcrumb li+li:before {
+    padding: 0 8px;
+    color: #10042F;
+    content: "/\00a0";
+    font-size: 24px;
+}
+.navcrumb a, 
+.navcrumb li h5 {
+    color: #10042F;
+}
 #prodtitle {
     text-align: left;
     color:#10042F;

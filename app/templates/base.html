@@ -18,7 +18,7 @@
         <div class=".container-fluid">
             <div class="row">
                 <div class="col-4">
-                    <nav>
+                    <nav class>
                         <a href="{{ url_for('home') }}"><h4>Home</h4></a>
                         <a href="{{ url_for('shop') }}"><h4>Shop</h4></a>    
                         <a href="/about"><h4>About</h4></a>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-4">
                     <a href="{{ url_for('home') }}" class="logo">
-                        <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="logo" height="65">
+                        <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="Yummy Gummy Logo" height="65">
                     </a>
                 </div>
                 <div class="col-4">
@@ -39,7 +39,7 @@
                         </a>
                         <a class="btn btn-primary" href="{{ url_for('login') }}" role="button" id="navacct">
                             <h4>Account</h4>
-                            <img src="{{ url_for('static', filename='images/person.svg') }}" alt-text="account" id="navperson">
+                            <img src="{{ url_for('static', filename='images/person.svg') }}" alt-text="My Account picture" id="navperson">
                         </a>
                     </nav>
                 </div>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="col">
                         <a href="{{ url_for('home') }}" class="logo" id="btmlogo">
-                            <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="logo" height="65">
+                            <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="Yummy Gummy Logo" height="65">
                         </a>
                     </div>
                     <div class="col">
