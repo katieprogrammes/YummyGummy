@@ -37,3 +37,8 @@ class ContactForm(FlaskForm):
     order_no = StringField("Order No (Optional)", validators=[Optional()])
     message = TextAreaField("Message", validators=[DataRequired()])
     submit = SubmitField("Send")
+
+class NewsletterForm(FlaskForm):
+    email = StringField("Please enter your Email", validators=[DataRequired(), Email()])
+    tandc = BooleanField('Send me emails about new products, savings and more')
+    submit = SubmitField("Subscribe")

@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request, jsonify, abort, make_response
 from app import app
-from app.forms import LoginForm, RegistrationForm, UpdateAccountForm, ContactForm
+from app.forms import LoginForm, RegistrationForm, UpdateAccountForm, ContactForm, NewsletterForm
 from flask_login import current_user, login_user, logout_user, login_required
 from sqlalchemy import or_, and_
 import sqlalchemy as sa
@@ -14,9 +14,15 @@ from config import Config
 mail = Mail(app)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template('main.html', title='Home')
+    form = NewsletterForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        flash("Thankyou for subscribing, check your emails for your discount code!", "custom-success")
+        return redirect(url_for("home"))
+
+    return render_template('main.html', form=form, title='Home')
 
 @app.route('/account')
 @login_required
@@ -56,6 +62,7 @@ def editaccount():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash('You have been logged out', 'custom-success')
     return redirect(url_for('home'))
 
 @app.route('/login/', methods=['GET', 'POST'])

@@ -182,7 +182,29 @@ footer {
     font-weight: 800;
     color: #10042F;
     text-align: right;
-    margin-bottom: 8rem;
+    margin-bottom: 5rem;
+}
+.newsline {
+    display: flex;
+    flex-direction: row;
+}
+#newsform {
+    font-size: 31px;
+    width: 80%;
+    border-radius: 10px 0 0 10px;
+    border: 1px solid #10042F;
+}
+.newssend {
+    border: none;
+    border-radius:0 10px 10px 0;
+    background-color:#10042F;
+    width: 10rem;
+    font-size: 39px;
+    font-weight: 700;
+    color: #6388EA;
+    text-align: center;
+    padding: .5rem 0;
+    height: 64.5px;
 }
 .ygtitle {
     text-align: center;
@@ -857,5 +879,6 @@ footer {
 .custom-alert.alert-custom-success {
     color: #10042F;
     background-image: linear-gradient(to right, #B8C6F4, #6388EA);
-    border: 1px solid transparent;
+    border-radius: 0 0 8px 8px;
+    border: none;
 }
