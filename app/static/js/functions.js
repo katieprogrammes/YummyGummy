@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
         // Loop through all cart items
         document.querySelectorAll('.cart-item').forEach(item => {
-            const quantity = parseInt(item.querySelector('.cartquantitybutton h2').textContent);
+            const quantity = parseInt(item.querySelector('.cartquantitybutton h3').textContent);
             const priceElement = item.querySelector('.item-price');
             const subtotalElement = item.querySelector('.price');
             if (priceElement && subtotalElement) {
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     
-        // Update the total price in the cart
+        // Update total price in the cart
         const totalElement = document.querySelector('#cart-total');
         if (totalElement) {
             totalElement.textContent = `£${total.toFixed(2)}`;
@@ -185,42 +185,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Show success message
-    function showSuccessMessage(message) {
-        const alertDiv = document.createElement('div');
-        alertDiv.classList.add('alert', 'alert-success', 'alert-dismissible', 'fade', 'show');
-        alertDiv.setAttribute('role', 'alert');
-        alertDiv.innerHTML = `${message} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+function showSuccessMessage(message) {
+    showFlashMessage(message, "linear-gradient(90deg, #B8C6F4, #6388EA)");
+}
 
-        document.body.insertBefore(alertDiv, document.body.firstChild);
+// Show error message
+function showErrorMessage(message) {
+    showFlashMessage(message, "linear-gradient(90deg, #6388EA, #B8C6F4)");
+}
 
-        window.scrollTo({
-            top: 0, 
-            behavior: 'smooth' 
-        });
+// General function to create and style flash messages
+function showFlashMessage(message, background) {
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("custom-flash-message");
+    alertDiv.innerText = message;
 
-        setTimeout(() => {
-            alertDiv.classList.remove('show');
-            alertDiv.classList.add('fade');
-        }, 5000);  // Hide after 5 seconds
-    }
+    // Apply ombre background
+    alertDiv.style.background = background;
+    alertDiv.style.color = " #10042F";
+    alertDiv.style.padding = "10px 20px";
+    alertDiv.style.borderRadius = "5px";
+    alertDiv.style.fontSize = "24px";
+    
 
-    // Show error message
-    function showErrorMessage(message) {
-        const alertDiv = document.createElement('div');
-        alertDiv.classList.add('alert', 'alert-danger', 'alert-dismissible', 'fade', 'show');
-        alertDiv.setAttribute('role', 'alert');
-        alertDiv.innerHTML = `${message} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+    document.body.insertBefore(alertDiv, document.body.firstChild);
 
-        document.body.insertBefore(alertDiv, document.body.firstChild);
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
-        window.scrollTo({
-            top: 0, 
-            behavior: 'smooth'
-        });
+    setTimeout(() => {
+        alertDiv.classList.remove("show");
+        alertDiv.classList.add("fade");
+    }, 4000); // Hide after 4 seconds
+}
 
-        setTimeout(() => {
-            alertDiv.classList.remove('show');
-            alertDiv.classList.add('fade');
-        }, 5000);  // Hide after 5 seconds
-    }
 });

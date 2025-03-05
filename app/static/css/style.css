@@ -835,7 +835,7 @@ footer {
     display: none;
 }
 .custom-alert.alert-custom-success {
-    color: black;
-    background-color: #B8C6F4;
+    color: #10042F;
+    background-image: linear-gradient(to right, #B8C6F4, #6388EA);
     border: 1px solid transparent;
 }

@@ -114,10 +114,10 @@ def cart():
         # Calculate the subtotal
         subtotal = sum(item.product.price * item.quantity for item in cart_items)
 
-        # Render the cart page template (no API call here for GET)
+        # Render the cart page template
         return render_template("cart.html", title="Cart", cart_items=cart_items, subtotal=subtotal)
 
-    # Handle POST requests for updating quantities (API call functionality)
+    # Handle POST requests for updating quantities
     elif request.method == "POST":
         qty = request.form.get("qty")
         product_id = request.form.get("product_id")
@@ -127,7 +127,7 @@ def cart():
             cart_item.quantity = qty
             db.session.commit()
 
-        # You can still return a JSON response to be used by JavaScript
+        
         return jsonify({'status': 'custom-success', 'message': 'Cart updated!'})
 
 
