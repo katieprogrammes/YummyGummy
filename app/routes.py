@@ -5,7 +5,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from sqlalchemy import or_, and_
 import sqlalchemy as sa
 from app import db
-from app.models import User, Product, Cart
+from app.models import User, Product, Cart, Wishlist
 from urllib.parse import urlsplit
 from flask_mail import Mail, Message
 import requests
@@ -164,6 +164,62 @@ def remove(item_id):
     else:
         flash(response.json().get("error", "An error occurred"), "danger")
     return redirect(url_for('cart'))
+
+@app.route("/wishlist", methods=["GET", "POST"])
+@login_required
+def wishlist():
+    if request.method == "GET":
+        # Get the user's wishlist items
+        wish_items = Wishlist.query.join(Product).filter(Wishlist.user_id == current_user.id).all()
+
+
+        # Render the wishlist template
+        return render_template("wishlist.html", title="Wishlist", wish_items=wish_items)
+    
+    elif request.method == "POST":
+        data = request.get_json()
+        product_id = data.get("product_id")
+
+        if not product_id:
+            return jsonify({"error": "Product ID is required"}), 400
+        
+        # Check if product already exists in the wishlist
+        existing_item = Wishlist.query.filter_by(product_id=product_id, user_id=current_user.id).first()
+
+        if existing_item:
+            return jsonify({"message": "This item is already in your wishlist"}), 400
+        else:
+            # Add the product to the wishlist
+            new_wish_item = Wishlist(user_id=current_user.id, product_id=product_id)
+            db.session.add(new_wish_item)
+
+        db.session.commit()
+        return jsonify({"message": "Item added to wishlist!"}), 200
+    
+
+@app.route("/wishlist/remove/<int:item_id>", methods=["DELETE"])
+@login_required
+def remove_wish(item_id):
+    # Log the item removal attempt
+    print(f"Attempting to remove item with ID: {item_id}")
+    
+    # Call to API
+    api_url = f"{Config.API_BASE_URL}/wishlist/{item_id}"
+    response = requests.delete(api_url)
+
+    # Log the raw response text to debug the issue
+    print(f"API response: {response.text}")
+
+    # Handle the response from the API
+    if response.status_code == 200:
+        flash(response.json().get("message", "Item removed from wishlist"), "custom-success")
+    else:
+        flash(response.json().get("error", "An error occurred"), "danger")
+
+    # Redirect to the wishlist page after item removal
+    return redirect(url_for('wishlist'))
+
+
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():

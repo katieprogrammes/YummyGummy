@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 if (data.message) {
                     showSuccessMessage(data.message);  // Show success message
-                    // Optionally, remove item from DOM
+                    //remove item from DOM
                     this.closest(".cart-item").remove();  // Assumes cart items are wrapped in .cart-item
                 } else if (data.error) {
                     showErrorMessage(data.error);  // Show error message
@@ -183,6 +183,35 @@ document.addEventListener("DOMContentLoaded", function () {
             totalElement.textContent = `£${total.toFixed(2)}`;
         }
     }
+    // Add to Wishlist functionality
+    document.getElementById("prodwishadd").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const productId = this.getAttribute("data-product-id");
+
+        // Send the Add to Wishlist request (POST)
+        fetch('/api/wishlist/add', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",  
+            },
+            body: JSON.stringify({
+                product_id: productId,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                showSuccessMessage(data.message);  // Show success message on successful addition
+            } else if (data.error) {
+                showErrorMessage(data.error);  // Show error message if any
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    });
+    
+    
+    
 
     // Show success message
 function showSuccessMessage(message) {
@@ -222,3 +251,34 @@ function showFlashMessage(message, background) {
 }
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const removeButtons = document.querySelectorAll('.wishremove');
+    removeButtons.forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const itemId = this.getAttribute("data-item-id");
+
+            // Make DELETE request to the server
+            fetch(`/api/wishlist/remove/${itemId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "/wishlist"; // Force redirect to wishlist page after successful deletion
+                } else {
+                    console.error("Error with the request");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+    });
+});
+
+

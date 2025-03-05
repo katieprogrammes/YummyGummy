@@ -67,3 +67,15 @@ class Cart(db.Model):
     
     def __repr__(self):
         return f"Cart('Product id:{self.product_id}','id: {self.id}','User id:{self.user_id}'')"
+
+class Wishlist(db.Model):
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    product_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey('product.id'), nullable=False)
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey('user.id'), nullable=False)
+
+
+    product = db.relationship('Product', backref='wishlist', lazy=True)
+    
+    
+    def __repr__(self):
+        return f"Cart('Product id:{self.product_id}','id: {self.id}','User id:{self.user_id}'')"

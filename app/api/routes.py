@@ -1,12 +1,43 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app import db
-from app.models import Product, Cart
+from app.models import Product, Cart, Wishlist
 
 
 #Creating a Blueprint for the API
 api_bp = Blueprint("api", __name__)
 
+#Function to handle adding or updating cart
+def update_cart_item(product_id, quantity):
+    cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
+    if cart_item:
+        cart_item.quantity += int(quantity)
+    else:
+        new_cart_item = Cart(user_id=current_user.id, product_id=product_id, quantity=int(quantity))
+        db.session.add(new_cart_item)
+    db.session.commit()
+
+#Function to handle adding to wishlist
+def add_wishlist_item(product_id):
+    if not product_id:
+        return {"error": "Product ID is required"}, 400
+
+    product = Product.query.get(product_id)
+    if not product:
+        return {"error": "Product not found"}, 404
+
+    existing_item = Wishlist.query.filter_by(product_id=product_id, user_id=current_user.id).first()
+
+    if existing_item:
+        return {"message": "This item is already in your wishlist"}, 400
+
+    new_wish_item = Wishlist(user_id=current_user.id, product_id=product_id)
+    db.session.add(new_wish_item)
+    db.session.commit()
+
+    return {"message": "Item added to wishlist!"}, 200
+
+#API Routes
 @api_bp.route("/products", methods=["GET"])
 def get_products():
     products = Product.query.all()
@@ -43,12 +74,10 @@ def cart():
     if request.method == "GET":
         cart_items = Cart.query.join(Product).filter(Cart.user_id == current_user.id).all()
         subtotal = sum(item.product.price * item.quantity for item in cart_items)
-
         return jsonify({
             'cart_items': [{"product_id": item.product.id, "name": item.product.name, "quantity": item.quantity} for item in cart_items],
             'subtotal': subtotal
         })
-
     elif request.method == "POST":
         data = request.get_json()
         product_id = data.get("product_id")
@@ -57,17 +86,8 @@ def cart():
         if not product_id:
             return jsonify({"error": "Product ID is required"}), 400
 
-        cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
-        if cart_item:
-            cart_item.quantity += int(quantity)
-        else:
-            new_cart_item = Cart(user_id=current_user.id, product_id=product_id, quantity=int(quantity))
-            db.session.add(new_cart_item)
-
-        db.session.commit()
+        update_cart_item(product_id, quantity)
         return jsonify({"message": "Cart updated successfully!"}), 200
-
-
 
 @api_bp.route("/cart/add", methods=["POST"])
 @login_required
@@ -83,14 +103,7 @@ def add_to_cart():
     if not product:
         return jsonify({"error": "Product not found"}), 404
 
-    cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
-    if cart_item:
-        cart_item.quantity += int(quantity)
-    else:
-        new_cart_item = Cart(user_id=current_user.id, product_id=product_id, quantity=int(quantity))
-        db.session.add(new_cart_item)
-
-    db.session.commit()
+    update_cart_item(product_id, quantity)
     return jsonify({"message": "Item added to cart!"}), 200
 
 
@@ -124,3 +137,39 @@ def update_quantity(item_id):
     cart_item.quantity = quantity
     db.session.commit()
     return jsonify({"message": "Cart item quantity updated!"}), 200
+
+@api_bp.route("/wishlist", methods=["GET", "POST"])
+@login_required
+def wishlist():
+    if request.method == "GET":
+        wish_items = Wishlist.query.join(Product).filter(Wishlist.user_id == current_user.id).all()
+
+        return jsonify({
+            'wish_items': [{"product_id": item.product.id, "name": item.product.name} for item in wish_items]
+        })
+
+    elif request.method == "POST":
+        data = request.get_json()
+        product_id = data.get("product_id")
+        response, status = add_wishlist_item(product_id)
+        return jsonify(response), status
+
+
+@api_bp.route("/wishlist/add", methods=["POST"])
+@login_required
+def add_to_wishlist():
+    data = request.get_json()
+    product_id = data.get("product_id")
+    response, status = add_wishlist_item(product_id)
+    return jsonify(response), status
+
+@api_bp.route("/wishlist/remove/<int:item_id>", methods=["DELETE"])
+@login_required
+def remove_from_wishlist(item_id):
+    wish_item = Wishlist.query.get(item_id)
+    if not wish_item or wish_item.user_id != current_user.id:
+        return jsonify({"error": "Item not found"}), 404
+
+    db.session.delete(wish_item)
+    db.session.commit()
+    return jsonify({"message": "Item removed from wishlist!"}), 200
