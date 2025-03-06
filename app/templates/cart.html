@@ -11,7 +11,7 @@
                 {% for item in cart_items %}
                     <div class="row cart-item">
                         <div class="col-4">
-                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225">
+                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225" id="cartimg">
                         </div>
                         <div class="col">
                             <h2 class="productnm">{{ item.product.name }}</h2>

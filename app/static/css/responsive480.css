@@ -280,14 +280,24 @@
     .shoporg {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         width: 100%;
+    }
+    .ms-3 {
+        margin-left: 0.5rem !important;
     }
     .sortmenu h3,
     .filtersection h3 {
         display: none;
     }
     .filtersection {
-        margin-top: 20px;
+        margin-right: 4px;
+    }
+    .filtform {
+        margin-top: 10px !important;
+    }
+    .pagenumb h3 {
+        margin-right: 20px;
     }
     #dropdownMenuButton {
         height: 40px;
@@ -306,13 +316,82 @@
     #sortbutton h4 {
         font-size: 15px;
     }
-    #dropdownMenuButton,
-    #vitaminDropdown,
-    #flavourDropdown {
+    #dropdownMenuButton {
     width: 100px;
     height: 35px;
     font-size: 15px;
     padding: 5px;
     cursor: pointer;
     }
-}
+    #vitaminDropdown,
+    #flavourDropdown {
+    width: 90px;
+    height: 35px;
+    font-size: 15px;
+    padding: 5px;
+    cursor: pointer;
+    }
+    /*PRODUCT PAGE STYLING*/
+    #prodimg {
+        width: 300px;
+        margin-bottom: 20px;
+    }
+    .prodtxt {
+        width: 100%;
+    }
+    #prodtitle {
+        font-size: 49px;
+        text-align: center;
+    }
+    .prodinfo,
+    #proddesc {
+        text-align: center;
+    }
+    #proddesc h5{
+        font-size: 24px;
+    }
+    .prodmininfo {
+        text-align: center;
+    }
+    #quantbutt {
+        width: 354px;
+        display: flex;
+        justify-content: center;
+    }
+    #prodbasket {
+        width: 175px;
+        height: 50px;
+        display: flex;
+    }
+    #prodbasket h3 {
+        font-size: 24px;
+    }
+    #basketimg {
+        display: none;
+    }
+
+    /*CART STYLING*/
+    .cart-item {
+        margin: 40px 0;
+        width: 100%;
+    }
+    #cartimg {
+        width: 150px;
+        height: auto;
+    }
+    .productnm {
+        font-size: 39px;
+    }
+    .vitamin {
+        font-size: 31px;
+    }
+    .flavour {
+        font-size: 24px;
+    }
+    .price {
+        font-size: 39px;
+    }
+    .remove h3 {
+        display: none;
+    }
+}   
