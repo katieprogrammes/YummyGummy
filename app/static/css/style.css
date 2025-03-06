@@ -270,7 +270,9 @@ footer {
     font-weight: 600;
     margin: 0 0 3rem 8rem;
 }
-
+.logreg a {
+    color: #6388EA;
+}
 /*Registration Styling*/
 .form-control-label {
     margin-top: 2rem;

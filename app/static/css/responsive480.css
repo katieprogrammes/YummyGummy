@@ -1,5 +1,5 @@
 /* Small devices*/
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 485px) {
     /* BASE TEMPLATE */
     body {
         font-family: Zain;
@@ -10,6 +10,15 @@
         display: flex;
         flex-direction: column;
         min-height: 100%;
+    }
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col {
+        width: 100%;
+        text-align: center;
     }
     .padd {
         margin: 0;
@@ -73,14 +82,7 @@
         padding: 2rem 0;
     }
 
-    .footleft, .footright {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
     .footleft a, .footright a {
-        float: none;
         margin-top: 0.5rem;
     }
 
@@ -113,7 +115,7 @@
     .hero h4 {
         font-size: 31px;
         font-weight: 600;
-        width: 70%;
+        width: 60%;
     }
 
 
@@ -132,7 +134,7 @@
         top: 0;
         left: 0;
         min-width: 320px;
-        max-width: 575px;
+        max-width: 480px;
         height: 100%;
         object-fit: cover;
         z-index: 1;
@@ -159,22 +161,20 @@
         padding-bottom: 8px;
     }
     .newstitle {
-        font-size: 31px;
+        font-size: 39px;
         margin: 20px 0;
+        text-align: center;
     }
     .newslabel h3 {
         font-size: 24px;
         margin: 0;
     }
-    #newsgroup .col-1 {
-        display: none;
-    }
     .newsletterform {
-        margin: 30px 8px 0 0;
+        margin-left: 10px;
     }
     #newsform {
-        font-size: 19px;
-        width: 80%;
+        font-size: 15px;
+
         border-radius: 10px 0 0 10px;
         border: 1px solid #10042F;
     }
@@ -190,5 +190,34 @@
         padding: 0;
         height: 50px;
     }
+    .ygtitle {
+        margin-top: 50px;
+    }
+
+    /* LOGIN STYLING */
+    #logincont {
+        width: 90%;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .loginform input {
+        width: 100%;
+    }
+
+    .loginbtn {
+        width: 60%;
+        height: 4rem;
+    }
+
+    .loginbtn input {
+        font-size: 39px;
+    }
+
+    .logreg {
+        margin: 1rem 0;
+        text-align: center;
+    }
+
 
 }
