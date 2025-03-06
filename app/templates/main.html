@@ -1,70 +1,71 @@
 {% extends "base.html" %}
 
 {% block body %}
-
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col">
-        <div class="hero">
-            <h1>Being healthy has <br> never tasted so <br> good!</h1>
-            <h4>Fed up of constant vitamin deficiencies? Is swallowing <br> large pills a struggle? Constantly forgetting to take <br> your daily vitamins? Then Yummy Gummy is for you!</h4>
-            <a href="{{ url_for('shop') }}"  id="homeshop">
-                <h2>Shop Now</h2>
-            </a>
+<div class="hero-container">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col">
+            <div class="hero">
+                <h1>Being healthy has <br> never tasted so <br> good!</h1>
+                <h4>Fed up of constant vitamin deficiencies? Is swallowing large pills a struggle? Constantly forgetting to take your daily vitamins? Then Yummy Gummy is for you!</h4>
+                <a href="{{ url_for('shop') }}"  id="homeshop">
+                    <h2>Shop Now</h2>
+                </a>
+            </div>
         </div>
+        <div class="col">
+            <img src="{{ url_for('static', filename='images/hometemp.png') }}" alt-text="Collection of vitamin gummies">
+        </div>
+        <div class="col-1"></div>
     </div>
-    <div class="col">
-        <img src="{{ url_for('static', filename='images/hometemp.png') }}" alt-text="Collection of vitamin gummies">
-    </div>
-    <div class="col-1"></div>
 </div>
 <h2 class="socialtitle">See what our customers have to say!</h2>
-        <div class="row">
-            <div class="col">
-                <div class="socialproof">
-                    <h5>"Yummy Gummy has helped <br>me stabilise my vitamin levels <br> and are so delicious!"</h5>
-                    <h4> - Yvonne G</h4>
-                </div>
-            </div>
-            <div class="col">
-                <div class="socialproof">
-                    <h5>"Having to take large pills <br> every morning made me <br> miserable but now I <br> look forward to taking my vitamins!"</h5>
-                    <h4> - Sarah T</h4>
-                </div>
-            </div>
-            <div class="col">
-                <div class="socialproof">
-                    <h5>"I never forget to take my vitamins <br> anymore which makes my deficiencies <br> a lot easier to handle."</h5>
-                    <h4> - Caleb M</h4>
-                </div>
+    <div class="row" id="socialsect">
+        <div class="col">
+            <div class="socialproof">
+                <h5>"Yummy Gummy has helped me stabilise my vitamin levels and are so delicious!"</h5>
+                <h4> - Yvonne G</h4>
             </div>
         </div>
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col">
-                <h1 class="newstitle">Fancy a yummy 20% off? <br> Come join our newsletter! </h1>
+        <div class="col">
+            <div class="socialproof">
+                <h5>"Having to take large pills every morning made me miserable but now I look forward to taking my vitamins!"</h5>
+                <h4> - Sarah T</h4>
             </div>
-            <div class="col">
-                <!--Newsletter Form-->
-                <form method="POST" class="newsletterform">
-                    {{ form.hidden_tag() }}
-        
-                    <div class="mb-3 mt-3">
-                        <label for="email" class="newslabel">
-                            <h3>Email Address:</h3>
-                        </label>
-                        <div class="newsline">
-                            {{ form.email(class="form-control form-control-lg", id="newsform", placeholder="Please enter your Email") }}
-                            {% for error in form.email.errors %}
-                                <div class="text-danger">{{ error }}</div>
-                            {% endfor %}
-                            {{ form.submit(class="newssend") }}
-                        </div>
+        </div>
+        <div class="col">
+            <div class="socialproof">
+                <h5>"I never forget to take my vitamins anymore which makes my deficiencies a lot easier to handle."</h5>
+                <h4> - Caleb M</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="newsgroup">
+        <div class="col-1"></div>
+        <div class="col">
+            <h1 class="newstitle">Fancy a yummy 20% off? Come join our newsletter! </h1>
+        </div>
+        <div class="col">
+            <!--Newsletter Form-->
+            <form method="POST" class="newsletterform">
+                {{ form.hidden_tag() }}
+    
+                <div class="mb-3 mt-3">
+                    <label for="email" class="newslabel">
+                        <h3>Email Address:</h3>
+                    </label>
+                    <div class="newsline">
+                        {{ form.email(class="form-control form-control-lg", id="newsform", placeholder="Please enter your Email") }}
+                        {% for error in form.email.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                        {{ form.submit(class="newssend") }}
                     </div>
-                </form>
-            </div>
-            <div class="col-1"></div>
+                </div>
+            </form>
         </div>
+        <div class="col-1"></div>
+    </div>
 {% endblock %}
 	
 

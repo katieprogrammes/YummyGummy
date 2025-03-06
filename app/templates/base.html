@@ -11,26 +11,33 @@
 	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/responsive575.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/responsive767.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/responsive991.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/responsive1199.css') }}" rel="stylesheet">
 	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
     <header>
         <div class=".container-fluid">
             <div class="row">
+                <!--Left Navigation-->
                 <div class="col-4">
-                    <nav class>
+                    <nav class="navleft">
                         <a href="{{ url_for('home') }}"><h4>Home</h4></a>
                         <a href="{{ url_for('shop') }}"><h4>Shop</h4></a>    
                         <a href="/about"><h4>About</h4></a>
-                        <a href="/contact"><h4>Contact</h4></a>
+                        <a href="{{ url_for('contact') }}"><h4>Contact</h4></a>
                         <a href="{{ url_for('faq') }}"><h4>FAQ</h4></a>
                     </nav>
                 </div>
+                <!--Navigation Logo-->
                 <div class="col-4">
                     <a href="{{ url_for('home') }}" class="logo">
                         <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="Yummy Gummy Logo" height="65">
                     </a>
                 </div>
+                <!--Right Navigation-->
                 <div class="col-4">
                     <nav class="navright">
                         <a class="btn btn-primary" href="{{ url_for('cart') }}" role="button" id="navbasket">
@@ -43,8 +50,22 @@
                         </a>
                     </nav>
                 </div>
+                <!-- Hamburger Menu Icon -->
+                <div class="menu-icon" id="menu-icon">
+                    &#9776;
+                </div>
             </div>
         </div>
+            <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('shop') }}">Shop</a>
+            <a href="/about">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('faq') }}">FAQ</a>
+            <a href="{{ url_for('cart') }}">Basket</a>
+            <a href="{{ url_for('login') }}">Account</a>
+        </nav>
     </header>
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -62,7 +83,8 @@
             {% block body %} {% endblock %}
         </div>
 
-        <footer class="container-fluid">
+        <footer>
+            <div class="footer-content">
                 <div class="row">
                     <div class="col-1"></div>
                     <div class="col">
@@ -92,9 +114,11 @@
                     <img src="{{ url_for('static', filename='images/social/tiktok.svg') }}" alt-text="tiktok logo">
                     <img src="{{ url_for('static', filename='images/social/facebook.svg') }}" alt-text="facebook logo">
                 </div>
+            </div>
         </footer>
     </div>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/functions.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/responsive.js') }}" defer></script>
 </body>
 </html

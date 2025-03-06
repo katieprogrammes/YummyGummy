@@ -30,7 +30,9 @@ body {
     flex-direction: column;
     min-height: 100%;
 }
-
+.padd {
+    margin: 2rem;
+}
 
 /*Header Styling*/
 header {
@@ -41,7 +43,13 @@ header {
     top: 0;
     left: 0;
 }
-nav a {
+.menu-icon {
+    display: none;
+}
+.mobile-nav {
+    display: none;
+}
+.navleft a {
     float: left;
     text-align: center;
     padding: 20px;
@@ -90,12 +98,13 @@ nav a {
     margin-top: 3px;
 }
 
+
 /*Footer Styling*/
 footer {
     width: 100%;
     background-color: #282566;
     color: #B8C6F4;
-    height: 8.5rem;
+    min-height: 8.5rem;
     margin-top: auto;
 }
 .footleft,
@@ -106,15 +115,16 @@ footer {
 .footleft a {
     float: left;
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 3rem;
     text-decoration: none;
     font-weight: 700;
+    color: #B8C6F4;
 }
 
 .footright a {
    float: right;
    text-align: center;
-   margin-top: 1.5rem;
+   margin-top: 3rem;
    text-decoration: none;
    font-weight: 700;
    color: #B8C6F4;
@@ -140,6 +150,7 @@ footer {
 .hero h4 {
     text-align: center;
     color: #282566;
+    width: 90%;
 }
 .hero a {
     text-decoration: none;
@@ -163,12 +174,19 @@ footer {
     font-weight: 550;
     padding-top: 4rem;
 }
+#socialsect {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-left: 4rem;
+}
 .socialproof {
     color: #282566;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5rem;
+    padding: 4rem;
+    width: 70%;
 }
 .socialproof h5 {
     text-align: center;
@@ -675,9 +693,7 @@ footer {
 .cart-item {
     margin: 5rem 0;
 }
-.padd {
-    margin: 2rem;
-}
+
 .vitamin {
     font-weight: 550;
     color: #282566;
