@@ -15,7 +15,6 @@
         flex-direction: column;
         align-items: center;
     }
-
     .col {
         width: 100%;
         text-align: center;
@@ -219,5 +218,101 @@
         text-align: center;
     }
 
-
+    /* REGISTRATION STYLING */
+    .form-group {
+        width: 90%;
+        margin: auto;
+    }
+    .registerbtn {
+        margin: auto;
+    }
+    /* ACCOUNT STYLING */
+    .accinfo {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: row;
+    }
+    .accpadd {
+        display: none;
+    }
+    .accountlbl h2,
+    .accounttxt h2 {
+        font-size: 31px;
+    }
+    .acctbtngroup {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 30px 0;
+    }
+    .accbtn {
+        text-decoration: none;
+        border-radius: 10px;
+        background-color:#10042F;
+        width: 8rem;
+        height: 4rem;
+        color: #6388EA;
+        margin: 1rem auto;
+    }
+    .accbtn h3 {
+        font-weight: 700;
+        margin-top: 10px;
+        font-size: 24px;
+    }
+    
+    /* CONTACT STYLING */
+    .form-control-lg {
+        width: 95%;
+        margin: auto;
+    }
+    /* SHOP STYLING */
+    .shoptop {
+        display: flex;
+        justify-content: center;
+    }
+    #shopsearch {
+        font-size: 15px;
+    }
+    #searchbtn {
+        height: 35px;
+        width: 35px;
+    }
+    .shoporg {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .sortmenu h3,
+    .filtersection h3 {
+        display: none;
+    }
+    .filtersection {
+        margin-top: 20px;
+    }
+    #dropdownMenuButton {
+        height: 40px;
+        width: 130px;
+    }
+    #dropdownMenuButton h5{
+        font-size: 15px;
+    }
+    #apply-filters,
+    #sortbutton {
+        height: 35px;
+        width: auto;
+        padding-top: 8px;
+    }
+    #apply-filters h4,
+    #sortbutton h4 {
+        font-size: 15px;
+    }
+    #dropdownMenuButton,
+    #vitaminDropdown,
+    #flavourDropdown {
+    width: 100px;
+    height: 35px;
+    font-size: 15px;
+    padding: 5px;
+    cursor: pointer;
+    }
 }
