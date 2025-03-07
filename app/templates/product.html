@@ -39,10 +39,11 @@
                         <div id="prodbotbut">
                             <a href="#" id="prodbasket" data-product-id="{{ product.id }}">
                                 <h3>Add to Basket</h3>
+                                <h2>Add</h2>
                                 <img src="{{ url_for('static', filename='images/basketcheck.svg') }}" height="45" alt="Shopping basket" id="basketimg">
                             </a>
                             <button type="submit" class="btn btn-primary btn-lg" id="prodwishadd" data-product-id="{{ product.id }}">
-                                <img src="{{ url_for('static', filename='images/heart.svg') }}" alt="Outline of a heart">
+                                <img src="{{ url_for('static', filename='images/heart.svg') }}" alt="Solid heart with a plus next to it">
                             </button>
                         </div>
                     </div>

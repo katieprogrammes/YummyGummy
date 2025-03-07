@@ -670,6 +670,9 @@ footer {
 #prodbasket h1 {
     font-weight: 700;
 }
+#prodbasket h2 {
+    display: none;
+}
 #prodwishadd {
     background-color:#10042F;
     width: 4rem;
@@ -796,11 +799,14 @@ footer {
     border-radius: 10px;
     width: 15rem;
     height: 6rem;
-    padding-top: 12px;
-    margin-top: 7rem;
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+
 }
-#emptycart h2 {
+#emptycart h3 {
     font-weight: 700;
+    margin-top: 8px;
 }
 
 /*FAQ Styling*/
@@ -823,17 +829,14 @@ footer {
     border: 1px solid #B8C6F4;
     color: #10042F;
 }
-
 .faq-item:first-of-type {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-
 .faq-item:last-of-type {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
 .faq-button {
     display: flex;
     align-items: center;
@@ -857,7 +860,6 @@ footer {
     background-size: var(--bs-accordion-btn-icon-width);
     transition: var(--bs-accordion-btn-icon-transition, transform 0.2s ease-in-out);
 }
-
 .faq-button:not(.collapsed)::after {
     background-image: var(--bs-accordion-btn-active-icon);
     transform: var(--bs-accordion-btn-icon-transform, rotate(-180deg));
@@ -870,6 +872,7 @@ footer {
     color: #282566;
     font-weight: 600;
 }
+
 /*Error handling styling*/
 .ygerrortext {
     text-align: center;
@@ -885,6 +888,7 @@ footer {
     font-weight: 700;
     margin-bottom: 4rem;
 }
+
 .item-price {
     display: none;
 }
@@ -910,6 +914,9 @@ footer {
     flex-direction: column;
     align-items: center;
     margin-top: 75px;
+}
+.wishremove img {
+    width: 50px;
 }
 .shopreturn {
     background-color: #10042F;

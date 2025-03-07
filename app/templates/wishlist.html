@@ -11,7 +11,7 @@
                 {% for item in wish_items %}
                     <div class="row wish-items" id="wishbox">
                         <div class="col-4">
-                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225">
+                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225" id="wishimg">
                         </div>
                         <div class="col">
                             <h2 class="productnm">{{ item.product.name }}</h2>
@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-3">
                             <button type="button" class="wishremove" data-item-id="{{ item.id }}">
-                                <img src="/static/images/trash.svg" alt="Rubbish Bin">
+                                <img src="/static/images/heart-minus.svg" alt="Solid heart with a minus next to it">
                                 <h3>Remove</h3>
                             </button>
                         </div>

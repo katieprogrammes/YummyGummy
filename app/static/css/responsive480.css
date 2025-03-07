@@ -108,8 +108,9 @@
         text-align: center;
         position: relative;
         z-index: 2;
-        width: 100vh;
-        margin: 0;
+        width: auto;
+        height: auto;
+        margin: auto;
     }
     .hero h4 {
         font-size: 31px;
@@ -359,39 +360,151 @@
         justify-content: center;
     }
     #prodbasket {
-        width: 175px;
+        width: 150px;
         height: 50px;
         display: flex;
+        align-items: center;
+        margin-left: 19px;
+
     }
     #prodbasket h3 {
-        font-size: 24px;
-    }
-    #basketimg {
         display: none;
+    }
+    #prodbasket h2 {
+        display: initial;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    #prodbasket img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    #prodwishadd {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        padding: 8px;
+        margin-left: 8px;
+    }
+    #prodwishadd img {
+        height: 30px;
+        width: 30px;
+        margin-left: 2px;
+    }
+    #prodbotbut {
+        justify-content: center;
     }
 
     /*CART STYLING*/
     .cart-item {
         margin: 40px 0;
         width: 100%;
+        display: flex;
+        flex-direction: row;
     }
     #cartimg {
         width: 150px;
         height: auto;
     }
     .productnm {
-        font-size: 39px;
+        font-size: 31px;
+        width: 175px;
     }
     .vitamin {
-        font-size: 31px;
+        font-size: 24px;
+        width: 100px;
     }
     .flavour {
-        font-size: 24px;
+        font-size: 19px;
+        width: 100px;
     }
     .price {
-        font-size: 39px;
+        font-size: 31px;
+        margin: 8px 0;
+        width: 100px;
     }
     .remove h3 {
         display: none;
     }
+    .cartinfo {
+        width: 180px;
+        text-align: left;
+        padding-right: 0;
+    }
+    .cartamount {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .prodmininfo {
+        display: none;
+    }
+    .cartquantitybutton {
+        height: 30px;
+        width: 100px;
+    }
+    .cartminus,
+    .cartplus {
+        height: 30px;
+        width: 30px;
+    }
+    .cartminus h2,
+    .cartplus h2{
+        font-size: 31px;
+    }
+    .cartquantitybutton h3{
+        font-size: 31px;
+    }
+    .carttotal {
+        width: 40%;
+        margin: auto;
+    }
+    .carttotal h1 {
+        font-size: 39px;
+    }
+    .checkout {
+        width: 200px;
+        margin: 8px auto;
+    }
+    .checkout h1 {
+        font-size: 39px;
+        margin: auto;
+    }
+    .checkout img {
+        margin: 5px auto;
+    }
+    .checksect {
+        margin-bottom: 20px;
+    }
+    /*ERROR HANDLING STYLING*/
+    .ygerrtitle {
+        margin-top: 1rem;
+    }
+    
+    /*WISHLIST STYLING*/
+    #wishbox {
+        margin: 40px 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    #wishimg {
+        width: 150px;
+        height: auto;
+    }
+    .wishremove h3 {
+        display: none;
+    }
+    .wishremove img {
+        width: 40px;
+    }
+    .cartinfo {
+        width: 180px;
+        text-align: left;
+        padding-right: 0;
+    }
+
+
 }   
