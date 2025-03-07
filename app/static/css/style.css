@@ -589,6 +589,11 @@ footer {
     color: #282566;
     font-weight: 550;
 }
+.prodinfofl {
+    font-style: italic;
+    color: #282566;
+    font-weight: 550;
+}
 .prodmininfo {
     color: #282566;
     margin: 0;
@@ -692,6 +697,9 @@ footer {
     margin-bottom: 3rem;
 }
 /*Cart Styling*/
+.cartmobileinfo {
+    display: none;
+}
 .cart-item {
     margin: 5rem 0;
 }
