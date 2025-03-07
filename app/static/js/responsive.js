@@ -5,4 +5,17 @@ document.addEventListener("DOMContentLoaded", function () {
     menuIcon.addEventListener("click", function () {
         mobileNav.classList.toggle("active");
     });
+    document.getElementById('filterButton').addEventListener('click', function() {
+        var filterSection = document.getElementById('filterSection');
+        
+        // Toggle between showing and hiding the filter section
+        if (filterSection.classList.contains('show')) {
+            filterSection.classList.remove('show');
+        } else {
+            filterSection.classList.add('show');
+        }
+    });
+    
+    
+    
 });

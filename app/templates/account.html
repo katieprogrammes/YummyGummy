@@ -11,30 +11,41 @@
     <div class="row accinfo">
         <div class="col-3 accpadd"></div>
         <div class="col">
-            <div class="accountlbl">
-                <h2>
-                    First Name:
-                </h2>
-                <h2>
-                    Last Name:
-                </h2>
-                <h2>
-                    Email:
-                </h2>
+            <div class="row infocont">
+                <div class="col accountlbl">
+                    <h2>
+                        First Name:
+                    </h2>
+                </div>
+                <div class="col accounttxt">
+                    <h2>
+                        {{ current_user.firstname }}
+                    </h2>
+                </div>
             </div>
-        </div>
-        <div class="col">
-            <!--USERS DETAILS-->
-            <div class="accounttxt">
-                <h2>
-                    {{ current_user.firstname }} 
-                </h2>
-                <h2>
-                    {{ current_user.lastname }}
-                </h2>
-                <h2>
-                    {{ current_user.email }}
-                </h2>
+            <div class="row infocont">
+                <div class="col accountlbl">
+                    <h2>
+                        Last Name:
+                    </h2>
+                </div>
+                <div class="col accounttxt">
+                    <h2>
+                        {{ current_user.lastname }}
+                    </h2>
+                </div>
+            </div>
+            <div class="row infocont">
+                <div class="col accountlbl">
+                    <h2>
+                        Email:
+                    </h2>
+                </div>
+                <div class="col accounttxt">
+                    <h2>
+                        {{ current_user.email }}
+                    </h2>
+                </div>
             </div>
         </div>
         <div class="col-3 accpadd"></div>

@@ -463,6 +463,9 @@ footer {
 }
 
 /*Filter Styling*/
+#filterButton {
+    display: none;
+}
 .filtersection {
     display: flex;
     flex-direction: row;

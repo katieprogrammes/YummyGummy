@@ -6,6 +6,11 @@
         background-color:#EFE8FB;
         height: 100%;
     }
+    .no-padding-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        overflow-x: hidden;
+    }
     .wrapper {
         display: flex;
         flex-direction: column;
@@ -32,9 +37,12 @@
         display: none;
     }
     .container-fluid {
-        padding: 0;
+        z-index: 1;
     }
-
+    .ygtitle {
+        margin-top: 30px;
+        font-size: 49px;
+    }
     /*hamburger menu*/
     .menu-icon {
         display: block;
@@ -82,12 +90,12 @@
     }
 
     .footleft a, .footright a {
-        margin-top: 0.5rem;
+        margin-top: 1rem;
     }
 
     #btmlogo img {
         margin-top: 20px;
-        height: 50px; /* Slightly smaller on small screens */
+        height: 50px;
     }
 
     .footsocial {
@@ -98,34 +106,29 @@
     }
 
     .footsocial img {
-        width: 30px; /* Adjust icon size */
+        width: 30px;
         height: 30px;
     }  
 
     /*HOME STYLING*/
 
+
     .hero {
         text-align: center;
         position: relative;
-        z-index: 2;
-        width: auto;
-        height: auto;
-        margin: auto;
+        z-index: 3;
     }
     .hero h4 {
-        font-size: 31px;
-        font-weight: 600;
+        font-size: 24px;
+        font-weight: 700;
         width: 60%;
     }
-
-
-    /* Move image behind text */
     .hero-container {
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: auto;
         overflow: hidden;
     }
 
@@ -133,12 +136,14 @@
         position: absolute;
         top: 0;
         left: 0;
-        min-width: 320px;
-        max-width: 480px;
+        width: 100%;
         height: 100%;
         object-fit: cover;
-        z-index: 1;
-        opacity: 0.2; /* Make image slightly transparent */
+        z-index: 2;
+        opacity: 0.2;
+    }
+    #homeshop {
+        margin-bottom: 8px;
     }
     #socialsect {
         padding: 0;
@@ -162,21 +167,28 @@
     }
     .newstitle {
         font-size: 39px;
-        margin: 20px 0;
+        margin: 20px 0 0;
         text-align: center;
     }
     .newslabel h3 {
-        font-size: 24px;
-        margin: 0;
+        display: none;
     }
-    .newsletterform {
-        margin-left: 10px;
+    .newsect {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .newsline {
+        display: flex;
+        justify-content: center;
+        gap: 0; 
+        width: 100%;
     }
     #newsform {
         font-size: 15px;
-
         border-radius: 10px 0 0 10px;
         border: 1px solid #10042F;
+        margin: 0;
     }
     .newssend {
         border: none;
@@ -188,12 +200,9 @@
         color: #6388EA;
         text-align: center;
         padding: 0;
-        height: 50px;
+        height: 40.5px;
     }
-    .ygtitle {
-        margin-top: 50px;
-    }
-
+    
     /* LOGIN STYLING */
     #logincont {
         width: 90%;
@@ -230,15 +239,29 @@
     /* ACCOUNT STYLING */
     .accinfo {
         margin-top: 2rem;
-        display: flex;
-        flex-direction: row;
     }
     .accpadd {
         display: none;
     }
+    .infocont {
+        display: flex;
+        flex-direction: row;
+    }
+    .accountlbl,
+    .accounttxt {
+        padding: 0;
+        width: 80%;
+    }
+    .accountlbl {
+        margin-left: 10%;
+    }
+    .accounttxt {
+        margin-right: 10%;
+    }
     .accountlbl h2,
     .accounttxt h2 {
-        font-size: 31px;
+        font-size: 24px;
+        padding: 0;
     }
     .acctbtngroup {
         display: flex;
@@ -251,7 +274,7 @@
         border-radius: 10px;
         background-color:#10042F;
         width: 8rem;
-        height: 4rem;
+        height: 3rem;
         color: #6388EA;
         margin: 1rem auto;
     }
@@ -272,67 +295,96 @@
         justify-content: center;
     }
     #shopsearch {
-        font-size: 15px;
+        font-size: 19px;
     }
     #searchbtn {
-        height: 35px;
-        width: 35px;
+        height: 41.83px;
+        width: 41px;
     }
     .shoporg {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         width: 100%;
+        align-items: center;
+        position: relative;
     }
-    .ms-3 {
-        margin-left: 0.5rem !important;
+    #filterButton {
+        display: initial;
+        height: 40px;
+        width: 110px;
+        padding: 5px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        color: #B8C6F4;
+        background-color: #10042F;
+        margin-top: 10px;
+        white-space: nowrap;
+    }
+    #filterButton h4 {
+        font-size: 19px;
+        padding-top: 3px;
+        font-weight: 600;
     }
     .sortmenu h3,
     .filtersection h3 {
         display: none;
     }
     .filtersection {
-        margin-right: 4px;
+        display: none;
+        position: absolute;
+        top: 45px;
+    }
+    .filtersection.show {
+        display: flex;
+        justify-content: center;
     }
     .filtform {
         margin-top: 10px !important;
     }
-    .pagenumb h3 {
-        margin-right: 20px;
-    }
     #dropdownMenuButton {
+        width: 125px;
         height: 40px;
-        width: 130px;
+        font-size: 19px;
+        padding: 5px;
+        cursor: pointer;
+        border-radius: 10px 0 0 10px;
     }
     #dropdownMenuButton h5{
-        font-size: 15px;
+        font-size: 19px;
+    }
+    #sortbutton {
+        margin-left: 0 !important;
+        border-radius: 0 10px 10px 0;
     }
     #apply-filters,
     #sortbutton {
-        height: 35px;
+        height: 40px;
         width: auto;
         padding-top: 8px;
     }
     #apply-filters h4,
     #sortbutton h4 {
-        font-size: 15px;
-    }
-    #dropdownMenuButton {
-    width: 100px;
-    height: 35px;
-    font-size: 15px;
-    padding: 5px;
-    cursor: pointer;
+        font-size: 19px;
+        font-weight: 600;
     }
     #vitaminDropdown,
     #flavourDropdown {
-    width: 90px;
-    height: 35px;
-    font-size: 15px;
-    padding: 5px;
-    cursor: pointer;
+        width: 125px;
+        height: 40px;
+        font-size: 19px;
+        padding: 5px;
+        cursor: pointer;
+    }
+    .pagenumb h3 {
+        margin-right: 20px;
     }
     /*PRODUCT PAGE STYLING*/
+    .prodcard {
+        margin-top: 3rem;
+    }
     #prodimg {
         width: 300px;
         margin-bottom: 20px;

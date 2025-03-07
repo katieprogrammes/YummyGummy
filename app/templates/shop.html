@@ -42,8 +42,14 @@
             </div>
         </form>
 
+        <!-- Filter Button for Mobile -->
+        <button type="button" class="btn btn-secondary" id="filterButton">
+            <h4>Filters</h4>
+            <img src="{{ url_for('static', filename='images/filter.svg') }}" alt="Filter picture" class="filtimg">
+        </button>
+
         <!-- Filter Form (Vitamin & Flavour) -->
-        <div class="filtersection">
+        <div class="filtersection" id="filterSection">
             <h3>Filters:</h3>
             <form action="{{ url_for('filter_sort') }}" method="get" class="d-flex mt-2 filtform">
                 <input type="hidden" name="q" value="{{ query }}">
