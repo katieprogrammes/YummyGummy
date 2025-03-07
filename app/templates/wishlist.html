@@ -9,17 +9,42 @@
             <div class="col-3"></div>
             <div class="col">
                 {% for item in wish_items %}
-                    <div class="row wish-items" id="wishbox">
-                        <div class="col-4">
+                <div class="row wish-items">
+                    <div class="col-4 wishbox">
+                        <a href="{{ url_for('product_detail', product_id=item.product.id) }}" class="img4wish">
+                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="250" id="wishimg">
+                        </a>
+                    </div>
+                    <div class="col-5 mobwishbox">
+                        <a href="{{ url_for('product_detail', product_id=item.product.id) }}" class="img4wish">
                             <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225" id="wishimg">
-                        </div>
-                        <div class="col">
-                            <h2 class="productnm">{{ item.product.name }}</h2>
-                            <h3 class="vitamin">{{ item.product.vitamin }}</h3>
-                            <h4 class="flavour">{{ item.product.flavour }}</h4>
+                        </a>
+                    </div>
+                        <div class="col wishinfo">
+                            <h2 class="wproductnm">{{ item.product.name }}</h2>
+                            <h3 class="wvitamin">{{ item.product.vitamin }}</h3>
+                            <h4 class="wflavour">{{ item.product.flavour }}</h4>
                             <h3 class="witem-price">£{{ item.product.price }}</h3>
+                            <div class="wishbottom">
+                                <h3 class="mitem-price">£{{ item.product.price }}</h3>
+                                <button type="button" class="wishremove" data-item-id="{{ item.id }}">
+                                    <img src="/static/images/heart-minus.svg" alt="Solid heart with a minus next to it">
+                                </button>
+                            </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-7 mobwishinfo">
+                            <h2 class="wproductnm">{{ item.product.name }}</h2>
+                            <h3 class="wvitamin">{{ item.product.vitamin }}</h3>
+                            <h4 class="wflavour">{{ item.product.flavour }}</h4>
+                            <h3 class="witem-price">£{{ item.product.price }}</h3>
+                            <div class="wishbottom">
+                                <h3 class="mitem-price">£{{ item.product.price }}</h3>
+                                <button type="button" class="wishremove" data-item-id="{{ item.id }}">
+                                    <img src="/static/images/heart-minus.svg" alt="Solid heart with a minus next to it">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-3 wishright">
                             <button type="button" class="wishremove" data-item-id="{{ item.id }}">
                                 <img src="/static/images/heart-minus.svg" alt="Solid heart with a minus next to it">
                                 <h3>Remove</h3>

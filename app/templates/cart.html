@@ -1,32 +1,40 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <h1 class="ygtitle">Your Cart</h1>
+    <h1 class="ygtitle">Your Basket</h1>
     <div class="padd"></div>
     <!-- Check if there are items in the cart -->
     {% if cart_items %}
         <div class="row">
-            <div class="col-3 colpadd"></div>
+            <div class="col-2 colpadd"></div>
             <div class="col">
                 {% for item in cart_items %}
-                    <div class="row cart-item">
-                        <div class="col-4 img4cart">
+                <div class="row cart-item">
+                    <div class="col-4 cartbox">
+                        <a href="{{ url_for('product_detail', product_id=item.product.id) }}" class="img4cart">
+                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="250" id="cartimg">
+                        </a>
+                    </div>
+                    <div class="col-5 mobcartbox">
+                        <a href="{{ url_for('product_detail', product_id=item.product.id) }}" class="img4cart">
                             <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225" id="cartimg">
-                        </div>
-                        <div class="col cartinfo">
-                            <h2 class="productnm">{{ item.product.name }}</h2>
-                            <h3 class="vitamin">{{ item.product.vitamin }}</h3>
-                            <h4 class="flavour">{{ item.product.flavour }}</h4>
-                            <h1 class="item-price">£{{ item.product.price }}</h1> <!--Purely for Javascript-->
-                            <h2 class="price">£{{ item.product.price * item.quantity }}</h2>
-                        </div>
-                        <!--Mobile Cart Information-->
-                        <div class="col-8 cartmobileinfo">
-                            <h2 class="productnm">{{ item.product.name }}</h2>
-                            <h3 class="vitamin">{{ item.product.vitamin }}</h3>
-                            <h4 class="flavour">{{ item.product.flavour }}</h4>
-                            <h1 class="item-price">£{{ item.product.price }}</h1> <!--Purely for Javascript-->
-                            <h2 class="price">£{{ item.product.price * item.quantity }}</h2>
+                        </a>
+                    </div>
+                    <div class="col cartinfo">
+                        <h2 class="productnm">{{ item.product.name }}</h2>
+                        <h3 class="vitamin">{{ item.product.vitamin }}</h3>
+                        <h4 class="flavour">{{ item.product.flavour }}</h4>
+                        <h1 class="item-price">£{{ item.product.price }}</h1> <!--Purely for Javascript-->
+                        <h2 class="price">£{{ item.product.price * item.quantity }}</h2>
+                    </div>
+                    <!--Mobile Cart Information-->
+                    <div class="col-7 cartmobileinfo">
+                        <h2 class="productnm">{{ item.product.name }}</h2>
+                        <h3 class="vitamin">{{ item.product.vitamin }}</h3>
+                        <h4 class="flavour">{{ item.product.flavour }}</h4>
+                        <h1 class="item-price">£{{ item.product.price }}</h1> <!--Purely for Javascript-->
+                        <h2 class="price">£{{ item.product.price * item.quantity }}</h2>
+                        <div class="cartbottom">
                             <div class="cartquantitybutton" id="cart-item-{{ item.id }}">
                                 <button type="button" class="cartminus" data-cart-item-id="{{ item.id }}" data-action="decrease">
                                     <h2>-</h2>
@@ -36,28 +44,33 @@
                                     <h2>+</h2>
                                 </button>
                             </div>
-                        </div>
-                        <div class="col-3 cartamount">
                             <button type="button" class="remove" data-item-id="{{ item.id }}">
                                 <img src="/static/images/trash.svg" alt="Rubbish Bin">
                                 <h3>Remove</h3>
                             </button>
-                            <h4 class="prodmininfo">Quantity</h4>
-                            <!-- Cart item quantity buttons -->
-                            <div class="cartquantitybutton" id="cart-item-{{ item.id }}">
-                                <button type="button" class="cartminus" data-cart-item-id="{{ item.id }}" data-action="decrease">
-                                    <h2>-</h2>
-                                </button>
-                                <h3 id="quantity-{{ item.id }}">{{ item.quantity }}</h3>
-                                <button type="button" class="cartplus" data-cart-item-id="{{ item.id }}" data-action="increase">
-                                    <h2>+</h2>
-                                </button>
-                            </div>
                         </div>
                     </div>
+                    <div class="col-3 cartamount">
+                        <button type="button" class="remove" data-item-id="{{ item.id }}">
+                            <img src="/static/images/trash.svg" alt="Rubbish Bin">
+                            <h3>Remove</h3>
+                        </button>
+                        <h4 class="prodmininfo">Quantity</h4>
+                        <!-- Cart item quantity buttons -->
+                        <div class="cartquantitybutton" id="cart-item-{{ item.id }}">
+                            <button type="button" class="cartminus" data-cart-item-id="{{ item.id }}" data-action="decrease">
+                                <h2>-</h2>
+                            </button>
+                            <h3 id="quantity-{{ item.id }}">{{ item.quantity }}</h3>
+                            <button type="button" class="cartplus" data-cart-item-id="{{ item.id }}" data-action="increase">
+                                <h2>+</h2>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 {% endfor %}
             </div>
-            <div class="col-3 colpadd"></div>
+            <div class="col-2 colpadd"></div>
         </div>
         
         <!-- CHECKOUT SECTION-->

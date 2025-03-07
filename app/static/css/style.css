@@ -43,10 +43,16 @@ header {
     top: 0;
     left: 0;
 }
+.moblogo {
+    display: none;
+}
 .menu-icon {
     display: none;
 }
 .mobile-nav {
+    display: none;
+}
+.mobile-cart-icon {
     display: none;
 }
 .navleft a {
@@ -700,15 +706,23 @@ footer {
 .cartmobileinfo {
     display: none;
 }
+.mobcartbox {
+    display: none;
+}
+.cartbox {
+    display: flex;
+    justify-content: flex-end;
+}
 .cart-item {
     margin: 5rem 0;
 }
-
-.vitamin {
+.vitamin,
+.wvitamin {
     font-weight: 550;
     color: #282566;
 }
-.flavour {
+.flavour,
+.wflavour {
     font-style: italic;
     color: #282566;
 }
@@ -785,7 +799,8 @@ footer {
 .checkout h1 {
     font-weight: 700;
 }
-.productnm {
+.productnm,
+.wproductnm {
     color: #282566;
     font-weight: 700;
 }
@@ -911,6 +926,12 @@ footer {
 }
 
 /*Wishlist Styling*/
+.mobwishbox {
+    display: none;
+}
+.wishbottom {
+    display: none;
+}
 .witem-price {
     margin-top: 30px;
     color: #10042F;
@@ -939,6 +960,6 @@ footer {
     font-weight: 600;
     display: flex;
 }
-#wishbox {
+.wish-items {
     margin-bottom: 3rem;
 }

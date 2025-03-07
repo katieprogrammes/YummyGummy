@@ -32,7 +32,12 @@
                     </nav>
                 </div>
                 <!--Navigation Logo-->
-                <div class="col-4">
+                <div class="col-4 desklogo">
+                    <a href="{{ url_for('home') }}" class="logo">
+                        <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="Yummy Gummy Logo" height="65">
+                    </a>
+                </div>
+                <div class="col-8 moblogo">
                     <a href="{{ url_for('home') }}" class="logo">
                         <img src="{{ url_for('static', filename='images/logotemp.png') }}" alt-text="Yummy Gummy Logo" height="65">
                     </a>
@@ -54,16 +59,19 @@
                 <div class="menu-icon" id="menu-icon">
                     &#9776;
                 </div>
+                <!-- Mobile Cart Icon -->
+                <a href="{{ url_for('cart') }}" class="mobile-cart-icon" id="mobile-cart">
+                    <img src="{{ url_for('static', filename='images/basketmob.svg') }}" alt="Basket">
+                </a>
             </div>
         </div>
-            <!-- Mobile Navigation -->
+        <!-- Mobile Navigation -->
         <nav class="mobile-nav" id="mobile-nav">
             <a href="{{ url_for('home') }}">Home</a>
             <a href="{{ url_for('shop') }}">Shop</a>
             <a href="/about">About</a>
             <a href="{{ url_for('contact') }}">Contact</a>
             <a href="{{ url_for('faq') }}">FAQ</a>
-            <a href="{{ url_for('cart') }}">Basket</a>
             <a href="{{ url_for('login') }}">Account</a>
         </nav>
     </header>
