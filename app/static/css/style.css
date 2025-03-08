@@ -46,7 +46,9 @@ header {
 .moblogo {
     display: none;
 }
-.menu-icon {
+.menu-icon,
+.midmenu-icon,
+.mobile-acc-icon {
     display: none;
 }
 .mobile-nav {
@@ -531,7 +533,7 @@ footer {
 .prodcard {
     display: flex;
     justify-content: center;
-    margin: 40px 0px;
+    margin: 40px 10px;
 }
 .cardimg img{
     object-fit: cover;

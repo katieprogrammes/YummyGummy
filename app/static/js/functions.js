@@ -279,6 +279,77 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
+    
 });
+document.addEventListener("DOMContentLoaded", function () {
+    // Handle Vitamin Dropdown selection
+    document.querySelectorAll('#vitaminDropdown .dropdown-item').forEach(item => {
+        item.addEventListener('click', function() {
+            let selectedVitamin = this.getAttribute('data-value');
+            document.getElementById('selected-vitamin').value = selectedVitamin;
+            document.getElementById('vitaminDropdown').textContent = `Vitamin: ${selectedVitamin}`;
+            let vitaminDropdownMenu = document.querySelector('#vitaminDropdown + .dropdown-menu');
+            vitaminDropdownMenu.classList.remove('show');  // Close the dropdown
+        });
+    });
+
+    // Handle Flavour Dropdown selection
+    document.querySelectorAll('#flavourDropdown .dropdown-item').forEach(item => {
+        item.addEventListener('click', function() {
+            let selectedFlavour = this.getAttribute('data-value');
+            document.getElementById('selected-flavour').value = selectedFlavour;
+            document.getElementById('flavourDropdown').textContent = `Flavour: ${selectedFlavour}`;
+            let flavourDropdownMenu = document.querySelector('#flavourDropdown + .dropdown-menu');
+            flavourDropdownMenu.classList.remove('show');  // Close the dropdown
+        });
+    });
+
+    // Handle Sort Dropdown selection
+    const dropdownItems = document.querySelectorAll(".dropdown-item");
+    const dropdownButton = document.querySelector(".custom-dropdown");
+    const selectedSortInput = document.getElementById("selected-sort");
+
+    // Set initial dropdown button text based on pre-selected sort option
+    const currentSort = selectedSortInput.value;
+    if (currentSort) {
+        dropdownItems.forEach(item => {
+            if (item.getAttribute("data-value") === currentSort) {
+                dropdownButton.textContent = item.textContent;
+            }
+        });
+    }
+
+    dropdownItems.forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+            const selectedValue = this.getAttribute("data-value");
+            dropdownButton.textContent = this.textContent;
+            selectedSortInput.value = selectedValue;
+        });
+    });
+    // Clear Search Button Logic
+    document.getElementById("clear-search").addEventListener("click", function(e) {
+        e.preventDefault();
+        window.location.href = "{{ url_for('shop') }}"; // Redirect to shop without search parameters
+    });
+
+    // Clear Sort Button Logic
+    document.getElementById("clear-sort").addEventListener("click", function(e) {
+        e.preventDefault();
+        window.location.href = "{{ url_for('shop') }}"; // Redirect to shop without sorting parameters
+    });
+
+    // Clear Filter Button Logic
+    document.getElementById("clearfilter").addEventListener("click", function(e) {
+        e.preventDefault();
+        const url = new URL(window.location.href);
+        url.searchParams.delete("vitamin");
+        url.searchParams.delete("flavour");
+        url.searchParams.delete("price_min");
+        url.searchParams.delete("price_max");
+        window.location.href = url.toString(); // Redirect to filtered URL without filters
+    });
+});
+
 
 

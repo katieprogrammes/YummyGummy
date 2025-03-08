@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <div class="row">
+    <div class="row rowstyle">
         <div class="col"></div>
         <div class="col">
             <h1 class="ygtitle">All About You!</h1>
         </div>
         <div class="col"></div>
     </div>
-    <div class="row accinfo">
+    <div class="row rowstyle">
         <div class="col-3 colpadd"></div>
         <div class="col">
             <div class="row infocont">
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3 accpadd"></div>
+        <div class="col-3 colpadd"></div>
             <div class="row acctbtngroup">
                 <div class="col">
                     <a class="accbtn" role="button" href="{{ url_for('logout') }}">

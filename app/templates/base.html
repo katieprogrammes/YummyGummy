@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/responsive480.css') }}" rel="stylesheet">
-    <!--<link href="{{ url_for('static', filename='css/responsive767.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/responsive991.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/responsive768.css') }}" rel="stylesheet">
+    <!--<link href="{{ url_for('static', filename='css/responsive991.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/responsive1199.css') }}" rel="stylesheet">-->
 	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
@@ -59,6 +59,14 @@
                 <div class="menu-icon" id="menu-icon">
                     &#9776;
                 </div>
+                <!-- Midsize Menu Icon -->
+                <div class="midmenu-icon" id="midmenu-icon">
+                    <h2>Menu</h2>
+                </div>
+                <!-- Mobile Account Icon -->
+                <a href="{{ url_for('login') }}" class="mobile-acc-icon" id="mobile-acc">
+                    <img src="{{ url_for('static', filename='images/person.svg') }}" alt="Person">
+                </a>
                 <!-- Mobile Cart Icon -->
                 <a href="{{ url_for('cart') }}" class="mobile-cart-icon" id="mobile-cart">
                     <img src="{{ url_for('static', filename='images/basketmob.svg') }}" alt="Basket">
@@ -93,8 +101,8 @@
 
         <footer class="container-fluid">
             <div class="footer-content">
-                <div class="row">
-                    <div class="col-1"></div>
+                <div class="row rowstyle">
+                    <div class="col-1 colpadd"></div>
                     <div class="col">
                         <nav class="footleft">
                             <a href="{{ url_for('home') }}"><h5>Home</h5></a>
@@ -114,7 +122,7 @@
                             <a href="{{ url_for('login') }}"><h5>Account</h5></a>
                         </nav>
                     </div>
-                    <div class="col-1"></div>
+                    <div class="col-1 colpadd"></div>
                 </div>
                 <div class="footsocial">
                     <img src="{{ url_for('static', filename='images/social/twitter.svg') }}" alt-text="twitter logo">

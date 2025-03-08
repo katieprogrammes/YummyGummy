@@ -1,0 +1,384 @@
+/* Small devices (Landscape Mobile, Small Tablets) */
+@media screen and (min-width: 485px) and (max-width: 768px) {
+    /* BASE TEMPLATE */
+    .navleft,
+    .navright,
+    .menu-icon,
+    .colpadd,
+    .padd,
+    .mobile-nav a:nth-child(6) {
+        display: none;
+    }
+    .ygtitle {
+        margin-top: 40px;
+    }
+    body {
+        font-family: Zain;
+        background-color:#EFE8FB;
+        height: 100%;
+    }
+    .no-padding-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        overflow-x: hidden;
+    }
+    .rowstyle {
+        flex-direction: column;
+        align-items: center;
+    }
+    .col {
+        width: 100%;
+        text-align: center;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    header {
+        z-index: 99;
+    }
+    .midmenu-icon {
+        display: flex;
+        position: absolute;
+        top: 1.2rem;
+        left: 1rem;
+        cursor: pointer;
+        font-size: 2rem;
+        color: #B8C6F4;
+        width: 30%;
+        padding: 0;
+    }
+    .mobile-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        width: 40%;
+        background-color: #282566;
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    .mobile-nav a {
+        display: block;
+        padding: 1rem;
+        text-decoration: none;
+        color: #B8C6F4;
+        font-weight: 600;
+        font-size: 31px;
+    }
+
+    .mobile-nav a:hover {
+        background-color: #B8C6F4;
+        color: #282566;
+    }
+
+    /* Show mobile menu when active */
+    .mobile-nav.active {
+        display: flex;
+    }
+    /*Right Icons*/
+    .mobile-cart-icon {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 5px;
+        z-index: 10;
+        width: 10%;
+        padding: 0;
+    }
+    .mobile-cart-icon img {
+        width: 50px;
+        height: 50px;
+        right: 5px;
+    }
+    .mobile-acc-icon {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 5rem;
+        z-index: 10;
+        width: 10%;
+        padding: 0;
+    }
+    .mobile-acc-icon img {
+        width: 50px;
+        height: 50px;
+        right: 1rem;
+    }
+    footer {
+        text-align: center;
+        padding: 2rem 0;
+        width: 100%;
+    }
+    .footleft a, .footright a {
+        margin: 1rem .75rem;
+    }
+
+    #btmlogo img {
+        margin-top: 20px;
+        height: 50px;
+    }
+
+    .footsocial {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .footsocial img {
+        width: 30px;
+        height: 30px;
+    } 
+    
+    /*HOME STYLING*/
+    .hero {
+        text-align: center;
+        position: relative;
+        z-index: 3;
+    }
+    .hero h4 {
+        font-size: 39px;
+        font-weight: 700;
+        width: 60%;
+    }
+    .hero-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .hero-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 2;
+        opacity: 0.2;
+    }
+    #homeshop {
+        margin-bottom: 4rem;
+    }
+    .socialtitle {
+        padding-top: 2rem;
+    }
+    #socialsect {
+        padding-left: 0;
+    }
+    .socialproof {
+        min-width: 320px;
+        max-width: 575px;
+        align-self: center;
+        padding: 1.5rem 0;
+        margin: 0 auto 0 auto;
+    }
+    .socialproof h4 {
+        margin-bottom: 20px;
+    }
+    .socialproof h5 {
+        margin-bottom: 0;
+        padding-bottom: 8px;
+    }
+    .newstitle {
+        text-align: center;
+        margin-bottom: 20px;
+
+    }
+    .newsline {
+        width: 95%;
+        margin: 1rem auto;
+    }
+    /* LOGIN STYLING */
+    .logreg {
+        margin: 2rem auto;
+    }
+
+    /* REGISTRATION STYLING */
+    .form-group {
+        width: 90%;
+        margin: auto;
+    }
+    .registerbtn {
+        margin: auto;
+    }
+
+    /* ACCOUNT STYLING */
+    .colpadd {
+        display: none;
+    }
+    .infocont {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1.5rem;
+    }
+    .accountlbl,
+    .accounttxt {
+        padding: 0;
+        width: 80%;
+    }
+    .accountlbl {
+        margin-left: 10%;
+    }
+    .accounttxt {
+        margin-right: 10%;
+    }
+    .accountlbl h2,
+    .accounttxt h2 {
+        font-size: 39px;
+        padding: 0;
+    }
+    .acctbtngroup {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 30px 0;
+    }
+    .accbtn {
+        text-decoration: none;
+        border-radius: 10px;
+        background-color:#10042F;
+        width: 8rem;
+        height: 4rem;
+        color: #6388EA;
+        margin: 1rem auto;
+        padding: 5px;
+    }
+    .accbtn h3 {
+        font-weight: 700;
+        margin-top: 10px;  
+        font-size: 31px;
+        line-height: 30px;
+    }
+    .editaccounttxt {
+        font-size: 39px;
+    }
+    /* CONTACT STYLING */
+    .contactform {
+        width: 95%;
+        margin: auto;
+    }
+    /* SHOP STYLING */
+    .searchbar {
+        width: 25rem;
+    }
+    .shoptop {
+        display: flex;
+        justify-content: center;
+    }
+    #shopsearch {
+        font-size: 19px;
+    }
+    #searchbtn {
+        height: 41.83px;
+        width: 42px;
+    }
+    .shoporg {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        width: 85%;
+    }
+    .sortmenu h3,
+    .filtersection h3 {
+        display: none;
+    }
+    #filterButton {
+        display: initial;
+        height: 40px;
+        width: 140px;
+        padding: 5px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        color: #B8C6F4;
+        background-color: #10042F;
+        margin-top: 10px;
+        white-space: nowrap;
+    }
+    #filterButton h4 {
+        font-size: 31px;
+        font-weight: 600;
+        margin-bottom: 0px;
+        padding-top: 4px;
+    }
+    .filtersection {
+        display: none;
+        position: absolute;
+        top: 45px;
+    }
+    .filtersection.show {
+        display: flex;
+        justify-content: center;
+    }
+    .filtform {
+        margin-top: 10px !important;
+    }
+    #dropdownMenuButton {
+        width: 160px;
+        height: 40px;
+        font-size: 19px;
+        padding: 5px;
+        cursor: pointer;
+        border-radius: 10px 0 0 10px;
+    }
+    #dropdownMenuButton h5{
+        font-size: 19px;
+    }
+    #sortbutton {
+        margin-left: 0 !important;
+        border-radius: 0 10px 10px 0;
+    }
+    #apply-filters,
+    #sortbutton {
+        height: 40px;
+        width: auto;
+        padding-top: 6px;
+    }
+    #apply-filters h4,
+    #sortbutton h4 {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    #vitaminDropdown,
+    #flavourDropdown {
+        width: 140px;
+        height: 40px;
+        font-size: 19px;
+        padding: 5px 5px 5px 10px;
+        cursor: pointer;
+    }
+    #clearfiltbtn {
+        margin: 0 !important;
+    }
+    #clear-search {
+        width: 50px;
+        padding: 0;
+        height: 35px;
+        margin: 15px 5px 5px;
+    }
+    #clearfilter {
+        width: 50px;
+        padding: 0;
+        height: 35px;
+        float: right;
+        margin-right: 25px;
+    }
+    #filtwipe {
+        font-size: 19px;
+    }
+    #searchwipe {
+        font-size: 19px;
+    }
+    .pagenumb h3 {
+        margin-right: 20px;
+    }
+}

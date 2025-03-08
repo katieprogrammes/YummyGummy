@@ -3,7 +3,7 @@
 {% block body %}
 <h1 class="ygtitle">Shop</h1>
 <div class="padd"></div>
-<div class="row">
+<div class="row rowstyle">
     <div class="col-4 shoptop">
         <form action="{{ url_for('search') }}" method="get">
             <div class="searchbar">
@@ -69,7 +69,7 @@
 <!-- Product Grid -->
 <div class="row">
     {% for product in products %}
-    <div class="col-3">
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="prodcard">
             <a href="{{ url_for('product_detail', product_id=product.id) }}" class="productlink">
                 <div class="cardimg">
@@ -111,53 +111,4 @@
     </div>
     <div class="col"></div>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Handle Vitamin Dropdown selection
-        document.querySelectorAll('#vitaminDropdown .dropdown-item').forEach(item => {
-            item.addEventListener('click', function() {
-                let selectedVitamin = this.getAttribute('data-value');
-                document.getElementById('selected-vitamin').value = selectedVitamin;
-                document.getElementById('vitaminDropdown').textContent = `Vitamin: ${selectedVitamin}`;
-                let vitaminDropdownMenu = document.querySelector('#vitaminDropdown + .dropdown-menu');
-                vitaminDropdownMenu.classList.remove('show');  // Close the dropdown
-            });
-        });
-
-        // Handle Flavour Dropdown selection
-        document.querySelectorAll('#flavourDropdown .dropdown-item').forEach(item => {
-            item.addEventListener('click', function() {
-                let selectedFlavour = this.getAttribute('data-value');
-                document.getElementById('selected-flavour').value = selectedFlavour;
-                document.getElementById('flavourDropdown').textContent = `Flavour: ${selectedFlavour}`;
-                let flavourDropdownMenu = document.querySelector('#flavourDropdown + .dropdown-menu');
-                flavourDropdownMenu.classList.remove('show');  // Close the dropdown
-            });
-        });
-
-        // Handle Sort Dropdown selection
-        const dropdownItems = document.querySelectorAll(".dropdown-item");
-        const dropdownButton = document.querySelector(".custom-dropdown");
-        const selectedSortInput = document.getElementById("selected-sort");
-
-        // Set initial dropdown button text based on pre-selected sort option
-        const currentSort = selectedSortInput.value;
-        if (currentSort) {
-            dropdownItems.forEach(item => {
-                if (item.getAttribute("data-value") === currentSort) {
-                    dropdownButton.textContent = item.textContent;
-                }
-            });
-        }
-
-        dropdownItems.forEach(item => {
-            item.addEventListener("click", function (e) {
-                e.preventDefault();
-                const selectedValue = this.getAttribute("data-value");
-                dropdownButton.textContent = this.textContent;
-                selectedSortInput.value = selectedValue;
-            });
-        });
-    });
-</script>
 {% endblock %}

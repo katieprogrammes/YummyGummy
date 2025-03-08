@@ -30,10 +30,11 @@
     header {
         z-index: 99;
     }
-    .navleft {
-        display: none;
-    }
-    .navright {
+    .navleft,
+    .navright,
+    .midmenu-icon,
+    .mobile-acc-icon,
+    .desklogo {
         display: none;
     }
     .container-fluid {
@@ -42,9 +43,6 @@
     .ygtitle {
         margin-top: 30px;
         font-size: 49px;
-    }
-    .desklogo {
-        display: none;
     }
     .moblogo {
         display: initial;
@@ -308,6 +306,11 @@
         margin-top: 10px;
         font-size: 24px;
     }
+    /* EDIT ACCOUNT STYLING */
+    .editaccounttxt {
+        width: 90%;
+        margin: .5rem auto;
+    }
     
     /* CONTACT STYLING */
     .form-control-lg {
@@ -402,6 +405,28 @@
         font-size: 19px;
         padding: 5px;
         cursor: pointer;
+    }
+    #clear-search {
+        width: 50px;
+        padding: 0;
+        height: 30px;
+        margin: 15px 5px 5px;
+    }
+    #clearfilter {
+        width: 50px;
+        padding: 0;
+        height: 30px;
+        float: right;
+        margin-right: 10px;
+    }
+    #clearfiltbtn {
+        margin: 0 !important;
+    }
+    #filtwipe {
+        font-size: 19px;
+    }
+    #searchwipe {
+        font-size: 19px;
     }
     .pagenumb h3 {
         margin-right: 20px;
