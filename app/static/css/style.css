@@ -568,6 +568,9 @@ footer {
 }
 
 /*Product Page Styling*/
+.midscreen {
+    display: none;
+}
 .navcrumb {
     list-style: none;
     display: flex;
@@ -593,7 +596,8 @@ footer {
     color:#10042F;
     font-weight: 700;
 }
-.prodinfo {
+.prodinfo,
+.prodprice {
     color: #282566;
     font-weight: 550;
 }
@@ -606,7 +610,6 @@ footer {
     color: #282566;
     margin: 0;
 }
-
 #proddesc {
     height: 297px;
 }

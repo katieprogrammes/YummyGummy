@@ -503,6 +503,9 @@
     #prodbotbut {
         justify-content: center;
     }
+    .midscreen {
+        display: none;
+    }
 
     /*CART STYLING*/
     .cart-item {

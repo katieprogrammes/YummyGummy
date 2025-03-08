@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="maincontent">
-        <div class="row">
+        <div class="row rowstyle">
             <div class="col">
                 <ul class="navcrumb">
                     <li><h5><a href="{{ url_for('home') }}">Home</a></h5></li>
@@ -14,20 +14,20 @@
             <div class="col"></div>
         </div>
         <div class="row">
-            <div class="col"></div>
-            <div class="col-9">
+            <div class="col colpadd"></div>
+            <div class="col-9 colprod">
                 <div class="row">
                     <div class="col">
                         <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ product.name }}" id="prodimg">
                     </div>
-                    <div class="col-4 prodtxt">
+                    <div class="col prodtxt">
                         <h1 id="prodtitle">{{ product.name }}</h1>
                         <h2 class="prodinfo">{{ product.vitamin }}</h2>
                         <h3 class="prodinfofl">{{ product.flavour }}</h3>
                         <div id="proddesc">
                             <h5>{{ product.description }}</h5>
                         </div>
-                        <h2 class="prodinfo">£{{ "%.2f"|format(product.price) }}</h2>
+                        <h2 class="prodprice">£{{ "%.2f"|format(product.price) }}</h2>
                         <h4 class="prodmininfo">Quantity</h4>
                         <div id="quantbutt">
                             <div id="prodquant">
@@ -48,8 +48,32 @@
                         </div>
                     </div>
                 </div>
+                <!--Section for Midsize Screens-->
+                <div class="row midscreen">
+                    <div id="midproddesc">
+                        <h5>{{ product.description }}</h5>
+                    </div>
+                    <h4 class="prodmidinfo">Quantity</h4>
+                    <div id="midquantbutt">
+                        <div id="prodquant">
+                            <a href="#" id="quantminus"><h2 class="quantxt">-</h2></a>
+                            <h3  id="quantity">1</h3>
+                            <a href="#" id="quantplus"><h2 class="quantxt">+</h2></a>
+                        </div>
+                    </div>
+                    <div id="midprodbotbut">
+                        <a href="#" id="prodbasket" data-product-id="{{ product.id }}">
+                            <h3>Add to Basket</h3>
+                            <h2>Add</h2>
+                            <img src="{{ url_for('static', filename='images/basketcheck.svg') }}" height="45" alt="Shopping basket" id="basketimg">
+                        </a>
+                        <button type="submit" class="btn btn-primary btn-lg" id="prodwishadd" data-product-id="{{ product.id }}">
+                            <img src="{{ url_for('static', filename='images/heart.svg') }}" alt="Solid heart with a plus next to it">
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="col"></div>
+            <div class="col colpadd"></div>
         </div>
     </div>
 {% endblock %}
