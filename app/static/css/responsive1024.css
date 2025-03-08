@@ -1,0 +1,313 @@
+/* Medium devices (Tablets, Small Laptops) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Hidden sections */
+    .navleft,
+    .navright,
+    .menu-icon,
+    .mobile-nav a:nth-child(6),
+    .padd,
+    .colpadd,
+    .newslabel,
+    .sortmenu h3,
+    .filtersection h3,
+    .mobwishinfo {
+        display: none;
+    }
+    /* BASE TEMPLATE */
+    .no-padding-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        overflow-x: hidden;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    header {
+        z-index: 99;
+    }
+    .midmenu-icon {
+        display: flex;
+        position: absolute;
+        top: 1.2rem;
+        left: 1rem;
+        cursor: pointer;
+        font-size: 2rem;
+        color: #B8C6F4;
+        width: 30%;
+        padding: 0;
+    }
+    .mobile-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        width: 40%;
+        background-color: #282566;
+        text-align: center;
+        padding: 1rem 0;
+    }
+    .mobile-nav a {
+        display: block;
+        padding: 1rem;
+        text-decoration: none;
+        color: #B8C6F4;
+        font-weight: 600;
+        font-size: 31px;
+    }
+    .mobile-nav a:hover {
+        background-color: #B8C6F4;
+        color: #282566;
+    }
+    /* Show mobile menu when active */
+    .mobile-nav.active {
+        display: flex;
+    }
+    /*Right Icons*/
+    .mobile-cart-icon {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 5px;
+        z-index: 10;
+        width: 10%;
+        padding: 0;
+    }
+    .mobile-cart-icon img {
+        width: 50px;
+        height: 50px;
+        right: 5px;
+    }
+    .mobile-acc-icon {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 5rem;
+        z-index: 10;
+        width: 10%;
+        padding: 0;
+    }
+    .mobile-acc-icon img {
+        width: 50px;
+        height: 50px;
+        right: 1rem;
+    }
+    .rowmidstyle {
+        flex-direction: column;
+        align-items: center;
+    }
+    .colstyle {
+        width: 100%;
+        text-align: center;
+    }
+    /*HOME STYLING*/
+
+    .hero {
+        text-align: center;
+        position: relative;
+        z-index: 3;
+    }
+    .hero h1 {
+        font-size: 63px;
+    }
+    .hero h4 {
+        font-size: 39px;
+        font-weight: 700;
+        width: 60%;
+    }
+    .hero-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        overflow: hidden;
+    }
+    .hero-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 2;
+        opacity: 0.2;
+    }
+    #homeshop {
+        margin-bottom: 4rem;
+    }
+    .socialtitle {
+        padding-top: 2rem;
+    }
+    #socialsect {
+        padding-left: 0;
+    }
+    .socialproof {
+        min-width: 320px;
+        max-width: 575px;
+        align-self: center;
+        padding: 1.5rem 0;
+        margin: 0 auto 0 auto;
+    }
+    .socialproof h4 {
+        margin-bottom: 20px;
+    }
+    .socialproof h5 {
+        margin-bottom: 0;
+        padding-bottom: 8px;
+    }
+    .newstitle {
+        text-align: center;
+        margin: 10px 20px 0 20px;
+    }
+    .newsline {
+        width: 95%;
+        margin: 1rem auto;
+    }
+    .newsect {
+        margin-bottom: 3rem !important;
+    }
+
+    /* BASE TEMPLATE */
+
+    .ygtitle {
+        margin-top: 40px;
+    }
+    .logreg {
+        margin: 1rem auto;
+        width: 60%;
+    }
+
+    /* REGISTRATION STYLING */
+
+    .form-group {
+        width: 80%;
+        margin: auto;
+    }
+    .registerbtn {
+        margin: 0;
+    }
+
+    /* ACCOUNT STYLING */
+
+    .acctbtngroup {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 20px;
+    }
+    .accbtn {
+        margin-bottom: 2rem;
+    }
+    .editbtn {
+        margin-left: 33%;
+    }
+
+    /* CONTACT STYLING */
+    .contactform {
+        width: 95%;
+        margin: auto;
+    }
+
+    /* SHOP STYLING */
+    .shoptop {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .shoporg {
+        justify-content: space-between;
+        margin-left: 5px;
+    }
+    .searchbar {
+        width: 30rem;
+    }
+    #clear-search {
+        width: 60px;
+        padding: 6px 0;
+        height: 40px;
+        margin: 15px 5px 5px;
+    }
+    #clearfilter {
+        width: 60px;
+        padding: 6px 0;
+        height: 40px;
+        float: right;
+        margin-right: 25px;
+    }
+    #clearfiltbtn {
+        margin: 0 !important;
+    }
+
+    /*PRODUCT PAGE STYLING*/
+    .navcrumb {
+        margin-top: 1rem;
+    }
+    #prodimg {
+        width: 100%;
+        height: auto;
+        margin-left: 8px;
+    }
+    .colprod {
+        width: 100%;
+    }
+    .prodtxt {
+        padding-left: 0;
+    }
+    #prodtitle {
+        font-size: 49px;
+        margin-bottom: 0;
+    }
+    .prodinfo {
+        font-size: 39px;
+        margin: 0;
+    }
+    .prodinfofl {
+        font-size: 31px;
+        margin: 0;
+    }
+    #proddesc {
+        font-size: 24px;
+    }
+    .prodprice,
+    .prodmininfo {
+        text-align: center;
+        margin: 0;
+    }
+    #quantbutt {
+        margin: .5rem auto;
+    }
+    #prodbotbut {
+        justify-content: center;
+    }
+    
+    /*CART STYLING*/
+    #img4cart {
+        width: 100%;
+        height: auto;
+    }
+    .cartamount {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .carttotal,
+    .checkout {
+        margin: auto;
+    }
+
+    /*ERROR HANDLING STYLING*/
+    .wish-items {
+        margin-top: 2rem;
+    }
+    .ygerrtitle {
+        margin-top: 2rem;
+    }
+    .wishbox {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .wishright {
+        padding: 0;
+    }
+}

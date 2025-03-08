@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <div class="row rowstyle">
+    <div class="row rowstyle rowmidstyle">
         <div class="col"></div>
         <div class="col">
             <h1 class="ygtitle">All About You!</h1>
         </div>
         <div class="col"></div>
     </div>
-    <div class="row rowstyle">
+    <div class="row rowstyle rowmidstyle">
         <div class="col-4"></div>
         <div class="col">
             <!--USERS DETAILS-->
@@ -63,7 +63,7 @@
                             {{ form.email(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-                    <button class="registerbtn">
+                    <button class="editbtn">
                         {{ form.submit() }}
                     </button>
                 </form>

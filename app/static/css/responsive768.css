@@ -1,6 +1,6 @@
 /* Small devices (Landscape Mobile, Small Tablets) */
 @media screen and (min-width: 485px) and (max-width: 768px) {
-    /* BASE TEMPLATE */
+    /* Hidden sections */
     .navleft,
     .navright,
     .menu-icon,
@@ -17,6 +17,7 @@
     .wishremove h3 {
         display: none;
     }
+    /* BASE TEMPLATE */
     .ygtitle {
         margin-top: 40px;
     }
@@ -211,14 +212,12 @@
         width: 90%;
         margin: auto;
     }
-    .registerbtn {
+    .registerbtn,
+    .editbtn {
         margin: auto;
     }
 
     /* ACCOUNT STYLING */
-    .colpadd {
-        display: none;
-    }
     .infocont {
         display: flex;
         flex-direction: row;

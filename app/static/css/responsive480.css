@@ -311,7 +311,9 @@
         width: 90%;
         margin: .5rem auto;
     }
-    
+    .editbtn {
+        margin: 1rem auto;
+    }
     /* CONTACT STYLING */
     .form-control-lg {
         width: 95%;
@@ -472,7 +474,6 @@
         display: flex;
         align-items: center;
         margin-left: 19px;
-
     }
     #prodbasket h3 {
         display: none;

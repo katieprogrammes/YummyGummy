@@ -290,12 +290,14 @@ footer {
     background-color: #B8C6F4;
     color: #282566;
 }
-.registerbtn {
+.registerbtn,
+.editbtn {
     background-color: transparent;
     border: none;
     margin-left: 7rem;
 }
-.registerbtn input {
+.registerbtn input,
+.editbtn input {
     color: #6388EA;
     background-color:#10042F;
     border: none;
@@ -392,7 +394,7 @@ footer {
 #searchbtn {
     background-color:#10042F;
     width: 43px;
-    height: 43px;
+    height: 41.83px;
     display: flex;
     justify-content: center;
     align-items: center;
