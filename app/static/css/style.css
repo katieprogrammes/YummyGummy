@@ -331,7 +331,8 @@ footer {
 .acctbtngroup {
    margin: 5rem 0;
    display: flex;
-   justify-content: space-around;
+   justify-content: center;
+   align-items: center;
 }
 .accbtn {
     text-decoration: none;
@@ -344,13 +345,29 @@ footer {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    margin: 0 5rem;
+    margin: 1rem auto;
 }
 .accbtn h3 {
     font-weight: 700;
     margin-top: 10px;
 }
-
+.adminbtn {
+    text-decoration: none;
+    border-radius: 10px;
+    color:#10042F;
+    width: 16rem;
+    height: 5rem;
+    background-color: #6388EA;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2rem auto;
+}
+.adminbtn h3 {
+    font-weight: 700;
+    margin-top: 10px;
+}
 /*CONTACT STYLING*/
 .ygsubtitle {
     text-align: center;
@@ -381,6 +398,13 @@ footer {
 }
 
 /*SHOP STYLING*/
+.shoptop {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: baseline;
+    align-content: center;
+}
 #searchcont {
     display: flex;
     justify-content: flex-start;
@@ -390,7 +414,6 @@ footer {
     align-items: center;
     width: 20rem;
     height: 40px;
-    margin-top: 10px;
 }
 #shopsearch {
     border: thin solid #282566;
@@ -406,12 +429,6 @@ footer {
     align-items: center;
     border-radius: 0px 10px 10px 0px;
 }
-#clear-search {
-    background-color: #282566;
-    color: #EFE8FB;
-    margin-top: 8px;
-    margin-left: 12px;
-}
 .shoporg {
     display: flex;
     justify-content: flex-end;
@@ -419,7 +436,7 @@ footer {
 }
 /*Sort Styling */
 .sortmenu {
-    margin-top: 10px;
+    margin-top: 8px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -475,21 +492,14 @@ footer {
     margin-left: 10px;
     width: 90px;
     padding-top: 2px;
+    margin-right: 14px;
 }
 /*Filter Styling*/
 .filtersection {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 50%;
-    margin-right: 1rem;
-}
-.sortmenu h3,
-.filtersection h3 {
-    font-weight: 500;
-    color: #282566;
-    margin: 0 10px 0 0;
-    align-self: flex-end;
+    margin-right: 8px;
 }
 #vitaminDropdown,
 #flavourDropdown {
@@ -520,13 +530,13 @@ footer {
     width: 90px;
     padding-top: 2px;
 }
-#clearfiltbtn {
-    float: right;
-    margin-right: 15px;
-}
-#clearfiltbtn button {
+#clearbutton {
     background-color: #282566;
     color: #EFE8FB;
+    float: right;
+    margin-right: 10px;
+    margin-left: 12px;
+    height: 40px;
 }
 #filtwipe,
 #searchwipe {
@@ -537,7 +547,7 @@ footer {
     justify-content: center;
     margin: 40px 10px;
 }
-.cardimg img{
+.cardimg img {
     object-fit: cover;
     background-size: 100% 100%;
     height: 250px;
@@ -816,7 +826,8 @@ footer {
     display: flex;
     justify-content: center;
 }
-#emptycart {
+#emptycart,
+#emptywish {
     color:#B8C6F4;
     background-color: #10042F;
     border: none;
@@ -828,9 +839,11 @@ footer {
     align-items: center;
 
 }
-#emptycart h3 {
+#emptycart h2,
+#emptywish h2 {
     font-weight: 700;
     margin-top: 8px;
+    line-height: 45px;
 }
 
 /*FAQ Styling*/
@@ -912,14 +925,6 @@ footer {
     font-weight: 700;
     margin-bottom: 4rem;
 }
-/* Flash Message Background*/
-.custom-alert.alert-custom-success {
-    color: #10042F;
-    background-image: linear-gradient(to right, #B8C6F4, #6388EA);
-    border-radius: 0 0 8px 8px;
-    border: none;
-}
-
 /*WISHLIST STYLING*/
 .witem-price {
     margin-top: 30px;
@@ -951,4 +956,74 @@ footer {
 }
 .wish-items {
     margin-bottom: 3rem;
+}
+
+/*UPDATE PRODUCTS PAGE*/
+.updatesub {
+    text-align: center;
+    color: #282566;
+    margin-bottom: 2rem;
+}
+.uploadbutton {
+    border-radius: 10px;
+    color:#10042F;
+    width: 16rem;
+    height: 6rem;
+    background-color: #6388EA;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2rem auto;
+    border: none;
+}
+.uploadbutton h3 {
+    font-weight: 700;
+    margin-top: 10px;
+}
+#updateform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+#updateform input {
+    font-size: 39px;
+    margin: 1rem 33%;
+}
+
+/* Flash Message Styling*/
+.alert-custom-success.custom-alert, 
+.custom-alert.alert-custom-success, 
+.alert.alert-custom-success.custom-alert {
+    color: #10042F;
+    background-image: linear-gradient(to right, #B8C6F4, #6388EA);
+    border-radius: 0 0 8px 8px;
+    border: none;
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 100%; 
+    font-size: 24px;
+}
+.alert-custom-error.custom-alert, 
+.custom-alert.alert-custom-error, 
+.alert.alert-custom-error.custom-alert {
+    color: #EFE8FB;
+    background-image: linear-gradient(to right, #10042F, #6388EA);
+    border-radius: 0 0 8px 8px;
+    border: none;
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 100%; 
+    font-size: 24px;
+}
+.invalid-feedback span {
+    font-size: 24px;
 }

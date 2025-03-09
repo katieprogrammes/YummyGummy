@@ -15,12 +15,6 @@
                 </button>
             </div>
         </form>
-        <!--Clear Search Button-->
-        <form action="{{ url_for('shop') }}" method="get" class="d-inline">
-            <button type="submit" class="btn" id="clear-search">
-                <h5 id="searchwipe">Clear</h5>
-            </button>
-        </form>
     </div>
 
     <!--Filter and Sort Section-->
@@ -30,7 +24,6 @@
             <input type="hidden" name="q" value="{{ query }}">
             <input type="hidden" name="sort_by" id="selected-sort" value="">
             <div class="sortmenu">
-                <h3>Sort:</h3>
                 <button class="btn btn-light dropdown-toggle custom-dropdown" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     <h5>
                     {{ "Select sorting..." if not sort_by else 
@@ -47,7 +40,7 @@
                     <li><a class="dropdown-item" href="#" data-value="price_desc"><h5>Price (High-Low)</h5></a></li>
                 </ul>
                 <button type="submit" class="btn btn-primary ms-2" id="sortbutton">
-                    <h4>Apply</h4>
+                    <h4>Sort</h4>
                 </button>
             </div>
         </form>
@@ -59,7 +52,6 @@
 
         <!--Filter Form-->
         <div class="filtersection" id="filterSection">
-            <h3>Filters:</h3>
             <form action="{{ url_for('filter_sort') }}" method="get" class="d-flex mt-2 filtform">
                 <input type="hidden" name="q" value="{{ query }}">
                 <input type="hidden" name="sort_by" value="{{ sort_by }}">
@@ -68,16 +60,14 @@
                 {% include "shopflavourfilt.html" %}
                 
                 <button type="submit" class="btn btn-primary ms-2" id="apply-filters">
-                    <h4>Apply</h4>
+                    <h4>Filter</h4>
                 </button>
             </form>
         </div>
     </div>
-    <!--Clear Filter Button-->
-    <form action="{{ url_for('shop') }}" method="get" class="d-inline mt-2" id="clearfiltbtn">
-        <input type="hidden" name="q" value="{{ query }}">
-        <input type="hidden" name="sort_by" value="{{ sort_by }}">
-        <button type="submit" class="btn btn-secondary" id="clearfilter">
+    <!--Clear Filter and Search Button-->
+    <form action="{{ url_for('shop') }}">
+        <button type="submit" class="btn btn-secondary" id="clearbutton">
             <h5 id="filtwipe">Clear</h5>
         </button>
     </form>
@@ -85,6 +75,7 @@
 
 <!--Product Grid-->
 <div class="row">
+    {% if results %}
     {% for product in results %}
     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="prodcard">
@@ -105,7 +96,6 @@
     </div>
     {% endfor %}
 </div>
-<!--No Results-->
 {% else %}
 <h2 class="ygsubtitle">No products found matching your search.</h2>
 {% endif %}

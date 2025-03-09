@@ -10,11 +10,12 @@
     </div>
     <div class="row">
         <div class="col"></div>
-        <div class="col">
+        <div class="col-10">
+            <h2 class="updatesub">Please upload "products.csv"</h2>
             <!--Form to Upload File-->
-            <form action="{{ url_for('import_csv') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url_for('import_csv') }}" method="POST" enctype="multipart/form-data" id="updateform">
                 <input type="file" name="csv_file" accept=".csv" required>
-                <button type="submit">Upload and Update Products</button>
+                <button type="submit" class="uploadbutton"><h3>Upload and Update Products</h3></button>
             </form>
         </div>
         <div class="col"></div>

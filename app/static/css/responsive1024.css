@@ -8,8 +8,6 @@
     .padd,
     .colpadd,
     .newslabel,
-    .sortmenu h3,
-    .filtersection h3,
     .mobwishinfo {
         display: none;
     }
@@ -218,21 +216,12 @@
     .searchbar {
         width: 30rem;
     }
-    #clear-search {
-        width: 60px;
-        padding: 6px 0;
-        height: 40px;
-        margin: 15px 5px 5px;
-    }
-    #clearfilter {
+    #clearbutton {
         width: 60px;
         padding: 6px 0;
         height: 40px;
         float: right;
         margin-right: 25px;
-    }
-    #clearfiltbtn {
-        margin: 0 !important;
     }
 
     /*PRODUCT PAGE STYLING*/

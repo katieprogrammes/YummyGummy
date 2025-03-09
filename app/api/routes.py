@@ -119,7 +119,7 @@ def add_to_cart():
         return jsonify({"error": "Product not found"}), 404
 
     update_cart_item(product_id, quantity)
-    return jsonify({"message": "Item added to cart!"}), 200
+    return jsonify({"message": "Item(s) added to cart!"}), 200
 
 
 # Removing from Cart

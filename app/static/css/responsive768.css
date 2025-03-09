@@ -18,9 +18,7 @@
     .wishbox,
     .cartamount,
     .cartinfo,
-    .cartbox,
-    .sortmenu h3,
-    .filtersection h3 {
+    .cartbox {
         display: none;
     }
 
@@ -363,26 +361,14 @@
         padding: 5px 5px 5px 10px;
         cursor: pointer;
     }
-    #clearfiltbtn {
-        margin: 0 !important;
-    }
-    #clear-search {
-        width: 50px;
-        padding: 0;
-        height: 35px;
-        margin: 15px 5px 5px;
-    }
-    #clearfilter {
+    #clearbutton {
         width: 50px;
         padding: 0;
         height: 35px;
         float: right;
         margin-right: 25px;
     }
-    #filtwipe {
-        font-size: 19px;
-    }
-    #searchwipe {
+    #clearbutton h5 {
         font-size: 19px;
     }
     .pagenumb h3 {

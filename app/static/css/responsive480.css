@@ -17,9 +17,7 @@
     .cartinfo,
     .cartbox,
     .midscreen,
-    #prodbasket h3,
-    .sortmenu h3,
-    .filtersection h3,
+    #prodbasket h3
     .colpadd {
         display: none;
     }
@@ -411,26 +409,14 @@
         padding: 5px;
         cursor: pointer;
     }
-    #clear-search {
-        width: 50px;
-        padding: 0;
-        height: 30px;
-        margin: 15px 5px 5px;
-    }
-    #clearfilter {
+    #clearbutton {
         width: 50px;
         padding: 0;
         height: 30px;
         float: right;
         margin-right: 10px;
     }
-    #clearfiltbtn {
-        margin: 0 !important;
-    }
-    #filtwipe {
-        font-size: 19px;
-    }
-    #searchwipe {
+    #clearbutton h5 {
         font-size: 19px;
     }
     .pagenumb h3 {

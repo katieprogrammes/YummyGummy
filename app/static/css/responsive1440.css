@@ -85,15 +85,8 @@
         justify-content: space-between;
         padding-left: 5px;
     }
-    .filtersection h3,
-    .sortmenu h3 {
-        font-size: 31px;
-    }
     .filtersection {
         margin-top: 10px;
-    }
-    .sortmenu h3 {
-        align-self: flex-end;
     }
     .shoptop {
         margin-top: 5px;
@@ -105,13 +98,7 @@
     .sortmenu {
         margin-top: 18px;
     }
-    #clear-search {
-        margin: 16px 8px 0;
-        float: right;
-        width: 55px;
-        padding: 2px 0 0;
-    }
-    #clearfilter {
+    #clearbutton {
         float: right;
         width: 55px;
         padding: 2px 0 0;

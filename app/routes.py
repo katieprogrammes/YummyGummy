@@ -45,7 +45,7 @@ def editaccount():
         # Check if Email is Already in Use
         existing_user = User.query.filter_by(email=form.email.data).first()
         if existing_user and existing_user.id != current_user.id:
-            flash('Email is already in use. Please choose a different one.', 'danger')
+            flash('Email is already in use. Please choose a different one.', 'custom-error')
         # Update Info
         else:
             current_user.firstname = form.firstname.data
@@ -85,7 +85,7 @@ def login():
         
         # Incorrect Entry
         if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
+            flash('Invalid username or password', 'custom-error')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         
@@ -108,17 +108,31 @@ def register():
     # If User is Logged In
     if current_user.is_authenticated:
         return redirect(url_for('home'))
+    
     form = RegistrationForm()
 
-    #Add User to Table
+    # Add User to Table
     if form.validate_on_submit():
-        user = User(lastname=form.lastname.data,firstname=form.firstname.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('Congratulations, you are now a registered user!', 'custom-success')
-        return redirect(url_for('login'))
+        # Check if Email is Already in Use
+        existing_user = User.query.filter_by(email=form.email.data).first()
+        if existing_user:
+            flash('Email is already in use. Please choose a different one.', 'custom-error')
+
+        # Check if Passwords Match
+        elif form.password.data != form.password2.data:
+            flash('Passwords do not match. Please try again.', 'custom-error')
+
+        else:
+            # Add User to Table
+            user = User(lastname=form.lastname.data, firstname=form.firstname.data, email=form.email.data)
+            user.set_password(form.password.data)
+            db.session.add(user)
+            db.session.commit()
+            flash('Congratulations, you are now a registered user!', 'custom-success')
+            return redirect(url_for('login'))
+        
     return render_template('register.html', title='Register', form=form)
+
 
 # SHOP PAGE
 @app.route('/shop')
@@ -235,7 +249,7 @@ def remove_wish(item_id):
 
     # Handle Response from API
     if response.status_code == 200:
-        flash(response.json().get("message", "Item removed from wishlist"), "custom-success")
+        flash(response.json().get("flash_message", "Item removed from wishlist"), "custom-success")
     else:
         flash(response.json().get("error", "An error occurred"), "danger")
 
@@ -260,19 +274,26 @@ def contact():
 @app.route('/search')
 def search():
     query = request.args.get('q', '').strip()
+    page = request.args.get('page', 1, type=int) 
+    per_page = 8 
     
     if query:
-        results = Product.query.filter(
+        results_query = Product.query.filter(
             db.or_(
                 Product.name.ilike(f"%{query}%"),
                 Product.vitamin.ilike(f"%{query}%"),
                 Product.flavour.ilike(f"%{query}%")
             )
-        ).all()
+        )
     else:
-        results = []
+        results_query = Product.query.filter_by(id=None)
 
-    return render_template('search_results.html', results=results, query=query, title="Shop")
+    #Pagination
+    pagination = results_query.paginate(page=page, per_page=per_page, error_out=False)
+    results = pagination.items
+
+    return render_template('search_results.html', pagination=pagination, results=results, query=query, title="Shop")    
+
 
 #Filtering Products
 @app.route('/filter-sort', methods=['GET'])
@@ -338,6 +359,7 @@ def filter_sort():
                            filter_price_max=filter_price_max,
                             title="Shop")
 
+
 # UPDATING PRODUCTS PAGE
 
 @app.route('/update_products', methods=['GET'])
@@ -347,13 +369,13 @@ def update_products():
 @app.route('/import_csv', methods=['POST'])
 def import_csv():
     if 'csv_file' not in request.files:
-        flash('No file part')
+        flash('No file part', 'custom-success')
         return redirect(request.url)
     
     file = request.files['csv_file']
     
     if file.filename == '':
-        flash('No selected file')
+        flash('No selected file', 'custom-success')
         return redirect(request.url)
     
     if file and file.filename.endswith('.csv'):
@@ -371,5 +393,5 @@ def import_csv():
 
         return redirect(url_for('account'))  # Redirect to the Account page after successful update
     else:
-        flash('Please upload a valid .csv file')
+        flash('Please upload a valid .csv file', 'custom-success')
         return redirect(request.url)
