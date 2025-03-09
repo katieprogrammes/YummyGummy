@@ -3,23 +3,27 @@
 {% block body %}
 <h1 class="ygtitle">Your Wishlist</h1>
 <div class="padd"></div>
-    <!-- Check if there are items in the wishlist -->
+
+    <!--Check for Items in Wishlist-->
     {% if wish_items %}
         <div class="row">
             <div class="col-3 colpadd wishpadd"></div>
             <div class="col">
                 {% for item in wish_items %}
                 <div class="row wish-items">
+                    <!--Product Image-->
                     <div class="col-4 wishbox">
                         <a href="{{ url_for('product_detail', product_id=item.product.id) }}" class="img4wish">
                             <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="250" id="wishimg">
                         </a>
                     </div>
+                    <!--Product Image for Mobile-->
                     <div class="col-5 mobwishbox">
                         <a href="{{ url_for('product_detail', product_id=item.product.id) }}" class="img4wish">
                             <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225" id="wishimg">
                         </a>
                     </div>
+                    <!--Product Information-->
                     <div class="col wishinfo">
                         <h2 class="wproductnm">{{ item.product.name }}</h2>
                         <h3 class="wvitamin">{{ item.product.vitamin }}</h3>
@@ -32,6 +36,7 @@
                             </button>
                         </div>
                     </div>
+                    <!--Product Information for Mobile-->
                     <div class="col-7 mobwishinfo">
                         <h2 class="wproductnm">{{ item.product.name }}</h2>
                         <h3 class="wvitamin">{{ item.product.vitamin }}</h3>
@@ -44,6 +49,7 @@
                             </button>
                         </div>
                     </div>
+                    <!--Remove from Wishlist Button-->
                     <div class="col-3 wishright">
                         <button type="button" class="wishremove" data-item-id="{{ item.id }}">
                             <img src="/static/images/heart-minus.svg" alt="Solid heart with a minus next to it">
@@ -52,6 +58,8 @@
                     </div>
                 </div>
                 {% endfor %}
+
+                <!--Back to Shop Button-->
                 <div class="backtoshop">
                     <a href="{{ url_for('shop') }}" class="shopreturn">
                         <h2>Continue Shopping</h2>
@@ -61,8 +69,11 @@
             <div class="col-3 colpadd wishpadd"></div>
         </div>
         {% else %}
+
+        <!--If Wishlist is Empty-->
         <h2 class="ygsubtitle">Your Wishlist is currently empty.</h2>
         <div class="backtoshop">
+            <!--Back to Shop Button-->
             <a href="{{ url_for('shop') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" id="emptycart">
                 <h2>Continue Shopping</h2>
             </a>

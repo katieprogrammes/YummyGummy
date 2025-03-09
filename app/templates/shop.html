@@ -4,6 +4,8 @@
 <h1 class="ygtitle">Shop</h1>
 <div class="padd"></div>
 <div class="row rowstyle rowmidstyle">
+
+    <!--Search Bar Section-->
     <div class="col-4 shoptop">
         <form action="{{ url_for('search') }}" method="get">
             <div class="searchbar">
@@ -14,6 +16,8 @@
             </div>
         </form>
     </div>
+
+    <!--Filter and Sort Section-->
     <div class="col shoporg">
         <!-- Sorting Dropdown -->
         <form action="{{ url_for('filter_sort') }}" method="get" class="d-flex sortsect">
@@ -42,13 +46,13 @@
             </div>
         </form>
 
-        <!-- Filter Button for Mobile -->
+        <!--Filter Button for Mobile-->
         <button type="button" class="btn btn-secondary" id="filterButton">
             <h4>Filters</h4>
             <img src="{{ url_for('static', filename='images/filter.svg') }}" alt="Filter picture" class="filtimg">
         </button>
 
-        <!-- Filter Form (Vitamin & Flavour) -->
+        <!--Filter Form-->
         <div class="filtersection" id="filterSection">
             <h3>Filters:</h3>
             <form action="{{ url_for('filter_sort') }}" method="get" class="d-flex mt-2 filtform">
@@ -66,15 +70,17 @@
     </div>
 </div>
 
-<!-- Product Grid -->
+<!--Product Grid-->
 <div class="row">
     {% for product in products %}
     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="prodcard">
+            <!--Product Image-->
             <a href="{{ url_for('product_detail', product_id=product.id) }}" class="productlink">
                 <div class="cardimg">
                     <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ product.name }}" />
                 </div>
+                <!--Product Information-->
                 <div class="cardtext">
                     <h3>{{ product.name }}</h3>
                     <h4 class="shopvitamin">{{ product.vitamin }}</h4>

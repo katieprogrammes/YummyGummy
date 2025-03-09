@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const midmenuIcon = document.getElementById("midmenu-icon");
     const mobileNav = document.getElementById("mobile-nav");
     
-
+    // Mobile Navigation
     menuIcon.addEventListener("click", function () {
         mobileNav.classList.toggle("active");
     });
@@ -11,12 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
         mobileNav.classList.toggle("active");
     });
 
-
-    
+    //Mobile Filter Button
     document.getElementById('filterButton').addEventListener('click', function() {
         var filterSection = document.getElementById('filterSection');
         
-        // Toggle between showing and hiding the filter section
+        //Showing and Hiding Filter Menu
         if (filterSection.classList.contains('show')) {
             filterSection.classList.remove('show');
         } else {

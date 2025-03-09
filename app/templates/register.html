@@ -10,10 +10,12 @@
     </div>
     <div class="row">
         <div class="col colpadd"></div>
+
+        <!--Register Form-->
         <div class="col colstyle">
             <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
-                
+                <!--First Name-->
                 <div class="form-group">
                     <h4>
                     {{ form.firstname.label(class="form-control-label") }}
@@ -29,7 +31,7 @@
                         {{ form.firstname(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-
+                <!--Last Name-->
                 <div class="form-group">
                     <h4>
                     {{ form.lastname.label(class="form-control-label") }}
@@ -45,7 +47,7 @@
                         {{ form.lastname(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-
+                <!--Email-->
                 <div class="form-group">
                     <h4>
                     {{ form.email.label(class="form-control-label") }}
@@ -61,7 +63,7 @@
                         {{ form.email(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-
+                <!--Password-->
                 <div class="form-group">
                     <h4>
                     {{ form.password.label(class="form-control-label") }}
@@ -77,7 +79,7 @@
                         {{ form.password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-
+                <!--Password Check-->
                 <div class="form-group">
                     <h4>
                     {{ form.password2.label(class="form-control-label") }}
@@ -92,14 +94,15 @@
                     {% else %}
                         {{ form.password2(class="form-control form-control-lg") }}
                     {% endif %}
-                    <!-- Include validation feedback for matching passwords -->
+                    <!--Password Validation-->
                     {% if form.password2.data != form.password.data %}
                         <div class="invalid-feedback">
                             <span>Passwords do not match!</span>
                         </div>
                     {% endif %}
                 </div>
-
+                
+                <!--Registration Button-->
                 <button class="registerbtn">
                     {{ form.submit() }}
                 </button>

@@ -3,23 +3,28 @@
 {% block body %}
     <h1 class="ygtitle">Your Basket</h1>
     <div class="padd"></div>
-    <!-- Check if there are items in the cart -->
+
+    <!--Check For Cart Items-->
     {% if cart_items %}
         <div class="row">
             <div class="col-2 colpadd cartpadd"></div>
             <div class="col">
                 {% for item in cart_items %}
+                <!--Cart Item-->
                 <div class="row cart-item">
+                    <!--Cart Image-->
                     <div class="col-4 cartbox">
                         <a href="{{ url_for('product_detail', product_id=item.product.id) }}" class="img4cart">
                             <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="250" id="cartimg">
                         </a>
                     </div>
+                    <!--Cart Item For Mobile-->
                     <div class="col-5 mobcartbox">
                         <a href="{{ url_for('product_detail', product_id=item.product.id) }}" class="img4cart">
                             <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225" id="cartimg">
                         </a>
                     </div>
+                    <!--Product Information-->
                     <div class="col cartinfo">
                         <h2 class="productnm">{{ item.product.name }}</h2>
                         <h3 class="vitamin">{{ item.product.vitamin }}</h3>
@@ -27,13 +32,14 @@
                         <h1 class="item-price">£{{ item.product.price }}</h1> <!--Purely for Javascript-->
                         <h2 class="price">£{{ item.product.price * item.quantity }}</h2>
                     </div>
-                    <!--Mobile Cart Information-->
+                    <!--Mobile Product Information-->
                     <div class="col-7 cartmobileinfo">
                         <h2 class="productnm">{{ item.product.name }}</h2>
                         <h3 class="vitamin">{{ item.product.vitamin }}</h3>
                         <h4 class="flavour">{{ item.product.flavour }}</h4>
                         <h1 class="item-price">£{{ item.product.price }}</h1> <!--Purely for Javascript-->
                         <h2 class="price">£{{ item.product.price * item.quantity }}</h2>
+                        <!--Quantity and Remove Buttons for Mobile-->
                         <div class="cartbottom">
                             <div class="cartquantitybutton" id="cart-item-{{ item.id }}">
                                 <button type="button" class="cartminus" data-cart-item-id="{{ item.id }}" data-action="decrease">
@@ -50,12 +56,13 @@
                             </button>
                         </div>
                     </div>
+                    <!--Remove Button-->
                     <div class="col-3 cartamount">
                         <button type="button" class="remove" data-item-id="{{ item.id }}">
                             <img src="/static/images/trash.svg" alt="Rubbish Bin">
                             <h3>Remove</h3>
                         </button>
-                        <!-- Cart item quantity buttons -->
+                        <!--Cart Quantity Button-->
                         <div class="quantityblock">
                             <h4 class="prodmininfo">Quantity</h4>
                             <div class="cartquantitybutton" id="cart-item-{{ item.id }}">
@@ -75,7 +82,7 @@
             <div class="col-2 colpadd cartpadd"></div>
         </div>
         
-        <!-- CHECKOUT SECTION-->
+        <!--Checkout Section-->
         <div class="row checksect">
             <div class="col-3 colpadd cartpadd"></div>
             <div class="col">
@@ -85,7 +92,7 @@
                 </div>
             </div>
             <div class="col">
-                <form action="{{ url_for('home') }}" method="post"> <!--CHANGE IN FINAL VERSION-->
+                <form action="{{ url_for('home') }}" method="post">
                     <button class="checkout">
                         <h1>Checkout</h1>
                         <img src="/static/images/bag.svg" alt="Shopping Bag">
@@ -95,6 +102,7 @@
             <div class="col-2 colpadd cartpadd"></div>
         </div>
     {% else %}
+        <!--If Cart is Empty-->
         <h2 class="ygsubtitle">Your cart is currently empty</h2>
         <div class="backtoshop">
             <a href="{{ url_for('shop') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" id="emptycart">

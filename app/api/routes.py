@@ -4,10 +4,10 @@ from app import db
 from app.models import Product, Cart, Wishlist
 
 
-#Creating a Blueprint for the API
+# Creating a Blueprint for the API
 api_bp = Blueprint("api", __name__)
 
-#Function to handle adding or updating cart
+# Function for Adding or Updating Cart
 def update_cart_item(product_id, quantity):
     cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
     if cart_item:
@@ -17,7 +17,7 @@ def update_cart_item(product_id, quantity):
         db.session.add(new_cart_item)
     db.session.commit()
 
-#Function to handle adding to wishlist
+# Function for Adding to Wishlist
 def add_wishlist_item(product_id):
     if not product_id:
         return {"error": "Product ID is required"}, 400
@@ -37,7 +37,10 @@ def add_wishlist_item(product_id):
 
     return {"message": "Item added to wishlist!"}, 200
 
-#API Routes
+
+#API ROUTES
+
+# Products
 @api_bp.route("/products", methods=["GET"])
 def get_products():
     products = Product.query.all()
@@ -52,6 +55,7 @@ def get_products():
 
     return jsonify({"products": product_list})
 
+# Product Page
 @api_bp.route("/products/<int:product_id>", methods=["GET"])
 def get_product(product_id):
     product = Product.query.get_or_404(product_id)
@@ -67,7 +71,7 @@ def get_product(product_id):
 
     return jsonify({"product": product_data})
 
-
+# Cart Page
 @api_bp.route("/cart", methods=["GET", "POST"])
 @login_required
 def cart():
@@ -89,6 +93,7 @@ def cart():
         update_cart_item(product_id, quantity)
         return jsonify({"message": "Cart updated successfully!"}), 200
 
+# Adding to Cart
 @api_bp.route("/cart/add", methods=["POST"])
 @login_required
 def add_to_cart():
@@ -107,8 +112,7 @@ def add_to_cart():
     return jsonify({"message": "Item added to cart!"}), 200
 
 
-
-
+# Removing from Cart
 @api_bp.route("/cart/remove/<int:item_id>", methods=["DELETE"])
 @login_required
 def remove_from_cart(item_id):
@@ -120,7 +124,7 @@ def remove_from_cart(item_id):
     db.session.commit()
     return jsonify({"message": "Item removed from cart!"}), 200
 
-
+# Updating Cart Quantity
 @api_bp.route("/cart/update_quantity/<int:item_id>", methods=["PUT"])
 @login_required
 def update_quantity(item_id):
@@ -138,6 +142,7 @@ def update_quantity(item_id):
     db.session.commit()
     return jsonify({"message": "Cart item quantity updated!"}), 200
 
+# Wishlist Page
 @api_bp.route("/wishlist", methods=["GET", "POST"])
 @login_required
 def wishlist():
@@ -154,7 +159,7 @@ def wishlist():
         response, status = add_wishlist_item(product_id)
         return jsonify(response), status
 
-
+# Adding to Wishlist
 @api_bp.route("/wishlist/add", methods=["POST"])
 @login_required
 def add_to_wishlist():
@@ -163,6 +168,7 @@ def add_to_wishlist():
     response, status = add_wishlist_item(product_id)
     return jsonify(response), status
 
+# Removing from Wishlist
 @api_bp.route("/wishlist/remove/<int:item_id>", methods=["DELETE"])
 @login_required
 def remove_from_wishlist(item_id):

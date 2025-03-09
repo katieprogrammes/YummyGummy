@@ -13,7 +13,7 @@ from config import Config
 
 mail = Mail(app)
 
-
+# HOME PAGE
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = NewsletterForm()
@@ -24,26 +24,29 @@ def home():
 
     return render_template('main.html', form=form, title='Home')
 
+# ACCOUNT PAGE
 @app.route('/account')
 @login_required
 def account():
     return render_template('account.html', title='Account')
 
+# FAQ PAGE
 @app.route('/faq')
 def faq():
     return render_template('faq.html', title='FAQ')
 
-
+# EDIT ACCOUNT
 @app.route('/editaccount', methods=['GET', 'POST'])
 @login_required
 def editaccount():
     form = UpdateAccountForm()
 
     if form.validate_on_submit():
-        # Check if the email is already in use by another user
+        # Check if Email is Already in Use
         existing_user = User.query.filter_by(email=form.email.data).first()
         if existing_user and existing_user.id != current_user.id:
             flash('Email is already in use. Please choose a different one.', 'danger')
+        # Update Info
         else:
             current_user.firstname = form.firstname.data
             current_user.lastname = form.lastname.data
@@ -52,6 +55,7 @@ def editaccount():
             flash('Your account has been updated!', 'custom-success')
             return redirect(url_for('account'))
     
+    # Display Existing Info
     elif request.method == 'GET':
         form.firstname.data = current_user.firstname
         form.lastname.data = current_user.lastname
@@ -59,24 +63,31 @@ def editaccount():
 
     return render_template('updateaccount.html', title='Edit Account', form=form)
     
+# LOGIN PAGE
 @app.route('/logout')
 def logout():
     logout_user()
     flash('You have been logged out', 'custom-success')
     return redirect(url_for('home'))
 
+# LOGIN PAGE
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
+    # If User is Already Logged In
     if current_user.is_authenticated:
         return redirect(url_for('account'))
     form = LoginForm()
+
+    # Check if User Credentials are Entered Correctly
     if form.validate_on_submit():
         user = db.session.scalar(
             sa.select(User).where(User.email == form.email.data))
+        # Incorrect Entry
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
+        #Correct Entry
         flash('You are logged in!', 'custom-success')
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
@@ -84,11 +95,15 @@ def login():
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
+# REGISTRATION PAGE
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    # If User is Logged In
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = RegistrationForm()
+
+    #Add User to Table
     if form.validate_on_submit():
         user = User(lastname=form.lastname.data,firstname=form.firstname.data, email=form.email.data)
         user.set_password(form.password.data)
@@ -98,38 +113,42 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+# SHOP PAGE
 @app.route('/shop')
 def shop():
-    page = request.args.get("page", 1, type=int)
+    page = request.args.get("page", 1, type=int) # Pagination
     per_page = 8  # Display 8 products per page
     products = Product.query.paginate(page=page, per_page=per_page, error_out=False)
     return render_template("shop.html", title="Shop", products=products.items, pagination=products)
 
+# PRODUCT PAGE
 @app.route("/product/<int:product_id>")
 def product_detail(product_id):
-    product = Product.query.get_or_404(product_id)  # Fetch product or show 404
+    product = Product.query.get_or_404(product_id)  # Fetch Product or Show 404
     return render_template("product.html", product=product, title=product.name)
 
 
+# CART PAGE
 @app.route("/cart", methods=["GET", "POST"])
 @login_required
 def cart():
     if request.method == "GET":
-        # Get the user's cart items
+        # Get User's Cart Items
         cart_items = Cart.query.join(Product).filter(Cart.user_id == current_user.id).all()
 
-        # Calculate the subtotal
+        # Calculate Subtotal
         subtotal = sum(item.product.price * item.quantity for item in cart_items)
 
-        # Render the cart page template
+        # Render Template
         return render_template("cart.html", title="Cart", cart_items=cart_items, subtotal=subtotal)
 
-    # Handle POST requests for updating quantities
+    # Updating Quantities in Cart
     elif request.method == "POST":
         qty = request.form.get("qty")
         product_id = request.form.get("product_id")
         cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
 
+        # Add New Quantity to Table
         if cart_item:
             cart_item.quantity = qty
             db.session.commit()
@@ -137,7 +156,7 @@ def cart():
         
         return jsonify({'status': 'custom-success', 'message': 'Cart updated!'})
 
-
+# Updating Quantity
 @app.route("/cart/update_quantity/<int:item_id>", methods=["POST"])
 @login_required
 def update_quantity(item_id):
@@ -152,30 +171,32 @@ def update_quantity(item_id):
 
     return redirect(url_for('cart'))
 
+# Removing Item from Cart
 @app.route("/cart/remove/<int:item_id>", methods=["POST"])
 @login_required
 def remove(item_id):
     api_url = f"{Config.API_BASE_URL}/cart/{item_id}"
     response = requests.delete(api_url)
 
-    # Handle the response from the API
+    # Handling Response from API
     if response.status_code == 200:
         flash(response.json()["message"], "custom-success")
     else:
         flash(response.json().get("error", "An error occurred"), "danger")
     return redirect(url_for('cart'))
 
+# WISHLIST PAGE
 @app.route("/wishlist", methods=["GET", "POST"])
 @login_required
 def wishlist():
     if request.method == "GET":
-        # Get the user's wishlist items
+        # Get User's Wishlist Items
         wish_items = Wishlist.query.join(Product).filter(Wishlist.user_id == current_user.id).all()
 
 
-        # Render the wishlist template
         return render_template("wishlist.html", title="Wishlist", wish_items=wish_items)
     
+    # Adding Wishlist Items
     elif request.method == "POST":
         data = request.get_json()
         product_id = data.get("product_id")
@@ -183,44 +204,39 @@ def wishlist():
         if not product_id:
             return jsonify({"error": "Product ID is required"}), 400
         
-        # Check if product already exists in the wishlist
+        # Check if Product is Already in Wishlist
         existing_item = Wishlist.query.filter_by(product_id=product_id, user_id=current_user.id).first()
 
         if existing_item:
             return jsonify({"message": "This item is already in your wishlist"}), 400
         else:
-            # Add the product to the wishlist
+            # Add Product to Wishlist
             new_wish_item = Wishlist(user_id=current_user.id, product_id=product_id)
             db.session.add(new_wish_item)
 
         db.session.commit()
         return jsonify({"message": "Item added to wishlist!"}), 200
     
-
+#Remove from Wishlist
 @app.route("/wishlist/remove/<int:item_id>", methods=["DELETE"])
 @login_required
 def remove_wish(item_id):
-    # Log the item removal attempt
-    print(f"Attempting to remove item with ID: {item_id}")
-    
+
     # Call to API
     api_url = f"{Config.API_BASE_URL}/wishlist/{item_id}"
     response = requests.delete(api_url)
 
-    # Log the raw response text to debug the issue
-    print(f"API response: {response.text}")
-
-    # Handle the response from the API
+    # Handle Response from API
     if response.status_code == 200:
         flash(response.json().get("message", "Item removed from wishlist"), "custom-success")
     else:
         flash(response.json().get("error", "An error occurred"), "danger")
 
-    # Redirect to the wishlist page after item removal
+    # Redirect back to Wishlist Page After Removal
     return redirect(url_for('wishlist'))
 
 
-
+# CONTACT PAGE
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     form = ContactForm()
@@ -233,6 +249,7 @@ def contact():
 
     return render_template("contact.html", form=form, title="Contact Us")
 
+# Searching the Shop
 @app.route('/search')
 def search():
     query = request.args.get('q', '').strip()
@@ -250,6 +267,7 @@ def search():
 
     return render_template('search_results.html', results=results, query=query, title="Shop")
 
+#Filtering Products
 @app.route('/filter-sort', methods=['GET'])
 def filter_sort():
     sort_by = request.args.get('sort_by', 'name_asc')
@@ -261,10 +279,9 @@ def filter_sort():
     page = request.args.get('page', 1, type=int)
     per_page = 8
 
-    # Base query for filtering and sorting
     products_query = Product.query
 
-    # If a search query exists, filter by that query as well
+    # If Search Query Exists, Filter by that too
     if query:
         products_query = products_query.filter(
             db.or_(
@@ -275,7 +292,7 @@ def filter_sort():
             )
         )
 
-    # Apply filters
+    # Apply Filters
     if filter_vitamin:
         products_query = products_query.filter(Product.vitamin.ilike(f"%{filter_vitamin}%"))
     if filter_flavour:
@@ -288,7 +305,7 @@ def filter_sort():
     
 
 
-    # Apply sorting
+    # Apply Sorting
     if sort_by == 'name_asc':
         products_query = products_query.order_by(Product.name.asc())
     elif sort_by == 'name_desc':
@@ -298,7 +315,7 @@ def filter_sort():
     elif sort_by == 'price_desc':
         products_query = products_query.order_by(Product.price.desc())
 
-
+    #Pagination
     pagination = products_query.paginate(page=page, per_page=per_page, error_out=False)
     results = pagination.items
 

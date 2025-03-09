@@ -11,11 +11,12 @@
     <div class="row rowstyle rowmidstyle">
         <div class="col-4 edaccpd"></div>
         <div class="col">
-            <!--USERS DETAILS-->
+
+            <!--Edit Account Information Form-->
             <div class="editaccounttxt">
                 <form action="" method="post" novalidate>
                     {{ form.hidden_tag() }}
-                    
+                    <!--First Name-->
                     <div class="form-group">
                         <h4>
                         {{ form.firstname.label(class="form-control-label") }}
@@ -31,7 +32,7 @@
                             {{ form.firstname(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-    
+                    <!--Last Name-->
                     <div class="form-group">
                         <h4>
                         {{ form.lastname.label(class="form-control-label") }}
@@ -47,7 +48,7 @@
                             {{ form.lastname(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
-    
+                    <!--Email-->
                     <div class="form-group">
                         <h4>
                         {{ form.email.label(class="form-control-label") }}
@@ -63,6 +64,7 @@
                             {{ form.email(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
+                    <!--Submit Button-->
                     <button class="editbtn">
                         {{ form.submit() }}
                     </button>

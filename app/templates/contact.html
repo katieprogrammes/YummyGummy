@@ -10,13 +10,13 @@
     <div class="col"></div>
 </div>
 
-<!-- CONTACT FORM -->
+<!--Contact Form-->
 <div class="row rowstyle rowmidstyle">
     <div class="col"></div>
     <div class="col">
         <form method="POST" class="contactform">
             {{ form.hidden_tag() }}
-
+            <!--Email Input-->
             <div class="mb-3 mt-3">
                 <label for="email" class="contactlabel">
                     <h5>Where can we get back to you?</h5>
@@ -26,14 +26,14 @@
                     <div class="text-danger">{{ error }}</div>
                 {% endfor %}
             </div>
-
+            <!--Order Number Input-->
             <div class="mb-3">
                 <label for="orderno" class="contactlabel">
                     <h5>Is it about an order?</h5>
                 </label>
                 {{ form.order_no(class="form-control form-control-lg", placeholder="Order No (optional)") }}
             </div>
-
+            <!--Message Input-->
             <div class="mb-3">
                 <label for="usermessage" class="contactlabel">
                     <h5>What would you like to say?</h5>
@@ -44,7 +44,7 @@
                 {% endfor %}
             </div>
 
-            <!-- CONTACT BUTTON -->
+            <!--Submit Button-->
             {{ form.submit(class="contactsend") }}
         </form>  
     </div>

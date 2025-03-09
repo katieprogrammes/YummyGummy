@@ -6,21 +6,22 @@ from app.models import Product
 
 def main():
     with app.app_context():  
+        # Import Products from CSV File
         with open("products.csv", newline="", encoding="utf-8-sig") as f:
             reader = csv.reader(f)
             for name, vitamin, flavour, price, description in reader:
-                # Check if the product already exists based on the name (or another unique field)
+                # Check if Product Already Exists Based On Name
                 product = Product.query.filter_by(name=name).first()
 
                 if product:
-                    # If the product exists, update the fields that may have changed
+                    # If Product Exists, Update Fields that have Changed
                     product.vitamin = vitamin
                     product.flavour = flavour
                     product.price = price
                     product.description = description
                     print(f"Updated product: {name}")
                 else:
-                    # If the product doesn't exist, create a new one
+                    # If Product Doesn't Exist, Add to Table
                     product = Product(name=name, vitamin=vitamin, flavour=flavour, price=price, description=description)
                     db.session.add(product)
                     print(f"Added product: {name}")

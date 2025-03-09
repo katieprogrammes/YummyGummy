@@ -3,6 +3,7 @@
 {% block body %}
     <div class="maincontent">
         <div class="row rowstyle rowmidstyle">
+            <!--Breadcrumb-->
             <div class="col">
                 <ul class="navcrumb">
                     <li><h5><a href="{{ url_for('home') }}">Home</a></h5></li>
@@ -13,13 +14,17 @@
             <div class="col"></div>
             <div class="col"></div>
         </div>
+
+        <!--Product Content-->
         <div class="row">
             <div class="col colpadd"></div>
             <div class="col-9 colprod">
                 <div class="row">
+                    <!--Product Image-->
                     <div class="col">
                         <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ product.name }}" id="prodimg">
                     </div>
+                    <!--Product Information-->
                     <div class="col prodtxt">
                         <h1 id="prodtitle">{{ product.name }}</h1>
                         <h2 class="prodinfo">{{ product.vitamin }}</h2>
@@ -29,6 +34,7 @@
                         </div>
                         <h2 class="prodprice">£{{ "%.2f"|format(product.price) }}</h2>
                         <h4 class="prodmininfo">Quantity</h4>
+                        <!--Quantity Button-->
                         <div id="quantbutt">
                             <div id="prodquant">
                                 <a href="#" id="quantminus"><h2 class="quantxt">-</h2></a>
@@ -36,19 +42,21 @@
                                 <a href="#" id="quantplus"><h2 class="quantxt">+</h2></a>
                             </div>
                         </div>
+                        <!--Add to Basket Button-->
                         <div id="prodbotbut">
                             <a href="#" id="prodbasket" data-product-id="{{ product.id }}">
                                 <h3>Add to Basket</h3>
                                 <h2>Add</h2>
                                 <img src="{{ url_for('static', filename='images/basketcheck.svg') }}" height="45" alt="Shopping basket" id="basketimg">
                             </a>
+                            <!--Wishlist Button-->
                             <button type="submit" class="btn btn-primary btn-lg" id="prodwishadd" data-product-id="{{ product.id }}">
                                 <img src="{{ url_for('static', filename='images/heart.svg') }}" alt="Solid heart with a plus next to it">
                             </button>
                         </div>
                     </div>
                 </div>
-                <!--Section for Midsize Screens-->
+                <!--Quantity, Add to Cart and Wishlist Buttons for Midsize Screens-->
                 <div class="row midscreen">
                     <div id="midproddesc">
                         <h5>{{ product.description }}</h5>

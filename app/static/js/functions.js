@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Handle quantity decrease/increase for each cart item
     const decreaseButtons = document.querySelectorAll(".cartminus");
     const increaseButtons = document.querySelectorAll(".cartplus");
     const removeButtons = document.querySelectorAll(".remove");
 
-    // Handle decrease quantity
+    //Handle Decrease Quantity
     document.querySelectorAll(".cartminus").forEach(button => {
         button.addEventListener("click", function(event) {
             event.preventDefault();
@@ -26,12 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(data => {
                     if (data.message) {
                         showSuccessMessage(data.message);
-                        updateCartTotal(); // Call function to update cart total
+                        updateCartTotal();
                     }
                 })
                 .catch(error => console.error("Error:", error));
             } else {
-                // Remove item from cart
+                //Remove Item from Cart
                 fetch(`/api/cart/remove/${itemId}`, {
                     method: "DELETE",
                     headers: { "Content-Type": "application/json" }
@@ -49,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    //Handle increase quantity
+    //Handle Increase Quantity
     document.querySelectorAll(".cartplus").forEach(button => {
         button.addEventListener("click", function(event) {
             event.preventDefault();
@@ -70,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 if (data.message) {
                     showSuccessMessage(data.message);
-                    updateCartTotal(); // Call function to update cart total
+                    updateCartTotal();
                 }
             })
             .catch(error => console.error("Error:", error));
@@ -99,11 +98,10 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(data => {
                 if (data.message) {
-                    showSuccessMessage(data.message);  // Show success message
-                    //remove item from DOM
-                    this.closest(".cart-item").remove();  // Assumes cart items are wrapped in .cart-item
+                    showSuccessMessage(data.message);
+                    this.closest(".cart-item").remove();
                 } else if (data.error) {
-                    showErrorMessage(data.error);  // Show error message
+                    showErrorMessage(data.error);
                 }
             })
             .catch(error => {
@@ -112,14 +110,13 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
-    // Add to Cart functionality
+    // Addding to Cart
     document.getElementById("prodbasket").addEventListener("click", function (event) {
         event.preventDefault();
 
         const productId = this.getAttribute("data-product-id");
         const quantity = document.getElementById("quantity").textContent;
 
-        // Send the Add to Cart request (POST)
         fetch('/api/cart/add', {
             method: "POST",
             headers: {
@@ -133,15 +130,15 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.message) {
-                showSuccessMessage(data.message);  // Show success message on successful addition
+                showSuccessMessage(data.message);
             } else if (data.error) {
-                showErrorMessage(data.error);  // Show error message if any
+                showErrorMessage(data.error);
             }
         })
         .catch(error => console.error("Error:", error));
     });
 
-    //Product Pages Quantity Buttons
+    //Product Page Quantity Buttons
     document.getElementById('quantplus').addEventListener("click", function(event) {
         event.preventDefault();
         let quantitySpan = document.getElementById('quantity');
@@ -160,11 +157,12 @@ document.addEventListener("DOMContentLoaded", function () {
             quantitySpan.textContent = quantity;
         }
     });
-    //Updating Cart Total
+
+    //Updating Cart Function
     function updateCartTotal() {
         let total = 0;
     
-        // Loop through all cart items
+
         document.querySelectorAll('.cart-item').forEach(item => {
             const quantity = parseInt(item.querySelector('.cartquantitybutton h3').textContent);
             const priceElement = item.querySelector('.item-price');
@@ -172,24 +170,24 @@ document.addEventListener("DOMContentLoaded", function () {
             if (priceElement && subtotalElement) {
                 const price = parseFloat(priceElement.textContent.replace("£", ""));
                 const subtotal = quantity * price;
-                subtotalElement.textContent = `£${subtotal.toFixed(2)}`; // Update subtotal dynamically
+                subtotalElement.textContent = `£${subtotal.toFixed(2)}`;
                 total += subtotal;
             }
         });
     
-        // Update total price in the cart
+        //Updating Total Price
         const totalElement = document.querySelector('#cart-total');
         if (totalElement) {
             totalElement.textContent = `£${total.toFixed(2)}`;
         }
     }
-    // Add to Wishlist functionality
+
+    //Add to Wishlist
     document.getElementById("prodwishadd").addEventListener("click", function (event) {
         event.preventDefault();
 
         const productId = this.getAttribute("data-product-id");
 
-        // Send the Add to Wishlist request (POST)
         fetch('/api/wishlist/add', {
             method: "POST",
             headers: {
@@ -202,9 +200,9 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.message) {
-                showSuccessMessage(data.message);  // Show success message on successful addition
+                showSuccessMessage(data.message);
             } else if (data.error) {
-                showErrorMessage(data.error);  // Show error message if any
+                showErrorMessage(data.error);
             }
         })
         .catch(error => console.error("Error:", error));
@@ -213,54 +211,54 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
 
-    // Show success message
-function showSuccessMessage(message) {
-    showFlashMessage(message, "linear-gradient(90deg, #B8C6F4, #6388EA)");
-}
+    //Show Success Flash
+    function showSuccessMessage(message) {
+        showFlashMessage(message, "linear-gradient(90deg, #B8C6F4, #6388EA)");
+    }
 
-// Show error message
-function showErrorMessage(message) {
-    showFlashMessage(message, "linear-gradient(90deg, #6388EA, #B8C6F4)");
-}
+    //Show Error Flash
+    function showErrorMessage(message) {
+        showFlashMessage(message, "linear-gradient(90deg, #6388EA, #B8C6F4)");
+    }
 
-// General function to create and style flash messages
-function showFlashMessage(message, background) {
-    const alertDiv = document.createElement("div");
-    alertDiv.classList.add("custom-flash-message");
-    alertDiv.innerText = message;
+    //Creating and Styling Flash Messages
+    function showFlashMessage(message, background) {
+        const alertDiv = document.createElement("div");
+        alertDiv.classList.add("custom-flash-message");
+        alertDiv.innerText = message;
 
-    // Apply ombre background
-    alertDiv.style.background = background;
-    alertDiv.style.color = " #10042F";
-    alertDiv.style.padding = "10px 20px";
-    alertDiv.style.borderRadius = "5px";
-    alertDiv.style.fontSize = "24px";
-    
+        //Applying an Ombre Background
+        alertDiv.style.background = background;
+        alertDiv.style.color = " #10042F";
+        alertDiv.style.padding = "10px 20px";
+        alertDiv.style.borderRadius = "5px";
+        alertDiv.style.fontSize = "24px";
+        
 
-    document.body.insertBefore(alertDiv, document.body.firstChild);
+        document.body.insertBefore(alertDiv, document.body.firstChild);
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
-    setTimeout(() => {
-        alertDiv.classList.remove("show");
-        alertDiv.classList.add("fade");
-    }, 4000); // Hide after 4 seconds
-}
+        setTimeout(() => {
+            alertDiv.classList.remove("show");
+            alertDiv.classList.add("fade");
+        }, 4000);
+    }
 
 });
 
 document.addEventListener("DOMContentLoaded", function () {
     const removeButtons = document.querySelectorAll('.wishremove');
+    //Removing from Wishlist
     removeButtons.forEach(button => {
         button.addEventListener("click", function (event) {
             event.preventDefault();
 
             const itemId = this.getAttribute("data-item-id");
 
-            // Make DELETE request to the server
             fetch(`/api/wishlist/remove/${itemId}`, {
                 method: "DELETE",
                 headers: {
@@ -269,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.href = "/wishlist"; // Force redirect to wishlist page after successful deletion
+                    window.location.href = "/wishlist";
                 } else {
                     console.error("Error with the request");
                 }
@@ -281,35 +279,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
 });
+
 document.addEventListener("DOMContentLoaded", function () {
-    // Handle Vitamin Dropdown selection
+    // Handling Vitamin Dropdown
     document.querySelectorAll('#vitaminDropdown .dropdown-item').forEach(item => {
         item.addEventListener('click', function() {
             let selectedVitamin = this.getAttribute('data-value');
             document.getElementById('selected-vitamin').value = selectedVitamin;
             document.getElementById('vitaminDropdown').textContent = `Vitamin: ${selectedVitamin}`;
             let vitaminDropdownMenu = document.querySelector('#vitaminDropdown + .dropdown-menu');
-            vitaminDropdownMenu.classList.remove('show');  // Close the dropdown
+            vitaminDropdownMenu.classList.remove('show');
         });
     });
 
-    // Handle Flavour Dropdown selection
+    //Handling Flavour Dropdown
     document.querySelectorAll('#flavourDropdown .dropdown-item').forEach(item => {
         item.addEventListener('click', function() {
             let selectedFlavour = this.getAttribute('data-value');
             document.getElementById('selected-flavour').value = selectedFlavour;
             document.getElementById('flavourDropdown').textContent = `Flavour: ${selectedFlavour}`;
             let flavourDropdownMenu = document.querySelector('#flavourDropdown + .dropdown-menu');
-            flavourDropdownMenu.classList.remove('show');  // Close the dropdown
+            flavourDropdownMenu.classList.remove('show');
         });
     });
 
-    // Handle Sort Dropdown selection
+    // Handling Sort Dropdown
     const dropdownItems = document.querySelectorAll(".dropdown-item");
     const dropdownButton = document.querySelector(".custom-dropdown");
     const selectedSortInput = document.getElementById("selected-sort");
 
-    // Set initial dropdown button text based on pre-selected sort option
+    
     const currentSort = selectedSortInput.value;
     if (currentSort) {
         dropdownItems.forEach(item => {
@@ -327,19 +326,20 @@ document.addEventListener("DOMContentLoaded", function () {
             selectedSortInput.value = selectedValue;
         });
     });
-    // Clear Search Button Logic
+
+    //Clear Search Button
     document.getElementById("clear-search").addEventListener("click", function(e) {
         e.preventDefault();
-        window.location.href = "{{ url_for('shop') }}"; // Redirect to shop without search parameters
+        window.location.href = "{{ url_for('shop') }}";
     });
 
-    // Clear Sort Button Logic
+    //Clear Sort Button
     document.getElementById("clear-sort").addEventListener("click", function(e) {
         e.preventDefault();
-        window.location.href = "{{ url_for('shop') }}"; // Redirect to shop without sorting parameters
+        window.location.href = "{{ url_for('shop') }}";
     });
 
-    // Clear Filter Button Logic
+    //Clear Filter Button
     document.getElementById("clearfilter").addEventListener("click", function(e) {
         e.preventDefault();
         const url = new URL(window.location.href);
@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function () {
         url.searchParams.delete("flavour");
         url.searchParams.delete("price_min");
         url.searchParams.delete("price_max");
-        window.location.href = url.toString(); // Redirect to filtered URL without filters
+        window.location.href = url.toString();
     });
 });
 

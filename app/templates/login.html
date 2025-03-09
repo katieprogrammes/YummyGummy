@@ -12,6 +12,7 @@
     <div class="row rowstyle">
         <div class="col"></div>
         <div class="col">
+            <!--Login Form-->
             <form action="" method="post" class="loginform" novalidate id="logincont">
                 {{ form.hidden_tag() }}
                 <h3>
@@ -28,11 +29,14 @@
                     <span style="color: red;">{{ error }}</span>
                     {% endfor %}
                 </h3>
+                <!--Remember Me Checkbox-->
                 <h4>{{ form.remember_me() }} {{ form.remember_me.label }}</h4>
+                <!--Submit Button-->
                 <button class="loginbtn">
                     {{ form.submit() }}
                 </button>
             </form>
+            <!--Register Link-->
             <h4 class="logreg">New User? <a href="{{ url_for('register') }}">Click to Register!</a></h4>
         </div>
         <div class="col"></div>
