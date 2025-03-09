@@ -9,6 +9,9 @@ api_bp = Blueprint("api", __name__)
 
 # Function for Adding or Updating Cart
 def update_cart_item(product_id, quantity):
+    if not current_user.is_authenticated:
+        return jsonify({"error": "Please log in.", "flash_message": "Please Login!"}), 401
+    
     cart_item = Cart.query.filter_by(product_id=product_id, user_id=current_user.id).first()
     if cart_item:
         cart_item.quantity += int(quantity)
@@ -19,6 +22,9 @@ def update_cart_item(product_id, quantity):
 
 # Function for Adding to Wishlist
 def add_wishlist_item(product_id):
+    if not current_user.is_authenticated:
+        return jsonify({"error": "Please log in.", "flash_message": "Please Login!"}), 401
+    
     if not product_id:
         return {"error": "Product ID is required"}, 400
 
@@ -73,8 +79,10 @@ def get_product(product_id):
 
 # Cart Page
 @api_bp.route("/cart", methods=["GET", "POST"])
-@login_required
 def cart():
+    if not current_user.is_authenticated:
+        return jsonify({"error": "Please log in.", "flash_message": "Please Login!"}), 401
+    
     if request.method == "GET":
         cart_items = Cart.query.join(Product).filter(Cart.user_id == current_user.id).all()
         subtotal = sum(item.product.price * item.quantity for item in cart_items)
@@ -95,8 +103,10 @@ def cart():
 
 # Adding to Cart
 @api_bp.route("/cart/add", methods=["POST"])
-@login_required
 def add_to_cart():
+    if not current_user.is_authenticated:
+        return jsonify({"error": "Please log in.", "flash_message": "Please Login!"}), 401
+    
     data = request.get_json()
     product_id = data.get("product_id")
     quantity = data.get("quantity", 1)
@@ -114,8 +124,10 @@ def add_to_cart():
 
 # Removing from Cart
 @api_bp.route("/cart/remove/<int:item_id>", methods=["DELETE"])
-@login_required
 def remove_from_cart(item_id):
+    if not current_user.is_authenticated:
+        return jsonify({"error": "Please log in.", "flash_message": "Please Login!"}), 401
+    
     cart_item = Cart.query.get(item_id)
     if not cart_item or cart_item.user_id != current_user.id:
         return jsonify({"error": "Item not found"}), 404
@@ -126,8 +138,10 @@ def remove_from_cart(item_id):
 
 # Updating Cart Quantity
 @api_bp.route("/cart/update_quantity/<int:item_id>", methods=["PUT"])
-@login_required
 def update_quantity(item_id):
+    if not current_user.is_authenticated:
+        return jsonify({"error": "Please log in.", "flash_message": "Please Login!"}), 401
+    
     data = request.get_json()
     quantity = data.get("quantity")
     
@@ -144,8 +158,10 @@ def update_quantity(item_id):
 
 # Wishlist Page
 @api_bp.route("/wishlist", methods=["GET", "POST"])
-@login_required
 def wishlist():
+    if not current_user.is_authenticated:
+        return jsonify({"error": "Please log in.", "flash_message": "Please Login!"}), 401
+    
     if request.method == "GET":
         wish_items = Wishlist.query.join(Product).filter(Wishlist.user_id == current_user.id).all()
 
@@ -161,8 +177,10 @@ def wishlist():
 
 # Adding to Wishlist
 @api_bp.route("/wishlist/add", methods=["POST"])
-@login_required
 def add_to_wishlist():
+    if not current_user.is_authenticated:
+        return jsonify({"error": "Please log in.", "flash_message": "Please Login!"}), 401
+    
     data = request.get_json()
     product_id = data.get("product_id")
     response, status = add_wishlist_item(product_id)
@@ -170,8 +188,10 @@ def add_to_wishlist():
 
 # Removing from Wishlist
 @api_bp.route("/wishlist/remove/<int:item_id>", methods=["DELETE"])
-@login_required
 def remove_from_wishlist(item_id):
+    if not current_user.is_authenticated:
+        return jsonify({"error": "Please log in.", "flash_message": "Please Login!"}), 401
+    
     wish_item = Wishlist.query.get(item_id)
     if not wish_item or wish_item.user_id != current_user.id:
         return jsonify({"error": "Item not found"}), 404

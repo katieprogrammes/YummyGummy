@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, jsonify, abort, make_response
+from flask import render_template, flash, redirect, url_for, request, jsonify, session, abort, make_response
 from app import app
 from app.forms import LoginForm, RegistrationForm, UpdateAccountForm, ContactForm, NewsletterForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -7,11 +7,11 @@ import sqlalchemy as sa
 from app import db
 from app.models import User, Product, Cart, Wishlist
 from urllib.parse import urlsplit
-from flask_mail import Mail, Message
-import requests
+# from flask_mail import Mail, Message
+import requests, subprocess, os
 from config import Config
 
-mail = Mail(app)
+#mail = Mail(app)
 
 # HOME PAGE
 @app.route('/', methods=['GET', 'POST'])
@@ -63,7 +63,7 @@ def editaccount():
 
     return render_template('updateaccount.html', title='Edit Account', form=form)
     
-# LOGIN PAGE
+# LOGOUT
 @app.route('/logout')
 def logout():
     logout_user()
@@ -82,17 +82,24 @@ def login():
     if form.validate_on_submit():
         user = db.session.scalar(
             sa.select(User).where(User.email == form.email.data))
+        
         # Incorrect Entry
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
+        
         #Correct Entry
         flash('You are logged in!', 'custom-success')
+
+        #Check if User Is Admin
+        session['is_admin'] = user.is_admin
+
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('home')
         return redirect(next_page)
+    
     return render_template('login.html', title='Sign In', form=form)
 
 # REGISTRATION PAGE
@@ -330,3 +337,39 @@ def filter_sort():
                            filter_price_min=filter_price_min,
                            filter_price_max=filter_price_max,
                             title="Shop")
+
+# UPDATING PRODUCTS PAGE
+
+@app.route('/update_products', methods=['GET'])
+def update_products():
+    return render_template('update_products.html')
+
+@app.route('/import_csv', methods=['POST'])
+def import_csv():
+    if 'csv_file' not in request.files:
+        flash('No file part')
+        return redirect(request.url)
+    
+    file = request.files['csv_file']
+    
+    if file.filename == '':
+        flash('No selected file')
+        return redirect(request.url)
+    
+    if file and file.filename.endswith('.csv'):
+        # Save the file temporarily
+        upload_folder = os.path.join(app.root_path, 'uploads')
+        os.makedirs(upload_folder, exist_ok=True)
+        file_path = os.path.join(upload_folder, file.filename)
+        file.save(file_path)
+
+        try:
+            subprocess.run(['python', 'import.py', file_path], check=True)
+            flash('Database updated successfully!,', "custom-success")
+        except Exception as e:
+            flash(f'An error occurred: {e}')
+
+        return redirect(url_for('account'))  # Redirect to the Account page after successful update
+    else:
+        flash('Please upload a valid .csv file')
+        return redirect(request.url)

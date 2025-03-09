@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="row rowstyle rowmidstyle">
+        <div class="col"></div>
+        <div class="col">
+            <h1 class="ygtitle">Update Products</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <!--Form to Upload File-->
+            <form action="{{ url_for('import_csv') }}" method="POST" enctype="multipart/form-data">
+                <input type="file" name="csv_file" accept=".csv" required>
+                <button type="submit">Upload and Update Products</button>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+{% endblock %}

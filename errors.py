@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, flash, redirect, url_for, jsonify
+from flask_login import current_user
 from app import db
 
 errors = Blueprint('errors', __name__)
@@ -16,6 +17,11 @@ def internal_error(error):
 
 # 401 Error
 @errors.app_errorhandler(401)
-def internal_error(error):
-    db.session.rollback()
-    return render_template('login.html', title="Login"), 400
+def unauthorised_error(error):
+    # For API
+    if current_user.is_authenticated:
+        return jsonify({"error": "Unauthorized action. Please log in."}), 401
+    else:
+        # For app.routes
+        flash("Please Login!", "custom-success")
+        return redirect(url_for("login"))

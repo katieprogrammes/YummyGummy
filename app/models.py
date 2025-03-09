@@ -14,6 +14,7 @@ class User(UserMixin, db.Model):
     lastname: so.Mapped[str] = so.mapped_column(sa.String(64), nullable=False)
     email: so.Mapped[str] = so.mapped_column(sa.String(120), unique=True, nullable=False)
     password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256), nullable=False)
+    is_admin: so.Mapped[bool] = so.mapped_column(sa.Boolean, default=False) 
 
     # Hashing the Password for Security
     def set_password(self, password):

@@ -79,6 +79,13 @@
                         <img src="{{ url_for('static', filename='images/pencil.svg') }}" alt-text="Edit Profile Pencil">
                     </a>
                 </div>
+                {% if session['is_admin'] %}
+                <div class="col accbtcont">
+                    <a class="accbtn" role="button" href="{{ url_for('update_products') }}">
+                        <h3>Update Products</h3>
+                    </a>
+                </div>
+                {% endif %}
             </div>
     </div>
 {% endblock %}

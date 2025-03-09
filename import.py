@@ -1,13 +1,13 @@
 import csv
 import os
-
 from app import app, db
 from app.models import Product
+import sys
 
-def main():
+def main(file_path):
     with app.app_context():  
         # Import Products from CSV File
-        with open("products.csv", newline="", encoding="utf-8-sig") as f:
+        with open(file_path, newline="", encoding="utf-8-sig") as f:
             reader = csv.reader(f)
             for name, vitamin, flavour, price, description in reader:
                 # Check if Product Already Exists Based On Name
@@ -29,4 +29,5 @@ def main():
         db.session.commit()
 
 if __name__ == "__main__":
-    main()
+    file_path = sys.argv[1]
+    main(file_path)

@@ -912,6 +912,7 @@ footer {
     font-weight: 700;
     margin-bottom: 4rem;
 }
+/* Flash Message Background*/
 .custom-alert.alert-custom-success {
     color: #10042F;
     background-image: linear-gradient(to right, #B8C6F4, #6388EA);
