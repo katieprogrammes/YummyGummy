@@ -1,5 +1,5 @@
 /* Medium devices (Tablets, Small Laptops) */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1056px) {
     /* Hidden sections */
     .navleft,
     .navright,
@@ -108,9 +108,9 @@
         z-index: 3;
     }
     .hero h1 {
-        font-size: 63px;
+        width: 50%;
     }
-    .hero h4 {
+    .hero h3 {
         font-size: 39px;
         font-weight: 700;
         width: 60%;
@@ -134,7 +134,7 @@
         opacity: 0.2;
     }
     #homeshop {
-        margin-bottom: 4rem;
+        margin: 3rem auto;
     }
     .socialtitle {
         padding-top: 2rem;

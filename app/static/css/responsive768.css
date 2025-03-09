@@ -48,7 +48,7 @@
     .midmenu-icon {
         display: flex;
         position: absolute;
-        top: 1.2rem;
+        top: 1rem;
         left: 1rem;
         cursor: pointer;
         font-size: 2rem;
@@ -125,8 +125,8 @@
     }
 
     #btmlogo img {
-        margin-top: 20px;
-        height: 50px;
+        margin-top: 10px;
+        height: 60px;
     }
 
     .footsocial {
@@ -146,10 +146,13 @@
         position: relative;
         z-index: 3;
     }
-    .hero h4 {
-        font-size: 39px;
+    .hero h1 {
+        width: 50%;
+    }
+    .hero h3 {
+        font-size: 31px;
         font-weight: 700;
-        width: 60%;
+        width: 70%;
     }
     .hero-container {
         position: relative;
@@ -171,7 +174,7 @@
         opacity: 0.2;
     }
     #homeshop {
-        margin-bottom: 4rem;
+        margin: 3rem auto;
     }
     .socialtitle {
         padding-top: 2rem;

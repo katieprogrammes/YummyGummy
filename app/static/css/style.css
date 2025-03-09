@@ -60,18 +60,19 @@ header {
 .navleft a {
     float: left;
     text-align: center;
-    padding: 20px;
+    padding: 20px 12px;
     text-decoration: none;
     font-weight: 400;
     color: #B8C6F4;
 }
-.logo img {
-    margin-top: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-
+.desklogo {
+    display: flex;
+    justify-content: center;
 }
+.logo {
+    margin-top: 10px;
+}
+
 .navright a {
     float: right;
     text-decoration: none;
@@ -140,6 +141,10 @@ footer {
 #btmlogo img {
    margin-top: 40px;
 }
+.footimg {
+    display: flex;
+    justify-content: center;
+}
 .footsocial {
     bottom: 0;
 }
@@ -155,7 +160,7 @@ footer {
     color: #10042F;
     text-align: center;
 }
-.hero h4 {
+.hero h3 {
     text-align: center;
     color: #282566;
     width: 90%;

@@ -6,15 +6,15 @@
         <div class="col-1"></div>
         <div class="col">
             <div class="hero">
-                <h1>Being healthy has <br> never tasted so <br> good!</h1>
-                <h4>Fed up of constant vitamin deficiencies? Is swallowing large pills a struggle? Constantly forgetting to take your daily vitamins? Then Yummy Gummy is for you!</h4>
+                <h1>Being healthy has never tasted so good!</h1>
+                <h3>Fed up of constant vitamin deficiencies? Is swallowing large pills a struggle? Constantly forgetting to take your daily vitamins? Then Yummy Gummy is for you!</h3>
                 <a href="{{ url_for('shop') }}"  id="homeshop">
                     <h2>Shop Now</h2>
                 </a>
             </div>
         </div>
         <div class="col">
-            <img src="{{ url_for('static', filename='images/hometemp.png') }}" alt-text="Collection of vitamin gummies">
+            <img src="{{ url_for('static', filename='images/hometemp.png') }}" alt-text="Collection of vitamin gummies" id="heroimg">
         </div>
         <div class="col-1"></div>
     </div>
@@ -67,7 +67,4 @@
         <div class="col-1"></div>
     </div>
 {% endblock %}
-	
-
-
 </html>

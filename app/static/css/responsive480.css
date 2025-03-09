@@ -45,11 +45,12 @@
         font-size: 49px;
     }
     .moblogo {
-        display: initial;
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
     .logo {
-        display: flex;
-        align-self: center;
+        margin: 10px auto;
     }
     /*hamburger menu*/
     .menu-icon {
@@ -96,16 +97,16 @@
     .mobile-cart-icon {
         display: block;
         position: absolute;
-        top: 15px;
+        top: 1.2rem;
         right: 1rem;
-        z-index: 10;
+        cursor: pointer;
+        color: #B8C6F4;
         width: 10%;
         padding: 0;
     }
     .mobile-cart-icon img {
         width: 40px;
         height: 40px;
-        right: 1rem;
     }
     footer {
         text-align: center;
@@ -141,10 +142,11 @@
         position: relative;
         z-index: 3;
     }
-    .hero h4 {
+    .hero h3 {
         font-size: 24px;
         font-weight: 700;
-        width: 60%;
+        width: 70%;
+        color: #282566;
     }
     .hero-container {
         position: relative;
@@ -166,7 +168,7 @@
         opacity: 0.2;
     }
     #homeshop {
-        margin-bottom: 8px;
+        margin-bottom: 20px;
     }
     #socialsect {
         padding: 0;

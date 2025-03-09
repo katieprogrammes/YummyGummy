@@ -1,0 +1,129 @@
+/* Large devices (Laptops, Desktops) */
+@media screen and (min-width: 1057px) and (max-width: 1440px) {
+    /* BASE TEMPLATE */
+    .navleft a {
+        padding: 25px 7px;
+    }
+    .navleft h4 {
+        font-size: 24px;
+    }
+
+    /* HOME TEMPLATE */
+    .hero-container .col-1 {
+        display: none;
+    }
+    .hero {
+        margin-top: 5%;
+    }
+    #heroimg {
+        max-width: 100%;
+        height: auto;
+    }
+    #socialsect {
+        margin-top: 2rem;
+        padding-left: 0;
+    }
+    #socialsect .col {
+        display: flex;
+        justify-content: center;
+    }
+   .socialproof {
+        padding: 1rem;
+    }
+   .socialproof h5 {
+        padding: 0;
+    }
+   #newsgroup .col-1 {
+        display: none;
+    }
+   .newstitle {
+        margin-bottom: 3rem;
+    }
+
+   /* LOGIN STYLING */
+   .logreg {
+        margin-left: 100px;
+    }
+
+    /* REGISTER STYLING */
+    .registerbtn {
+        align-self: center;
+        margin-left: 0;
+        width: 100%;
+    }
+    /* ACCOUNT STYLING */
+    .accbtn {
+        margin: 2rem 5rem;
+    }
+    .accbtcont {
+        display: flex;
+        justify-content: center;
+    }
+    /* EDIT ACCOUNT STYLING */
+    .editaccounttxt {
+        display: flex;
+        justify-content: center;
+    }
+    .edaccpd {
+        display: none;
+    }
+    .editaccounttxt form {
+        width: 50%;
+    }
+    .editbtn {
+        margin: 1rem auto; 
+        display: flex;
+        justify-content: center;
+    }
+    .contactform {
+        width: 100%;
+    }
+
+    /*SHOP STYLING*/
+    .shoporg {
+        justify-content: space-between;
+    }
+    .filtersection h3,
+    .sortmenu h3 {
+        font-size: 31px;
+    }
+    .filtersection {
+        margin-top: 10px;
+    }
+    .sortmenu h3 {
+        align-self: center;
+    }
+    .searchbar {
+        width: 333.41px;
+    }
+
+    /*PRODUCT PAGE*/
+    #prodimg {
+        width: 100%;
+        height: auto;
+        margin: 1rem 0 2rem 0;
+    }
+    #prodtitle {
+        margin: 0;
+    }
+    .prodinfo,
+    .prodinfofl {
+        margin: 0;
+    }
+    .prodprice,
+    .prodmininfo {
+        text-align: center;
+        margin-bottom: 0;
+    }
+    #quantbutt {
+        margin: 0 auto;
+    }
+    #prodbotbut {
+        margin-left: 10%;
+    }
+    #prodbasket,
+    #prodwishadd {
+        margin-top: 14px;
+        margin-bottom: 20px;
+    }
+}
