@@ -1,3 +1,23 @@
+/*Hidden Sections*/
+.moblogo,
+.menu-icon,
+.midmenu-icon,
+.mobile-acc-icon,
+.mobile-cart-icon,
+.mobile-nav,
+#filterButton,
+.midscreen,
+#prodbasket h2,
+.cartmobileinfo,
+.mobcartbox,
+.item-price,
+.mobwishbox,
+.mobwishinfo,
+.wishbottom {
+    display: none;
+}
+
+/*BASE STYLING*/
 html {
     height: 100%;
 }
@@ -34,7 +54,7 @@ body {
     margin: 2rem;
 }
 
-/*Header Styling*/
+/*HEADER STYLING*/
 header {
     width: 100%;
     background-color: #282566;
@@ -42,20 +62,6 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-}
-.moblogo {
-    display: none;
-}
-.menu-icon,
-.midmenu-icon,
-.mobile-acc-icon {
-    display: none;
-}
-.mobile-nav {
-    display: none;
-}
-.mobile-cart-icon {
-    display: none;
 }
 .navleft a {
     float: left;
@@ -72,13 +78,11 @@ header {
 .logo {
     margin-top: 10px;
 }
-
 .navright a {
     float: right;
     text-decoration: none;
     margin-right: 1rem;
 }
-
 #navbasket {
     border: none;
     background-color: #B8C6F4;
@@ -101,13 +105,10 @@ header {
     display: flex;
     justify-content: space-between;
 }
-
 .navright h4{
     font-weight: 600;
     margin-top: 3px;
 }
-
-
 /*Footer Styling*/
 footer {
     width: 100%;
@@ -129,7 +130,6 @@ footer {
     font-weight: 700;
     color: #B8C6F4;
 }
-
 .footright a {
    float: right;
    text-align: center;
@@ -148,7 +148,8 @@ footer {
 .footsocial {
     bottom: 0;
 }
-/*Homepage Styling*/
+
+/*HOME STYLING*/
 .hero {
     margin-top: 4rem;
     display: flex;
@@ -180,7 +181,6 @@ footer {
     color: #6388EA;
     font-weight: 600;
 }
-
 .socialtitle {
     text-align: center;
     color: #282566;
@@ -243,8 +243,7 @@ footer {
     font-weight: 700;
 }
 
-/*Login Styling*/
-
+/*LOGIN STYLING*/
 #logincont {
     margin-top: 1.5rem;
     display: flex;
@@ -286,7 +285,8 @@ footer {
 .logreg a {
     color: #6388EA;
 }
-/*Registration Styling*/
+
+/*REGISTRATION STYLING*/
 .form-control-label {
     margin-top: 2rem;
     color: #10042F;
@@ -313,7 +313,8 @@ footer {
     margin: 3rem;
     padding: 5px 0;
 }
-/*Account Page Styling*/
+
+/*ACCOUNT STYLING*/
 .accountinfo {
     padding-top: 2rem;
 }
@@ -379,7 +380,7 @@ footer {
     padding: .5rem 0;
 }
 
-/*Shop Styling*/
+/*SHOP STYLING*/
 #searchcont {
     display: flex;
     justify-content: flex-start;
@@ -416,7 +417,6 @@ footer {
     justify-content: flex-end;
     margin-bottom: 5px;
 }
-
 /*Sort Styling */
 .sortmenu {
     margin-top: 10px;
@@ -476,11 +476,7 @@ footer {
     width: 90px;
     padding-top: 2px;
 }
-
 /*Filter Styling*/
-#filterButton {
-    display: none;
-}
 .filtersection {
     display: flex;
     flex-direction: row;
@@ -516,7 +512,6 @@ footer {
     background-color: #B8C6F4 !important;
     color: #10042F !important;
 }
-
 #apply-filters {
     background-color: #10042F;
     color: #B8C6F4;
@@ -574,10 +569,7 @@ footer {
     color: #10042F;
 }
 
-/*Product Page Styling*/
-.midscreen {
-    display: none;
-}
+/*PRODUCT STYLING*/
 .navcrumb {
     list-style: none;
     display: flex;
@@ -671,7 +663,6 @@ footer {
     display: flex;
     justify-content: center;
 }
-
 #prodbotbut {
     display: flex;
     justify-content: flex-start;
@@ -696,9 +687,6 @@ footer {
 #prodbasket h1 {
     font-weight: 700;
 }
-#prodbasket h2 {
-    display: none;
-}
 #prodwishadd {
     background-color:#10042F;
     width: 4rem;
@@ -714,13 +702,8 @@ footer {
     width: 750px;
     margin-bottom: 3rem;
 }
-/*Cart Styling*/
-.cartmobileinfo {
-    display: none;
-}
-.mobcartbox {
-    display: none;
-}
+
+/*CART STYLING*/
 .cartbox {
     display: flex;
     justify-content: flex-end;
@@ -749,6 +732,9 @@ footer {
     height: 48px;
     color:#282566;
     background-color: #EFE8FB;
+}
+.quantityblock {
+    width: 160px;
 }
 .cartquantitybutton h3 {
     margin-top: 15px;
@@ -782,8 +768,8 @@ footer {
     margin-top: 15px;
 }
 .price {
-    font-weight: 600;
-    color: #282566;
+    font-weight: 700;
+    color: #10042F;
     margin-top: 1.5rem;
 }
 .remove {
@@ -911,7 +897,7 @@ footer {
     font-weight: 600;
 }
 
-/*Error handling styling*/
+/*ERROR PAGE STYLING*/
 .ygerrortext {
     text-align: center;
     margin: 4rem 0;
@@ -926,10 +912,6 @@ footer {
     font-weight: 700;
     margin-bottom: 4rem;
 }
-
-.item-price {
-    display: none;
-}
 .custom-alert.alert-custom-success {
     color: #10042F;
     background-image: linear-gradient(to right, #B8C6F4, #6388EA);
@@ -937,13 +919,7 @@ footer {
     border: none;
 }
 
-/*Wishlist Styling*/
-.mobwishbox {
-    display: none;
-}
-.wishbottom {
-    display: none;
-}
+/*WISHLIST STYLING*/
 .witem-price {
     margin-top: 30px;
     color: #10042F;

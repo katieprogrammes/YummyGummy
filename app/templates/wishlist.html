@@ -6,7 +6,7 @@
     <!-- Check if there are items in the wishlist -->
     {% if wish_items %}
         <div class="row">
-            <div class="col-3 colpadd"></div>
+            <div class="col-3 colpadd wishpadd"></div>
             <div class="col">
                 {% for item in wish_items %}
                 <div class="row wish-items">
@@ -20,37 +20,37 @@
                             <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225" id="wishimg">
                         </a>
                     </div>
-                        <div class="col wishinfo">
-                            <h2 class="wproductnm">{{ item.product.name }}</h2>
-                            <h3 class="wvitamin">{{ item.product.vitamin }}</h3>
-                            <h4 class="wflavour">{{ item.product.flavour }}</h4>
-                            <h3 class="witem-price">£{{ item.product.price }}</h3>
-                            <div class="wishbottom">
-                                <h3 class="mitem-price">£{{ item.product.price }}</h3>
-                                <button type="button" class="wishremove" data-item-id="{{ item.id }}">
-                                    <img src="/static/images/heart-minus.svg" alt="Solid heart with a minus next to it">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-7 mobwishinfo">
-                            <h2 class="wproductnm">{{ item.product.name }}</h2>
-                            <h3 class="wvitamin">{{ item.product.vitamin }}</h3>
-                            <h4 class="wflavour">{{ item.product.flavour }}</h4>
-                            <h3 class="witem-price">£{{ item.product.price }}</h3>
-                            <div class="wishbottom">
-                                <h3 class="mitem-price">£{{ item.product.price }}</h3>
-                                <button type="button" class="wishremove" data-item-id="{{ item.id }}">
-                                    <img src="/static/images/heart-minus.svg" alt="Solid heart with a minus next to it">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-3 wishright">
+                    <div class="col wishinfo">
+                        <h2 class="wproductnm">{{ item.product.name }}</h2>
+                        <h3 class="wvitamin">{{ item.product.vitamin }}</h3>
+                        <h4 class="wflavour">{{ item.product.flavour }}</h4>
+                        <h3 class="witem-price">£{{ item.product.price }}</h3>
+                        <div class="wishbottom">
+                            <h3 class="mitem-price">£{{ item.product.price }}</h3>
                             <button type="button" class="wishremove" data-item-id="{{ item.id }}">
                                 <img src="/static/images/heart-minus.svg" alt="Solid heart with a minus next to it">
-                                <h3>Remove</h3>
                             </button>
                         </div>
                     </div>
+                    <div class="col-7 mobwishinfo">
+                        <h2 class="wproductnm">{{ item.product.name }}</h2>
+                        <h3 class="wvitamin">{{ item.product.vitamin }}</h3>
+                        <h4 class="wflavour">{{ item.product.flavour }}</h4>
+                        <h3 class="witem-price">£{{ item.product.price }}</h3>
+                        <div class="wishbottom">
+                            <h3 class="mitem-price">£{{ item.product.price }}</h3>
+                            <button type="button" class="wishremove" data-item-id="{{ item.id }}">
+                                <img src="/static/images/heart-minus.svg" alt="Solid heart with a minus next to it">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-3 wishright">
+                        <button type="button" class="wishremove" data-item-id="{{ item.id }}">
+                            <img src="/static/images/heart-minus.svg" alt="Solid heart with a minus next to it">
+                            <h3>Remove</h3>
+                        </button>
+                    </div>
+                </div>
                 {% endfor %}
                 <div class="backtoshop">
                     <a href="{{ url_for('shop') }}" class="shopreturn">
@@ -58,7 +58,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-3 colpadd"></div>
+            <div class="col-3 colpadd wishpadd"></div>
         </div>
         {% else %}
         <h2 class="ygsubtitle">Your Wishlist is currently empty.</h2>

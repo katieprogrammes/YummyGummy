@@ -1,5 +1,13 @@
 /* Large devices (Laptops, Desktops) */
 @media screen and (min-width: 1057px) and (max-width: 1440px) {
+    /*Hidden Sections*/
+    .cartpadd,
+    .hero-container .col-1,
+    .edaccpd,
+    #newsgroup .col-1 {
+        display: none;
+    }
+
     /* BASE TEMPLATE */
     .navleft a {
         padding: 25px 7px;
@@ -9,9 +17,6 @@
     }
 
     /* HOME TEMPLATE */
-    .hero-container .col-1 {
-        display: none;
-    }
     .hero {
         margin-top: 5%;
     }
@@ -33,9 +38,6 @@
    .socialproof h5 {
         padding: 0;
     }
-   #newsgroup .col-1 {
-        display: none;
-    }
    .newstitle {
         margin-bottom: 3rem;
     }
@@ -51,6 +53,7 @@
         margin-left: 0;
         width: 100%;
     }
+
     /* ACCOUNT STYLING */
     .accbtn {
         margin: 2rem 5rem;
@@ -59,13 +62,11 @@
         display: flex;
         justify-content: center;
     }
+
     /* EDIT ACCOUNT STYLING */
     .editaccounttxt {
         display: flex;
         justify-content: center;
-    }
-    .edaccpd {
-        display: none;
     }
     .editaccounttxt form {
         width: 50%;
@@ -82,6 +83,7 @@
     /*SHOP STYLING*/
     .shoporg {
         justify-content: space-between;
+        padding-left: 5px;
     }
     .filtersection h3,
     .sortmenu h3 {
@@ -91,12 +93,31 @@
         margin-top: 10px;
     }
     .sortmenu h3 {
-        align-self: center;
+        align-self: flex-end;
     }
-    .searchbar {
-        width: 333.41px;
+    .shoptop {
+        margin-top: 5px;
+        padding-right: 0;
+        width: 400px;
+        display: flex;
+        align-items: flex-start;
     }
-
+    .sortmenu {
+        margin-top: 18px;
+    }
+    #clear-search {
+        margin: 16px 8px 0;
+        float: right;
+        width: 55px;
+        padding: 2px 0 0;
+    }
+    #clearfilter {
+        float: right;
+        width: 55px;
+        padding: 2px 0 0;
+        margin-right: 14px;
+    }
+    
     /*PRODUCT PAGE*/
     #prodimg {
         width: 100%;
@@ -125,5 +146,41 @@
     #prodwishadd {
         margin-top: 14px;
         margin-bottom: 20px;
+    }
+
+    /*CART STYLING*/
+    .productnm {
+        margin-bottom: 16px;
+    }
+    .vitamin {
+        margin-bottom: 12px;
+    }
+    .prodmininfo {
+        margin: auto;
+    }
+    .quantityblock {
+        width: 160px;
+    }
+    .carttotal {
+        justify-content: space-around;
+        margin: auto;
+    }
+    .checksect {
+        margin-bottom: 1rem;
+    }
+    .checkout {
+        margin: auto;
+    }
+
+    /* WISHLIST STYLING */
+    .wishpadd {
+        width: 10%;
+    }
+    .wishbox {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .wishright {
+        padding: 0;
     }
 }

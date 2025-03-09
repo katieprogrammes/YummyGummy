@@ -14,9 +14,16 @@
     .prodmininfo,
     .remove h3,
     .mobwishinfo,
-    .wishremove h3 {
+    .wishremove h3,
+    .wishbox,
+    .cartamount,
+    .cartinfo,
+    .cartbox,
+    .sortmenu h3,
+    .filtersection h3 {
         display: none;
     }
+
     /* BASE TEMPLATE */
     .ygtitle {
         margin-top: 40px;
@@ -67,7 +74,6 @@
         text-align: center;
         padding: 1rem 0;
     }
-
     .mobile-nav a {
         display: block;
         padding: 1rem;
@@ -76,17 +82,13 @@
         font-weight: 600;
         font-size: 31px;
     }
-
     .mobile-nav a:hover {
         background-color: #B8C6F4;
         color: #282566;
     }
-
-    /* Show mobile menu when active */
     .mobile-nav.active {
         display: flex;
     }
-    /*Right Icons*/
     .mobile-cart-icon {
         display: block;
         position: absolute;
@@ -123,18 +125,15 @@
     .footleft a, .footright a {
         margin: 1rem .75rem;
     }
-
     #btmlogo img {
         margin-top: 10px;
         height: 60px;
     }
-
     .footsocial {
         display: flex;
         justify-content: center;
         gap: 1rem;
     }
-
     .footsocial img {
         width: 30px;
         height: 30px;
@@ -162,7 +161,6 @@
         height: auto;
         overflow: hidden;
     }
-
     .hero-container img {
         position: absolute;
         top: 0;
@@ -205,6 +203,7 @@
         width: 95%;
         margin: 1rem auto;
     }
+
     /* LOGIN STYLING */
     .logreg {
         margin: 2rem auto;
@@ -267,11 +266,13 @@
     .editaccounttxt {
         font-size: 39px;
     }
+
     /* CONTACT STYLING */
     .contactform {
         width: 95%;
         margin: auto;
     }
+    
     /* SHOP STYLING */
     .searchbar {
         width: 25rem;
@@ -294,10 +295,6 @@
         align-items: center;
         position: relative;
         width: 85%;
-    }
-    .sortmenu h3,
-    .filtersection h3 {
-        display: none;
     }
     #filterButton {
         display: initial;
@@ -448,54 +445,71 @@
         display: flex;
         flex-direction: row;
     }
-    .cartbox {
-        display: none;
-    }
     .mobcartbox {
         display: initial;
-        padding: 0;
     }
     .img4cart {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: auto;
-        max-width: 250px;
+        height: 100%;
+        max-width: 100%;
         overflow: hidden;
-        margin-left: 4px;
+        margin: 0 4px;
+        padding-left: 12px;
     }
     #cartimg {
         width: 100%;
-        height: 100%;
+        height: auto;
     }
-    .cartinfo {
+    .cartmobileinfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
         text-align: left;
         padding: 0;
     }
     .productnm {
         font-size: 39px;
-        font-weight: 800;
+        font-weight: 700;
+        margin-bottom: 12px;
     }
     .vitamin {
         font-size: 31px;
+        color: #10042F;
+        margin-bottom: 10px;
+    }
+    .flavour {
+        font-size: 24px;
+        margin-bottom: 5px;
+        color: #10042F;
     }
     .price {
-        margin-top: 16px;
+        font-size: 31px;
+        margin:0;
+        color: #10042F;
+        text-decoration: underline;
     }
-    .cartamount {
-        padding-left: 0;
+    .cartbottom {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+    }
+    .remove {
+        margin: 0;
     }
     .remove img {
-        width: 50px;
+        width: 40px;
+    }
+    .quantityblock {
+        width: 110px;
     }
     .cartquantitybutton {
         height: 40px;
         width: 140px;
-        border-radius: 15px;
-        margin: auto;
+        border-radius: 10px;
     }
     .cartquantitybutton h3 {
         font-size: 31px;
@@ -503,12 +517,20 @@
     .cartplus {
         height: 40px;
         width: 40px;
-        border-radius: 0 15px 15px 0;
+        border-radius: 0 10px 10px 0;
     }
     .cartminus {
         height: 40px;
         width: 40px;
-        border-radius: 15px 0 0 15px;
+        border-radius: 10px 0 0 10px;
+    }
+    .carttotal {
+        width: 40%;
+        margin: auto;
+    }
+    .carttotal h1 {
+        font-size: 39px;
+        margin: 0;
     }
     .checkout {
         margin: auto;
@@ -529,13 +551,6 @@
     }
 
     /*WISHLIST STYLING*/
-    .wishbox {
-        display: none;
-    }
-    .mobwishbox {
-        display: initial;
-        padding: 0;
-    }
     .wish-items {
        margin-top: 20px; 
     }

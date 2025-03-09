@@ -6,7 +6,7 @@
     <!-- Check if there are items in the cart -->
     {% if cart_items %}
         <div class="row">
-            <div class="col-2 colpadd"></div>
+            <div class="col-2 colpadd cartpadd"></div>
             <div class="col">
                 {% for item in cart_items %}
                 <div class="row cart-item">
@@ -55,27 +55,29 @@
                             <img src="/static/images/trash.svg" alt="Rubbish Bin">
                             <h3>Remove</h3>
                         </button>
-                        <h4 class="prodmininfo">Quantity</h4>
                         <!-- Cart item quantity buttons -->
-                        <div class="cartquantitybutton" id="cart-item-{{ item.id }}">
-                            <button type="button" class="cartminus" data-cart-item-id="{{ item.id }}" data-action="decrease">
-                                <h2>-</h2>
-                            </button>
-                            <h3 id="quantity-{{ item.id }}">{{ item.quantity }}</h3>
-                            <button type="button" class="cartplus" data-cart-item-id="{{ item.id }}" data-action="increase">
-                                <h2>+</h2>
-                            </button>
+                        <div class="quantityblock">
+                            <h4 class="prodmininfo">Quantity</h4>
+                            <div class="cartquantitybutton" id="cart-item-{{ item.id }}">
+                                <button type="button" class="cartminus" data-cart-item-id="{{ item.id }}" data-action="decrease">
+                                    <h2>-</h2>
+                                </button>
+                                <h3 id="quantity-{{ item.id }}">{{ item.quantity }}</h3>
+                                <button type="button" class="cartplus" data-cart-item-id="{{ item.id }}" data-action="increase">
+                                    <h2>+</h2>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            <div class="col-2 colpadd"></div>
+            <div class="col-2 colpadd cartpadd"></div>
         </div>
         
         <!-- CHECKOUT SECTION-->
         <div class="row checksect">
-            <div class="col-3 colpadd"></div>
+            <div class="col-3 colpadd cartpadd"></div>
             <div class="col">
                 <div class="carttotal">
                     <h1>Total:</h1>
@@ -90,7 +92,7 @@
                     </button>
                 </form>
             </div>
-            <div class="col-2 colpadd"></div>
+            <div class="col-2 colpadd cartpadd"></div>
         </div>
     {% else %}
         <h2 class="ygsubtitle">Your cart is currently empty</h2>
