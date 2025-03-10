@@ -295,4 +295,11 @@
     .wishright {
         padding: 0;
     }
+
+    /*UPDATE PRODUCTS STYLING*/
+    #updateform input {
+        max-width: 300px;
+        margin: 16px auto;
+        font-size: 31px;
+    }
 }

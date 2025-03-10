@@ -170,4 +170,10 @@
     .wishright {
         padding: 0;
     }
+
+    /*UPDATE PRODUCTS STYLING*/
+    #updateform input {
+        width: 362px;
+        margin: 16px auto;
+    }
 }

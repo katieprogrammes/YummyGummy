@@ -467,10 +467,10 @@
         align-items: center;
         margin-left: 19px;
     }
-    #prodbasket h3 {
+    #prodbasketmid h3 {
         display: none;
     }
-    #prodbasket h2 {
+    #prodbasketmid h2 {
         display: initial;
         font-weight: 600;
         margin-bottom: 0;
@@ -660,5 +660,10 @@
         color: #10042F;
         font-weight: 600;
         text-align: left;
+    }
+    #updateform input {
+        width: 230px;
+        margin: 16px auto;
+        font-size: 24px;
     }
 }   

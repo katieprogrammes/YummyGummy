@@ -147,6 +147,34 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error:", error));
     });
 
+    // Addding to Cart on Midsize Screens
+    document.getElementById("prodbasketmid").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const productId = this.getAttribute("data-product-id");
+        const quantity = document.getElementById("quantity").textContent;
+
+        fetch('/api/cart/add', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",  
+            },
+            body: JSON.stringify({
+                product_id: productId,
+                quantity: quantity
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                showSuccessMessage(data.message);
+            } else if (data.error) {
+                showErrorMessage(data.error);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    });
+
     //Product Page Quantity Buttons
     document.getElementById('quantplus').addEventListener("click", function(event) {
         event.preventDefault();
@@ -193,6 +221,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Add to Wishlist
     document.getElementById("prodwishadd").addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const productId = this.getAttribute("data-product-id");
+
+        fetch('/api/wishlist/add', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",  
+            },
+            body: JSON.stringify({
+                product_id: productId,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                showSuccessMessage(data.message);
+            } else if (data.error) {
+                showErrorMessage(data.error);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    });
+
+    //Add to Wishlist on midscreens
+    document.getElementById("prodwishaddmid").addEventListener("click", function (event) {
         event.preventDefault();
 
         const productId = this.getAttribute("data-product-id");

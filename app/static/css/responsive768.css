@@ -7,6 +7,10 @@
     .colpadd,
     .padd,
     .mobile-nav a:nth-child(6),
+    #proddesc,
+    #prodbotbut,
+    #quantbutt,
+    #prodbotbut,
     .prodmininfo,
     .remove h3,
     .mobwishinfo,
@@ -15,7 +19,8 @@
     .wishbottom,
     .cartamount,
     .cartinfo,
-    .cartbox {
+    .cartbox,
+    #prodbasketmid h3 {
         display: none;
     }
 
@@ -424,6 +429,47 @@
         display: flex;
         justify-content: center;
     }
+    #prodbasketmid {
+        width: 150px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-left: 19px;
+        text-decoration: none;
+        color: #6388EA;
+        background-color:#10042F;
+        border-radius: 5px;
+    }
+    #prodbasketmid h2 {
+        display: initial;
+        font-weight: 600;
+        margin-top: 14px;
+    }
+    #prodbasket img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    #prodwishaddmid {
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        padding: 8px;
+        margin-left: 8px;
+        background-color: #10042F;
+        
+    }
+    #prodwishaddmid img {
+        height: 30px;
+        width: 30px;
+        margin-left: 2px;
+    }
+    #midprodbotbut {
+        justify-content: center;
+        margin-top: 2rem;
+    }
     /*CART STYLING*/
     .cart-item {
         margin: 40px 0;
@@ -604,5 +650,11 @@
     }
     .witem-price {
         margin-top: 20px;
+    }
+    /*UPDATE PRODUCTS STYLING*/
+    #updateform input {
+        max-width: 300px;
+        margin: 16px auto;
+        font-size: 31px;
     }
 }
