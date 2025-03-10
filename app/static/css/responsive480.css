@@ -17,7 +17,6 @@
     .cartinfo,
     .cartbox,
     .midscreen,
-    #prodbasket h3
     .colpadd {
         display: none;
     }
@@ -424,6 +423,9 @@
     }
 
     /*PRODUCT PAGE STYLING*/
+    .navcrumb {
+        margin-top: 2rem;
+    }
     .prodcard {
         margin-top: 3rem;
     }
@@ -464,6 +466,9 @@
         display: flex;
         align-items: center;
         margin-left: 19px;
+    }
+    #prodbasket h3 {
+        display: none;
     }
     #prodbasket h2 {
         display: initial;

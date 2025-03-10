@@ -89,11 +89,11 @@
         margin-top: 10px;
     }
     .shoptop {
-        margin-top: 5px;
+        margin-bottom: 6px;
         padding-right: 0;
         width: 400px;
         display: flex;
-        align-items: flex-start;
+        align-items: flex-end;
     }
     .sortmenu {
         margin-top: 18px;
