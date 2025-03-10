@@ -15,13 +15,13 @@
                     <!--Cart Image-->
                     <div class="col-4 cartbox">
                         <a href="{{ url_for('product_detail', product_id=item.product.id) }}" class="img4cart">
-                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="250" id="cartimg">
+                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="Picture of {{ item.product.name }}" height="250" id="cartimg">
                         </a>
                     </div>
                     <!--Cart Item For Mobile-->
                     <div class="col-5 mobcartbox">
                         <a href="{{ url_for('product_detail', product_id=item.product.id) }}" class="img4cart">
-                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="{{ item.product.name }}" height="225" id="cartimg">
+                            <img src="{{ url_for('static', filename='images/yumgum.png') }}" alt="Picture of {{ item.product.name }}" height="225" id="cartimg">
                         </a>
                     </div>
                     <!--Product Information-->

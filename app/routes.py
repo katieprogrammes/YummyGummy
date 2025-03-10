@@ -7,7 +7,7 @@ import sqlalchemy as sa
 from app import db
 from app.models import User, Product, Cart, Wishlist
 from urllib.parse import urlsplit
-# from flask_mail import Mail, Message
+#from flask_mail import Mail, Message
 import requests, subprocess, os
 from config import Config
 

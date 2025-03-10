@@ -32,7 +32,7 @@ class User(UserMixin, db.Model):
         item_to_add = Cart(product_id=product_id, user_id=self.id)
         db.session.add(item_to_add)
         db.session.commit()
-        flash('Your item has been added to your cart!', 'success')
+        flash('Your item has been added to your cart!', 'custom-success')
 
 # Login Logic
 @login.user_loader
