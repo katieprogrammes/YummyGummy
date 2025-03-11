@@ -109,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.message) {
                     showSuccessMessage(data.message);
                     this.closest(".cart-item").remove();
+                    updateCartTotal();
                 } else if (data.error) {
                     showErrorMessage(data.error);
                 }
